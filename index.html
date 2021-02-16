@@ -64,6 +64,12 @@
             height: 70px;
             font-weight: bold;
         }
+        #endpart{
+            background-color: red;
+        }
+        #dropdownMenuButton1{
+            background-color: grey;
+        }
     </style>
 
 </head>
@@ -100,7 +106,7 @@
                   <p class="card-text">Parts Made: 18</p>
                   <div class="card-text">Cycle Time: 30 Seconds</div>
                   <hr>
-                  <a href="#" class="btn btn-primary" id="changeoverButton">Changeover</a>
+                  <a href="#" class="btn btn-primary" id="changeoverButton" data-bs-toggle="modal" data-bs-target="#changeover">Changeover</a>
                   <a href="#" class="btn btn-primary">Edit Count</a>
                 </div>
               </div>
@@ -133,7 +139,7 @@
                   <p class="card-text">Parts Made: 6</p>
                   <div class="card-text">Cycle Time: 48 Seconds</div>
                   <hr>
-                  <a href="#" class="btn btn-primary" id="changeoverButton">Changeover</a>
+                  <a href="#" class="btn btn-primary" id="changeoverButton" data-bs-toggle="modal" data-bs-target="#changeover">Changeover</a>
                   <a href="#" class="btn btn-primary">Edit Count</a>
                 </div>
               </div>
@@ -245,6 +251,44 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Modal -->
+<div class="modal fade" id="changeover" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Changeover</h5>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body">
+            <p>Please Confirm you are finished with current part before reporting a changeover</p>
+            <button type="button" id="endpart" class="btn btn-primary" >End Part</button>
+            <hr>
+            <!-- Dropdown -->
+            <p>Please Choose New part From the Dropdown Below</p>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown button
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="#">12345-65436</a></li>
+                  <li><a class="dropdown-item" href="#">13863-49415</a></li>
+                  <li><a class="dropdown-item" href="#">38426-46821</a></li>
+                  <li><a class="dropdown-item" href="#">You get the point</a></li>
+
+                </ul>
+              </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Resume</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+
           <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
         </div>
       </div>
