@@ -3,7 +3,7 @@ A repository dedicated to the development and demonstration of a part production
 
 
 ## Ideas
-> Have a countdown timer to when the welder will be done
+Have a countdown timer to when the welder will be done
 > Countdown to break timer
 > Have viewer dropdown of all parts to choose from when choosing a part
 > Employee and admin login
