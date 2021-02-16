@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part-Track</title>
+
+    <!-- Jquery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+    
+    <style>
+        body{
+            background-color: grey;
+        }
+        .container{
+            background-color: ivory;
+        }
+        .card{
+            /* margin:5px; */
+        }
+        .navbar{
+            /* width: 110%; */
+        }
+        .btn-group{
+            align-items: center;
+            align-content: center;
+            width: 100%;
+            height: 40px;
+        }
+        .btn{
+            align-items: center;
+            align-content: center;
+            width: 100%;
+            
+        }
+
+        #control{
+            height:60px;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <!-- Create a simple header, and a counter with a pause button -->
+
+    
+    
+    <div class="container">
+
+        <!--Nav -->
+        <nav class="navbar navbar-dark bg-dark">
+          <div class="container-fluid">
+           <a class="navbar-brand" href="#">
+        <img src="bluegear.png" alt="" width="35" height="29" class="d-inline-block align-top">
+        Part Track
+         </a>
+        </div>
+     </nav>
+     
+     <br>
+
+     <!-- Separate into columns -->
+
+     <div class="row">
+
+         <!-- first column -->
+         <div class="col-md-3">
+            <div class="card" style="width: 16rem;">
+                <img src="data:image/png;base64,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" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Side A: K6230-20061</h5>
+                  <p class="card-text">Welds: 6</p>
+                  <div class="card-text">Cycle Time: 30 Seconds</div>
+                  <hr>
+                  <a href="#" class="btn btn-primary">Changeover
+                  </a>
+                </div>
+              </div>
+         </div>
+         <!-- Second Column -->
+         <div class="col-md-6">
+             <h1>Controls
+             </h1>
+             <h4>Robot: 3     -   Empoloyee: John Smith</h4>
+             <hr>
+             <p>Lorem ipsum dolor,Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum placeat quasi, dignissimos asperiores officiis necessitatibus sit ratione aspernatur assumenda sequi possimus, fugit doloremque perspiciatis, labore ab suscipit nesciunt? Dolores, earum? sit amet consectetur adipisicing elit. Consectetur unde culpa obcaecati eum amet doloribus velit qui numquam, aut pariatur cum, molestiae, earum iste iure enim quaerat delectus officiis labore?</p>
+             <hr>
+             <br>
+             <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-primary" id="control">DownTime</button>
+                <button type="button" class="btn btn-primary" id="control">Reports</button>
+                <button type="button" class="btn btn-primary" id="control">Help</button>
+              </div>
+              <div style="text-align:center;padding:1em 0;"> <h3> <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=en&size=medium&timezone=America%2FNew_York" width="100%" height="115" frameborder="0" seamless><a href=""></a></iframe> </div>
+         </div>
+
+         <!-- Third Column -->
+         <div class="col-md-3">
+            <div class="card" style="width: 16rem;">
+                <img src="Capture.PNG" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Side B: K6230-20061</h5>
+                  <p class="card-text">Welds: 6</p>
+                  <div class="card-text">Cycle Time: 30 Seconds</div>
+                  <hr>
+                  <a href="#" class="btn btn-primary">Changeover
+                  </a>
+                </div>
+              </div>
+         </div>
+
+     </div>
+
+     <!-- <div class="card" style="width: 18rem;">
+        <img src="data:image/png;base64,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" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Current Part: K6230-20061</h5>
+          <p class="card-text">Welds: 6</p>
+          <div class="card-text">Cycle Time: 30 Seconds</div>
+          <hr>
+          <a href="#" class="btn btn-primary">Changeover
+          </a>
+        </div>
+      </div> -->
+
+     <br>
+
+     
+
+    </div>
+
+    <div class="modal" id="myModal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <script>
+        // Now we have to have modal scripts
+        var myModal = document.getElementById('myModal')
+        var myInput = document.getElementById('myInput')
+
+        myModal.addEventListener('shown.bs.modal', function () {
+        myInput.focus()
+})
+    </script>
+    
+
+</body>
+</html>
