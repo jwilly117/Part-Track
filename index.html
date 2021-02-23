@@ -119,18 +119,73 @@
 
          <!-- first column -->
          <div class="col-md-3">
-            <div class="card" style="width: 16rem;">
+            <div class="card" id="cardA" style="width: 16rem;">
                 <img id="partPic" src="images/Parts/K3411-54133.PNG" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">Side A: K6230-20061</h5>
                   <p class="card-text">Parts Made: 18</p>
                   <div class="card-text">Cycle Time: 30 Seconds</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="p1" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
                   <hr>
                   <a href="#" class="btn btn-primary" id="changeoverButton" data-bs-toggle="modal" data-bs-target="#changeover">Changeover</a>
                   <a href="#" class="btn btn-primary">Edit Count</a>
                 </div>
               </div>
          </div>
+
+         <script>
+          //  Here we have the javascript test for a decreasing progress bar
+          // ================================
+
+          // set a number to count from
+          var number = 100;
+          var interval;
+          var side = "A";
+
+          function start() {
+            interval = setInterval(countdown, 1000);
+          }
+
+          function countdown(){
+
+            // Create a statement to pick an active side
+
+            if(side == "A"){
+              if(number <= 0){
+              number = 100;
+              side = "B";
+              $("#cardB").css("background-color", "lightgreen");
+              $("#cardA").css("background-color", "salmon");
+
+              console.log("Side Change");
+            }
+            else{
+              number = number - 15;
+              $("#p1").css("width", (number + "%"));
+            }
+            // Now set the side to B
+            }else if(side == "B"){
+              if(number <= 0){
+              number = 100;
+              side = "A";
+              $("#cardA").css("background-color", "lightgreen");
+              $("#cardB").css("background-color", "salmon");
+              console.log("Side Change");
+            }
+            else{
+              number = number - 10;
+              $("#p2").css("width", (number + "%"));
+            }
+            }
+        
+          }
+
+          start();
+          
+
+         </script>
          <!-- Second Column -->
          <div class="col-md-6">
              <h1>Controls
@@ -152,12 +207,15 @@
 
          <!-- Third Column -->
          <div class="col-md-3">
-            <div class="card" style="width: 16rem;">
+            <div class="card" id="cardB" style="width: 16rem;">
                 <img id="partPic" src="images/Parts/K3411-81563.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
+                <div class="card-body" >
                   <h5 class="card-title">Side B: K6230-20061</h5>
                   <p class="card-text">Parts Made: 6</p>
                   <div class="card-text">Cycle Time: 48 Seconds</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="p2" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
                   <hr>
                   <a href="#" class="btn btn-primary" id="changeoverButton" data-bs-toggle="modal" data-bs-target="#changeover">Changeover</a>
                   <a href="#" class="btn btn-primary">Edit Count</a>
