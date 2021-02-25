@@ -90,6 +90,13 @@
         #cardB{
           background-color: salmon;
         }
+        #card-name{
+          padding-top: 5px;
+          padding-left: 5px;
+        }
+        hr{
+          margin: 6px 0px;
+        }
     </style>
 
 </head>
@@ -106,7 +113,10 @@
           <div class="container-fluid">
            <a class="navbar-brand" href="#">
         <img src="images/bluegear.png" alt="" width="35" height="29" class="d-inline-block align-top">
-        Part Track
+        
+        Part Track -- 
+        <img src="images/Yahata.png" alt="Yahata - USA" height="35">
+        
          </a>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -136,17 +146,35 @@
          <!-- first column -->
          <div class="col-md-3">
             <div class="card" id="cardA" style="width: 16rem;">
+                <h5 id="card-name"> Side A: K6230-20061</h5>
                 <img id="partPic" src="images/Parts/K3411-54133.PNG" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">Side A: K6230-20061</h5>
-                  <p class="card-text">Parts Made: 18</p>
+                  <!-- This is the area of information to the ooperator -->
+                  <h5>Parts Made: 55</h5>
+                  
                   <div class="card-text">Cycle Time: 7 Seconds</div>
                   <div class="progress">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" id="p1" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                   <hr>
-                  <a href="#" class="btn btn-primary" id="changeoverButton" data-bs-toggle="modal" data-bs-target="#changeover">Changeover</a>
-                  <a href="#" class="btn btn-primary">Edit Count</a>
+                  <!-- Session Stats -->
+                  <div class="text-center"><strong>-Session Statistics-</strong></div>
+                  <div class="card-text">Bekido Rate: 80%</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="p1" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <div class="card-text">This basket 22/50</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="p1" role="progressbar" style="width: 44%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <hr>
+                  <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-primary">DownTime</button>
+                <button type="button" class="btn btn-primary" > Rework</button>
+                  </div>
+
+                  <!-- <a href="#" class="btn btn-primary" id="changeoverButton" data-bs-toggle="modal" data-bs-target="#changeover">Downtime</a>
+                  <a href="#" class="btn btn-primary">Rework</a> -->
                 </div>
               </div>
          </div>
@@ -164,8 +192,7 @@
              <hr>
              <br>
              <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-primary" id="control" data-bs-toggle="modal" data-bs-target="#downTime">DownTime</button>
-                <button type="button" class="btn btn-primary" id="simulate"> Simulate Machine Stop</button>
+                
                 <button type="button" class="btn btn-primary" id="resume"> Resume</button>
 
                 <button type="button" class="btn btn-primary" id="control" data-bs-toggle="modal" data-bs-target="#help">Help</button>
@@ -176,6 +203,8 @@
          <!-- Third Column -->
          <div class="col-md-3">
             <div class="card" id="cardB" style="width: 16rem;">
+              <h5 id="card-name"> Side A: K6230-20061</h5>
+
                 <img id="partPic" src="images/Parts/K3411-81563.jpg" class="card-img-top" alt="...">
                 <div class="card-body" >
                   <h5 class="card-title">Side B: K6230-20061</h5>
@@ -185,8 +214,8 @@
                     <div class="progress-bar progress-bar-striped progress-bar-animated" id="p2" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                   <hr>
-                  <a href="#" class="btn btn-primary" id="changeoverButton" data-bs-toggle="modal" data-bs-target="#changeover">Changeover</a>
-                  <a href="#" class="btn btn-primary">Edit Count</a>
+                  <a href="#" class="btn btn-primary" id="changeoverButton" data-bs-toggle="modal" data-bs-target="#changeover">Downtime</a>
+                  <a href="#" class="btn btn-primary">Rework</a>
                 </div>
               </div>
          </div>
