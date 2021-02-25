@@ -216,10 +216,10 @@
            <br>
            <div class="row">
              <div class="col-md-6">
-              <div class="text-center" id="totalRunTime">Run Time: 00:00:00<span id="time"></span> </div>
+              <div class="text-center" id="totalRunTime">Run Time: 00:00:00<span id="ttime"></span> </div>
              </div>
              <div class="col-md-6">
-              <div class="text-center" id="totalDowntime">Total Downtime: 00:00:00<span id="time"></span> </div>
+              <div class="text-center" id="totalDowntime">Total Downtime: 0<span id="time"></span> </div>
              </div>
            </div>
            <!-- <div class="text-center" id="totalDowntime">Total Downtime: <span id="time"></span> </div>
@@ -231,12 +231,12 @@
              
              <h5>Order Totals</h5>
              <hr>
-             <div class="card-text">Side A Order Total 300 / 800</div>
+             <div class="card-text">Side A Order Total <span id="sideAOrderTotal">300</span> / 800</div>
                   <div class="progress" style="height: 25px;">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" id="p11" role="progressbar" style="width: 42%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                   <br>
-                  <div class="card-text">Side B Order Total 200 / 250</div>
+                  <div class="card-text">Side B Order Total <span id="sideBOrderTotal">200</span> / 250</div>
                   <div class="progress" style="height: 25px;">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" id="p11" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
@@ -454,6 +454,9 @@
 
     var partsMadeA = 0;
     var partsMadeB = 0;
+
+    var sideAOrderTotal = 300;
+    var sideBOrderTotal = 200;
     
     $("#simulate").on("click", function(){
       console.log("This button works");
@@ -481,6 +484,8 @@
         if(number <= 0){
         number = 100;
         partsMadeA++;
+        sideAOrderTotal++;
+        $("#sideAOrderTotal").text(sideAOrderTotal);
         if(partsMadeA > 100){
           partsMadeA = 0;
         }
@@ -503,6 +508,9 @@
         if(number <= 0){
         number = 100;
         partsMadeB++;
+
+        sideBOrderTotal++;
+        $("#sideBOrderTotal").text(sideBOrderTotal);
         if(partsMadeB > 50){
           partsMadeB = 0;
         }

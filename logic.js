@@ -16,6 +16,6 @@ $(".dt").on("click", function(){
     difference = minutes / 60;
     // minutes = incidents / 60;
     console.log(difference + " " + seconds);
-    $("#time").text(difference + " Mins " + seconds + " Seconds");
+    $("#time").text(difference + " M " + seconds + " S");
 })
 
