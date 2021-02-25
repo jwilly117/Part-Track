@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part-Track</title>
+
+    <!-- Jquery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+  
+
+    
+    <style>
+        body{
+            background-color: grey;
+        }
+        .container{
+            background-color: rgb(169, 176, 187);
+        }
+        .card{
+            /* margin:5px; */
+            border-width: 3px;
+        }
+        .navbar{
+            /* width: 110%; */
+        }
+        .btn-group{
+            align-items: center;
+            align-content: center;
+            width: 100%;
+            height: 40px;
+        }
+        .btn{
+            align-items: center;
+            align-content: center;
+            width: 100%;
+            background-color:rgb(38, 65, 219);
+            
+        }
+
+        #time,
+        #totalDowntime,
+        #totalRunTime{
+          font-size: 20px;
+          font-weight: bold;
+        }
+
+        #control,
+        #simulate,
+        #resume{
+            height:60px;
+        }
+        #changeoverButton{
+            margin-bottom:8px;
+        }
+        #partPic{
+            height: 245px;
+            /* width: 95%; */
+            border-radius: 8px;
+        }
+        #dtreasons{
+            margin-top: 10px;
+            height: 50px;
+        }
+        .downTime{
+            width:110%;
+        }
+        #helpButton{
+            background-color: red;
+            height: 70px;
+            font-weight: bold;
+        }
+        #endpart{
+            background-color: red;
+        }
+        #dropdownMenuButton1{
+            background-color: grey;
+        }
+        .card{
+          border-radius: 10px;
+        }
+        #cardA{
+          background-color: lightgreen;
+        }
+        #cardB{
+          background-color: salmon;
+        }
+        #card-name{
+          padding-top: 5px;
+          padding-left: 5px;
+        }
+        hr{
+          margin: 6px 0px;
+        }
+        #help{
+          background-color: red;
+          height: 60px;
+          font-size: larger;
+          font-weight: 500;
+          color:white;
+        }
+        #p11{
+          height: 300px;
+        }
+        #topish{
+          margin-bottom: 15px;
+        }
+        #p1,
+        #p2{
+          background-color:rgb(15, 33, 136);
+        }
+    </style>
+
+    <link rel="stylesheet" href="adminStyle.css">
+
+</head>
+
+
+<body>
+    
+    <!--Nav -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+         <a class="navbar-brand" href="#">
+      <img src="images/bluegear.png" alt="" width="35" height="29" class="d-inline-block align-top">
+      
+      Part Track -- 
+      <img src="images/Yahata.png" alt="Yahata - USA" height="35">
+      
+       </a>
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="#">Operator Login</a>
+            <a class="nav-link" href="#">Start Day</a>
+            <a class="nav-link" href="#">Settings</a>
+            <a class="nav-link" href="index.html" tabindex="-1" aria-disabled="true">End Day</a>
+            <a class="nav-link" href="tester.html">Admin</a>
+            <a class="nav-link" href="forklift.html">Material Operator</a>
+
+
+
+          </div>
+        </div>
+      </div>
+   </nav>
+
+   <!-- columns -->
+   <div class="row">
+       <div class="col-md-2" id="sidebar">
+
+       </div>
+       <div class="col-md-10">
+           <div class="row" id="navrow">
+               <div class="col-md-12">
+                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam minima obcaecati explicabo? Necessitatibus doloribus minus sed eveniet aliquam placeat, numquam cumque nostrum aliquid et sapiente eos. Maiores ratione cum omnis!
+                   <br>
+                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus qui sequi natus ducimus. Inventore nesciunt, omnis ut dolores odio minus doloribus quos architecto reprehenderit perspiciatis, amet quaerat rerum ab velit.
+
+               </div>
+           </div>
+           <div class="row">
+               <div class="col-md-12" id="outputBox">
+                   <!-- TABLE -->
+                <table class="table table-dark table-striped table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                        <th scope="col">Handle</th>
+                        <th scope="col">Handle</th>
+                        <th scope="col">Handle</th>
+                        <th scope="col">Handle</th>
+                        <th scope="col">Handle</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                      </tr>
+
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                      </tr>
+
+                      <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+               </div>
+           </div>
+       </div>
+   </div>
+
+
+
+</body>
+</html>
