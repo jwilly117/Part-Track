@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part-Track</title>
+
+    <!-- Jquery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+  
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+
+    
+    <style>
+        body{
+            background-color: grey;
+        }
+        .container{
+            background-color: rgb(85, 84, 84);
+            color: white;
+        }
+        .card{
+            /* margin:5px; */
+            border-width: 3px;
+        }
+        .navbar{
+            /* width: 110%; */
+        }
+        .btn-group{
+            align-items: center;
+            align-content: center;
+            width: 100%;
+            height: 40px;
+        }
+        .btn{
+            align-items: center;
+            align-content: center;
+            width: 100%;
+            background-color:rgb(38, 65, 219);
+            
+        }
+
+        #time,
+        #totalDowntime,
+        #totalRunTime{
+          font-size: 20px;
+          font-weight: bold;
+        }
+
+        #control,
+        #simulate,
+        #resume{
+            height:60px;
+        }
+        #changeoverButton{
+            margin-bottom:8px;
+        }
+        #partPic{
+            height: 245px;
+            /* width: 95%; */
+            border-radius: 8px;
+        }
+        #dtreasons{
+            margin-top: 10px;
+            height: 50px;
+        }
+        .downTime{
+            width:110%;
+        }
+        #helpButton{
+            background-color: red;
+            height: 70px;
+            font-weight: bold;
+        }
+        #endpart{
+            background-color: red;
+        }
+        #dropdownMenuButton1{
+            background-color: grey;
+        }
+        .card{
+          border-radius: 10px;
+          color: black;
+        }
+        #cardA{
+          background-color: lightgreen;
+        }
+        #cardB{
+          background-color: salmon;
+        }
+        #card-name{
+          padding-top: 5px;
+          padding-left: 5px;
+        }
+        hr{
+          margin: 6px 0px;
+          color: white;
+          background: rgb(139, 138, 138);
+        }
+        #help{
+          background-color: red;
+          height: 60px;
+          font-size: larger;
+          font-weight: 500;
+          color:white;
+        }
+        #p11{
+          height: 300px;
+        }
+        #topish{
+          margin-bottom: 15px;
+        }
+        #p1,
+        #p2{
+          background-color:rgb(15, 33, 136);
+        }
+        .navbar{
+          border: 2px;
+          border-bottom: oldlace;
+          
+        }
+    </style>
+
+</head>
+<body>
+    
+    <!-- Create a simple header, and a counter with a pause button -->
+
+    <!-- Think about calling this accupart -->
+    
+    <div class="container">
+
+        <!--Nav -->
+        <nav class="navbar navbar-dark bg-dark">
+          <div class="container-fluid">
+           <a class="navbar-brand" href="#">
+        <img src="../images/bluegear.png" alt="" width="35" height="29" class="d-inline-block align-top">
+        
+        Part Track -- 
+        <img src="../images/Yahata.png" alt="Yahata - USA" height="35">
+        
+         </a>
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="#">Operator Login</a>
+              <a class="nav-link" href="#">Start Day</a>
+              <a class="nav-link" href="#">Settings</a>
+              <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">End Day</a>
+              <a class="nav-link" href="admin.html">Admin</a>
+              <a class="nav-link" href="forklift.html">Material Operator</a>
+
+
+
+            </div>
+          </div>
+        </div>
+     </nav>
+     
+     <br>
+
+     <!-- Separate into columns -->
+
+     <div class="row">
+
+         <!-- first column -->
+         <div class="col-md-3">
+            <div class="card" id="cardA" style="width: 16rem;">
+                <h5 id="card-name"> Side A: K6230-20061</h5>
+                <img id="partPic" src="../images/Parts/K3411-54133.PNG" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <!-- This is the area of information to the ooperator -->
+                  <h5>Parts Made: <span id="partsMadeA">0</span></h5>
+                  
+                  <div class="card-text">Cycle Time: 7 Seconds</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="p1" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <hr>
+                  <!-- Session Stats -->
+                  <div class="text-center"><strong>-Session Statistics-</strong></div>
+                  <div class="card-text">Bekido Rate: 100%</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="p11" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <div class="card-text">This basket <span id="basketACount">0</span>/100</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="basketABar" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <hr>
+                  <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#downTime">DownTime</button>
+                <button type="button" class="btn btn-primary" id="rework1"> Rework</button>
+                  </div>
+
+                  <!-- <a href="#" class="btn btn-primary" id="changeoverButton" data-bs-toggle="modal" data-bs-target="#changeover">Downtime</a>
+                  <a href="#" class="btn btn-primary">Rework</a> -->
+                </div>
+              </div>
+         </div>
+
+         
+         <!-- Second Column -->
+         <div class="col-md-6">
+           
+
+           <div class="row">
+             <div class="col-md-6">
+              <h3>Info Pane</h3>
+                <h6>Robot #: 3</h6>
+                <hr id="topish">
+                <h6>Operator: James Franco</h6>
+             </div>
+             <div class="col-md-6">
+              <div style="text-align:center;padding:1em 0; height: 120px"> <h3> 
+                <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=en&size=medium&timezone=America%2FNew_York" style="pointer-events: none;" width="100%" height="115" frameborder="0" seamless></iframe> </div>            </div>
+           </div>
+           <hr>
+           <br>
+           <div class="row">
+             <div class="col-md-6">
+              <div class="text-center" id="totalRunTime">Run Time: 00:00:00<span id="ttime"></span> </div>
+             </div>
+             <div class="col-md-6">
+              <div class="text-center" id="totalDowntime">Total Downtime: 0<span id="time"></span> </div>
+             </div>
+           </div>
+           <!-- <div class="text-center" id="totalDowntime">Total Downtime: <span id="time"></span> </div>
+           <div class="text-center" id="totalDowntime">Total Downtime: <span id="time"></span> </div> -->
+
+            <br>
+            <hr>
+
+             
+             <h5>Order Totals</h5>
+             <hr>
+             <div class="card-text">Side A Order Total <span id="sideAOrderTotal">300</span> / 800</div>
+                  <div class="progress" style="height: 25px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="pA" role="progressbar" style="width: 37%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <br>
+                  <div class="card-text">Side B Order Total <span id="sideBOrderTotal">180</span> / <span id="sideBOrderGoal">250</span></div>
+                  <div class="progress" style="height: 25px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="pB" role="progressbar" style="width: 72%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+             <hr>
+             <br>
+             <div class="btn-group" role="group" aria-label="Basic example">
+              <!-- <button type="button" class="btn btn-primary" id="control" data-bs-toggle="modal" data-bs-target="#downTime">DownTime</button> -->
+                <button type="button" class="btn btn-primary" id="resume"> Resume</button>
+                <button type="button" class="btn btn-primary" id="simulate"> Simulate Machine Stop</button>
+                <!-- <button type="button" class="btn btn-primary" id="control" data-bs-toggle="modal" data-bs-target="#help">Help</button> -->
+              </div>
+              <br>
+              <br>
+
+              <button type="button" id="help" class="btn btn-warning">Request Assistance / Parts</button>
+
+              
+         </div>
+
+         <!-- Third Column -->
+         <div class="col-md-3">
+            <div class="card" id="cardB" style="width: 16rem;">
+              <h5 id="card-name"> Side B: K6230-20061</h5>
+
+                <img id="partPic" src="../images/Parts/K3411-81563.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <!-- This is the area of information to the ooperator -->
+                  <h5>Parts Made: <span id="partsMadeB">0</span></h5>
+                  
+                  <div class="card-text">Cycle Time: 10 Seconds</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="p2" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <hr>
+                  <!-- Session Stats -->
+                  <div class="text-center"><strong>-Session Statistics-</strong></div>
+                  <div class="card-text">Bekido Rate: 85%</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="p11" role="progressbar" style="width: 85%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <div class="card-text">This basket <span id="basketBCount">0</span>/50</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="basketBBar" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <hr>
+                  <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#downTime">DownTime</button>
+                    <button type="button" class="btn btn-primary" > Rework</button>
+                  </div>
+
+                  <!-- <a href="#" class="btn btn-primary" id="changeoverButton" data-bs-toggle="modal" data-bs-target="#changeover">Downtime</a>
+                  <a href="#" class="btn btn-primary">Rework</a> -->
+                </div>
+              </div>
+         </div>
+     </div>
+
+     <!-- <div class="card" style="width: 18rem;">
+        <img src="data:image/png;base64,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" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Current Part: K6230-20061</h5>
+          <p class="card-text">Welds: 6</p>
+          <div class="card-text">Cycle Time: 30 Seconds</div>
+          <hr>
+          <a href="#" class="btn btn-primary">Changeover
+          </a>
+        </div>
+      </div> -->
+
+     <br>
+
+     
+
+    </div>
+
+<!-- Button trigger modal
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button> -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="downTime" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Record DownTime</h5>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body">
+
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores, id quod veniam eius sunt nisi impedit magnam fuga cupiditate recusandae ut mollitia similique ipsam obcaecati neque veritatis! Adipisci, officia dolor!
+          <button type="button" class="btn btn-primary dt" id="dtreasons">Robot Crash / Current</button>
+          <button type="button" class="btn btn-primary dt" id="dtreasons">Change Tip</button>
+          <button type="button" class="btn btn-primary dt" id="dtreasons">Waiting For Parts</button>
+          <button type="button" class="btn btn-primary dt" id="dtreasons">Operator Error</button>
+          <button type="button" class="btn btn-primary dt" id="dtreasons">Reprogram / Fix Weld</button>
+
+        </div>
+<!-- 
+        <div>
+            <button type="button" class="btn btn-primary" id="dtreasons">Robot Crash / Current</button>
+            <button type="button" class="btn btn-primary" id="dtreasons">Change Tip</button>
+            <button type="button" class="btn btn-primary" id="dtreasons">Waiting For Parts</button>
+            <button type="button" class="btn btn-primary" id="dtreasons">Operator Error</button>
+            <button type="button" class="btn btn-primary" id="dtreasons">Reprogram / Fix Weld</button>
+
+        </div> -->
+
+
+
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+<!-- <div class="modal fade" id="reports" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Daily Reports </h5>
+           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> 
+        </div>
+        <div class="modal-body">
+          ... Placeholder Text
+          <hr>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste fugit consequuntur officia consectetur pariatur modi corrupti repellat sed beatae repudiandae delectus ex odit molestias reprehenderit alias magnam, laudantium sunt perspiciatis.
+          <hr>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum dignissimos aut odio tenetur possimus ad facere consectetur consequuntur cumque magnam, quibusdam quo? Nulla iusto deserunt ab ut recusandae itaque dolor.
+          <hr>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. At incidunt rerum rem eum dolorum illo dolores quisquam et laborum labore repudiandae, ad repellendus quas aliquam excepturi ea animi odio doloremque?
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Modal -->
+<div class="modal fade" id="help" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Request Supervisor Help</h5>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus officiis quasi eaque adipisci voluptatem distinctio, itaque veniam, deleniti minus impedit maiores aut eveniet? Quia, perspiciatis accusantium. Illum earum tempora suscipit.
+          <hr>
+          <button type="button" class="btn btn-primary" id="helpButton">Request Help</button>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Modal -->
+<div class="modal fade" id="changeover" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Changeover</h5>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body">
+            <p>Please Confirm you are finished with current part before reporting a changeover</p>
+            <button type="button" id="endpart" class="btn btn-primary" >End Part</button>
+            <hr>
+            <!-- Dropdown -->
+            <p>Please Choose New part From the Dropdown Below</p>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown button
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="#">12345-65436</a></li>
+                  <li><a class="dropdown-item" href="#">13863-49415</a></li>
+                  <li><a class="dropdown-item" href="#">38426-46821</a></li>
+                  <li><a class="dropdown-item" href="#">You get the point</a></li>
+
+                </ul>
+              </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Resume</button>
+          <button id="re2sume">Resume</button>
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    //  Here we have the javascript test for a decreasing progress bar
+    // ================================
+
+    var firebaseConfig = {
+    apiKey: "AIzaSyCNgQru6L-VJT5C9y8Cl47GtVH2DNmo2Yk",
+    authDomain: "part-track-demo.firebaseapp.com",
+    projectId: "part-track-demo",
+    storageBucket: "part-track-demo.appspot.com",
+    messagingSenderId: "497244549101",
+    appId: "1:497244549101:web:afb5f178b7f25ff2dc81e4"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+//  ===================================================================
+// Here we capture the counters
+var database = firebase.database();
+  
+    // set a number to count from
+    var number = 100;
+    var interval;
+    var side = "A";
+    var running = true;
+
+    var partsMadeA = 0;
+    var partsMadeB = 0;
+
+    var sideAOrderTotal = 300;
+    var sideAOrderPercent = 0;
+    var sideBOrderTotal = 180;
+    var sideBOrderPercent = 0;
+    
+    $("#simulate").on("click", function(){
+      console.log("This button works");
+      clearInterval(interval);
+      
+    });
+
+    $("#resume").on("click", function(){
+      console.log("this button works too!");
+      start();
+    })
+
+    
+
+    function start() {
+      interval = setInterval(countdown, 1000);
+    }
+
+
+    function countdown(){
+
+      // Create a statement to pick an active side
+
+      if(side == "A"){
+        if(number <= 0){
+        number = 100;
+        partsMadeA++;
+        // Maybe firebase?
+        database.ref().set({
+            R2basketA: partsMadeA,
+            R2basketB: partsMadeB
+        })
+        sideAOrderTotal++;
+        sideAOrderPercent = (sideAOrderTotal / 800)*100
+        console.log(sideAOrderPercent);
+        $("#sideAOrderTotal").text(sideAOrderTotal);
+        $("#pA").css("width", (sideAOrderPercent + "%"));
+        if(partsMadeA > 100){
+          partsMadeA = 0;
+        }
+        $("#partsMadeA").text(partsMadeA);
+        $("#basketACount").text(partsMadeA)
+        $("#p1").css("width", (number + "%"));
+        $("#basketABar").css("width", (partsMadeA + "%"));
+        side = "B";
+        $("#cardB").css("background-color", "lightgreen");
+        $("#cardA").css("background-color", "salmon");
+
+        console.log("Side Change");
+      }
+      else{
+        number = number - 15;
+        $("#p1").css("width", (number + "%"));
+      }
+      // Now set the side to B
+      }else if(side == "B"){
+        if(number <= 0){
+        number = 100;
+        partsMadeB++;
+        // Maybe firebase?
+        database.ref().set({
+            R2basketA: partsMadeA,
+            R2basketB: partsMadeB
+        })
+        sideBOrderTotal++;
+        sideBOrderPercent = (sideBOrderTotal / 250)*100
+        console.log(sideBOrderPercent);
+        $("#sideBOrderTotal").text(sideBOrderTotal);
+        $("#pB").css("width", (sideBOrderPercent + "%"));
+        if(partsMadeB > 50){
+          partsMadeB = 0;
+        }
+        $("#partsMadeB").text(partsMadeB);
+        $("#basketBCount").text(partsMadeB)
+        $("#p2").css("width", (number + "%"));
+        $("#basketBBar").css("width", (partsMadeB * 2 + "%"));
+        side = "A";
+        $("#cardA").css("background-color", "lightgreen");
+        $("#cardB").css("background-color", "salmon");
+        console.log("Side Change");
+      }
+      else{
+        number = number - 10;
+        $("#p2").css("width", (number + "%"));
+      }
+      }
+  
+    }
+
+    function stop() {
+      clearInterval(interval);
+    }
+
+    start();
+    
+
+   </script>
+    
+    <script src="firebase.js">
+
+    </script>
+
+</body>
+</html>
