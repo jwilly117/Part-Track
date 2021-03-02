@@ -108,6 +108,7 @@
         hr{
             margin-bottom: 8xp;
         }
+        .p2,
         #p2{
             background-color: rgb(248, 88, 88);
         }
@@ -191,7 +192,7 @@
               <strong>SIDE B</strong>
               <div class="progress">
                
-                <div class="progress-bar progress-bar-striped progress-bar-animated" id="R1SAProgress" role="progressbar" style="width: 73%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar progress-bar-striped progress-bar-animated p2" id="R1SBProgress" role="progressbar" style="width: 73%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 <div id="remaining"></div>
               </div>
         </div>
@@ -383,6 +384,14 @@ var database = firebase.database();
     console.log("The side A basket Count is " + R1SA)
 
     $("#R1SAProgress").css("width", (R1SA + "%"));
+  })
+
+  database.ref("basketB").on("value", function(snap){
+    console.log(snap.val());
+    R1SB = snap.val();
+    console.log("The side A Basket Count is " + R1SB);
+
+    $("#R1SBProgress").css("width", ((R1SB * 2) + "%"));
   })
 
 </script>
