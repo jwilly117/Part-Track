@@ -19,3 +19,5 @@ $(".dt").on("click", function(){
     $("#time").text(difference + " M " + seconds + " S");
 })
 
+// Modals for Help
+
