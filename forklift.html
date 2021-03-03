@@ -303,12 +303,12 @@
             <hr>
             <strong>SIDE A</strong>
             <div class="progress">
-                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar progress-bar-striped progress-bar-animated" id="R4SAProgress" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
               <br>
               <strong>SIDE B</strong>
               <div class="progress">
-                <div class="progress-bar progress-bar-striped progress-bar-animated" id="p2" role="progressbar" style="width: 19%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar progress-bar-striped progress-bar-animated p2" id="R4SBProgress" role="progressbar" style="width: 19%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
         </div>
 
@@ -384,6 +384,11 @@ var database = firebase.database();
   var R3SA = 0;
   var R3SB = 0;
 
+  var R4SA = 0;
+  var R4SB = 0;
+
+  // Robot 1 ===============================================
+
   database.ref("R1/basketA").on("value", function(snap){
     console.log(snap.val());
     R1SA = snap.val();
@@ -399,6 +404,8 @@ var database = firebase.database();
 
     $("#R1SBProgress").css("width", ((R1SB * 2) + "%"));
   })
+
+  // Robot 2 ===============================================
 
   database.ref("R2/R2basketA").on("value", function(snap){
     console.log(snap.val());
@@ -416,6 +423,8 @@ var database = firebase.database();
     $("#R2SBProgress").css("width", ((R2SB * 2) + "%"));
   })
 
+  // Robot 3 ===============================================
+
   database.ref("R3/R3basketA").on("value", function(snap){
     console.log(snap.val());
     R3SA = snap.val();
@@ -431,6 +440,28 @@ var database = firebase.database();
 
     $("#R3SBProgress").css("width", ((R3SB) + "%"));
   })
+
+  // Robot 4 ===============================================
+
+  database.ref("R4/R4basketA").on("value", function(snap){
+    console.log(snap.val());
+    R4SA = snap.val();
+    console.log("The side A Basket Count is " + R4SA);
+
+    $("#R4SAProgress").css("width", ((R4SA * 3) + "%"));
+  })
+
+  database.ref("R4/R4basketB").on("value", function(snap){
+    console.log(snap.val());
+    R4SB = snap.val();
+    console.log("The side B Basket Count is " + R4SB);
+
+    $("#R4SBProgress").css("width", ((R4SB) + "%"));
+  })
+
+  // Robot 5 ===============================================
+
+  // Placeholder
 
 </script>
 
