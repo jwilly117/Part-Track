@@ -405,7 +405,7 @@ var database = firebase.database();
     R2SA = snap.val();
     console.log("The side A Basket Count is " + R2SA);
 
-    $("#R2SAProgress").css("width", ((R1SB) + "%"));
+    $("#R2SAProgress").css("width", (R2SA + "%"));
   })
 
   database.ref("R2/R2basketB").on("value", function(snap){
@@ -421,7 +421,7 @@ var database = firebase.database();
     R3SA = snap.val();
     console.log("The side A Basket Count is " + R2SA);
 
-    $("#R3SAProgress").css("width", ((R1SB * 3) + "%"));
+    $("#R3SAProgress").css("width", ((R3SA * 3) + "%"));
   })
 
   database.ref("R3/R3basketB").on("value", function(snap){
@@ -429,7 +429,7 @@ var database = firebase.database();
     R3SB = snap.val();
     console.log("The side B Basket Count is " + R2SB);
 
-    $("#R3SBProgress").css("width", ((R2SB) + "%"));
+    $("#R3SBProgress").css("width", ((R3SB) + "%"));
   })
 
 </script>
