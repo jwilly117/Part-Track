@@ -381,7 +381,7 @@ var database = firebase.database();
   var R2SA = 0;
   var R2SB = 0;
 
-  database.ref("basketA").on("value", function(snap){
+  database.ref("R1/basketA").on("value", function(snap){
     console.log(snap.val());
     R1SA = snap.val();
     console.log("The side A basket Count is " + R1SA)
@@ -389,7 +389,7 @@ var database = firebase.database();
     $("#R1SAProgress").css("width", (R1SA + "%"));
   })
 
-  database.ref("basketB").on("value", function(snap){
+  database.ref("R1/basketB").on("value", function(snap){
     console.log(snap.val());
     R1SB = snap.val();
     console.log("The side A Basket Count is " + R1SB);
@@ -397,20 +397,20 @@ var database = firebase.database();
     $("#R1SBProgress").css("width", ((R1SB * 2) + "%"));
   })
 
-  database.ref("R2basketA").on("value", function(snap){
+  database.ref("R2/R2basketA").on("value", function(snap){
     console.log(snap.val());
     R2SA = snap.val();
     console.log("The side A Basket Count is " + R2SA);
 
-    $("#R2SAProgress").css("width", ((R1SB * 2) + "%"));
+    $("#R2SAProgress").css("width", ((R1SB) + "%"));
   })
 
-  database.ref("R2basketB").on("value", function(snap){
+  database.ref("R2/R2basketB").on("value", function(snap){
     console.log(snap.val());
     R2SB = snap.val();
-    console.log("The side A Basket Count is " + R1SB);
+    console.log("The side A Basket Count is " + R2SB);
 
-    $("#R2SAProgress").css("width", ((R2SB * 2) + "%"));
+    $("#R2SBProgress").css("width", ((R2SB * 2) + "%"));
   })
 
 </script>

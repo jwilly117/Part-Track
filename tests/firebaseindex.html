@@ -517,7 +517,7 @@ var database = firebase.database();
         number = 100;
         partsMadeA++;
         // Maybe firebase?
-        database.ref().set({
+        database.ref("/R1").set({
             basketA: partsMadeA,
             basketB: partsMadeB
         })
@@ -549,7 +549,7 @@ var database = firebase.database();
         number = 100;
         partsMadeB++;
         // Maybe firebase?
-        database.ref().set({
+        database.ref("/R1").set({
             basketA: partsMadeA,
             basketB: partsMadeB
         })
