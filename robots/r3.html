@@ -526,7 +526,7 @@ var database = firebase.database();
         console.log(sideAOrderPercent);
         $("#sideAOrderTotal").text(sideAOrderTotal);
         $("#pA").css("width", (sideAOrderPercent + "%"));
-        if(partsMadeA > 100){
+        if(partsMadeA > 33){
           partsMadeA = 0;
         }
         $("#partsMadeA").text(partsMadeA);
