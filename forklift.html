@@ -266,12 +266,12 @@
             <hr>
             <strong>SIDE A</strong>
             <div class="progress">
-                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width:49%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar progress-bar-striped progress-bar-animated" id="R3SAProgress" role="progressbar" style="width:49%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
               <br>
               <strong>SIDE B</strong>
               <div class="progress">
-                <div class="progress-bar progress-bar-striped progress-bar-animated" id="p2" role="progressbar" style="width: 73%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar progress-bar-striped progress-bar-animated p2" id="R3SBProgress" role="progressbar" style="width: 73%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
         </div>
 
@@ -381,6 +381,9 @@ var database = firebase.database();
   var R2SA = 0;
   var R2SB = 0;
 
+  var R3SA = 0;
+  var R3SB = 0;
+
   database.ref("R1/basketA").on("value", function(snap){
     console.log(snap.val());
     R1SA = snap.val();
@@ -411,6 +414,22 @@ var database = firebase.database();
     console.log("The side A Basket Count is " + R2SB);
 
     $("#R2SBProgress").css("width", ((R2SB * 2) + "%"));
+  })
+
+  database.ref("R3/R3basketA").on("value", function(snap){
+    console.log(snap.val());
+    R3SA = snap.val();
+    console.log("The side A Basket Count is " + R2SA);
+
+    $("#R3SAProgress").css("width", ((R1SB * 3) + "%"));
+  })
+
+  database.ref("R3/R3basketB").on("value", function(snap){
+    console.log(snap.val());
+    R3SB = snap.val();
+    console.log("The side B Basket Count is " + R2SB);
+
+    $("#R3SBProgress").css("width", ((R2SB) + "%"));
   })
 
 </script>
