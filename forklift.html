@@ -155,6 +155,7 @@
      
 
      <h3>Material Operator View</h3>
+     <h5>Robots Online: <span id="robotsOnline"></span></h5>
      <hr>
 
      <!-- Separate into Rows and Columns -->
@@ -374,6 +375,33 @@ JS Below
 //  ===================================================================
 // Here we capture the counters
 var database = firebase.database();
+
+// ConnectionsRef to reference all the connections. 
+var connectionsRef = database.ref("/connections");
+
+// .info connected is a special location updatad when 
+// any clients connection boolean changes.
+var connectedRef = database.ref(".info/connected");
+
+// When the client connection state changes
+connectedRef.on("value", function(snap){
+
+    // if they connect
+    if(snap.val()){
+        // add user to the connection list
+        var con = connectionsRef.push(true);
+
+        // and remove them when they disconnect()
+        con.onDisconnect().remove();
+    }
+});
+
+// page first loads or when the con list changes
+connectionsRef.on("value",function(snap){
+
+    // display viewercount in the html
+    $("#robotsOnline").text(snap.numChildren());
+});
 
   var R1SA = 0;
   var R1SB = 0; 
