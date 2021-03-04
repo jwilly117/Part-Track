@@ -1,4 +1,4 @@
-<!-- The core Firebase JS SDK is always required and must be listed first -->
+// <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase.js"></script>
   
 
