@@ -20,7 +20,16 @@ var connection = mysql.createConnection({
 connection.connect(function(err) {
     if (err) throw err;
     console.log("connected as id " + connection.threadId);
-
+    afterConnection();
   });
 
+  function afterConnection() {
+    connection.query("SELECT * FROM downtime", function(err, res) {
+      if (err) throw err;
+      console.log(res);
+      connection.end();
+    });
+  }
 
+
+  // Now we just need to write this stuff to a webpage
