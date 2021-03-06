@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Part-Track</title>
+    <title>Part-Track -Material Op</title>
 
     <!-- Jquery -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -83,8 +83,9 @@
           border-radius: 10px;
           width: 200px;
           float: left;
-          background-color: rgb(253, 239, 199);
+          background-color: rgb(131, 143, 179);
           margin-left: 10px;
+          color: white;
         }
         .row{
             margin-bottom: 5px;
@@ -376,6 +377,10 @@ JS Below
 // Here we capture the counters
 var database = firebase.database();
 
+// ===========================================================================
+// CONNECTIONS PART
+// ===========================================================================
+
 // ConnectionsRef to reference all the connections. 
 var connectionsRef = database.ref("/connections");
 
@@ -384,17 +389,17 @@ var connectionsRef = database.ref("/connections");
 var connectedRef = database.ref(".info/connected");
 
 // When the client connection state changes
-connectedRef.on("value", function(snap){
+// connectedRef.on("value", function(snap){
 
-    // if they connect
-    if(snap.val()){
-        // add user to the connection list
-        var con = connectionsRef.push(true);
+//     // if they connect
+//     if(snap.val()){
+//         // add user to the connection list
+//         var con = connectionsRef.push(true);
 
-        // and remove them when they disconnect()
-        con.onDisconnect().remove();
-    }
-});
+//         // and remove them when they disconnect()
+//         con.onDisconnect().remove();
+//     }
+// });
 
 // page first loads or when the con list changes
 connectionsRef.on("value",function(snap){
@@ -402,6 +407,12 @@ connectionsRef.on("value",function(snap){
     // display viewercount in the html
     $("#robotsOnline").text(snap.numChildren());
 });
+
+// ===========================================================================
+// CONNECTIONS PART
+// ===========================================================================
+
+
 
   var R1SA = 0;
   var R1SB = 0; 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Part-Track</title>
+    <title>PT - Yahata - R2</title>
 
     <!-- Jquery -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -220,7 +220,7 @@
            <div class="row">
              <div class="col-md-6">
               <h3>Info Pane</h3>
-                <h6>Robot #: 3</h6>
+                <h6>Robot #: 2</h6>
                 <hr id="topish">
                 <h6>Operator: James Franco</h6>
              </div>
@@ -583,9 +583,31 @@ var database = firebase.database();
     }
 
     start();
+
+    // ConnectionsRef to reference all the connections. 
+var connectionsRef = database.ref("/connections");
+
+// .info connected is a special location updatad when 
+// any clients connection boolean changes.
+var connectedRef = database.ref(".info/connected");
+
+// When the client connection state changes
+connectedRef.on("value", function(snap){
+
+    // if they connect
+    if(snap.val()){
+        // add user to the connection list
+        var con = connectionsRef.push(true);
+
+        // and remove them when they disconnect()
+        con.onDisconnect().remove();
+    }
+});
     
 
    </script>
+
+   
     
     <script src="firebase.js">
 

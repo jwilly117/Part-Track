@@ -9,7 +9,7 @@ body{
 
 #outputBox{
     background-color: rgb(34, 34, 34);
-    height: 725px;
+    height: 1145px;
 }
 .table{
     margin: 10px;
@@ -22,4 +22,16 @@ th{
 }
 thead{
     border-bottom: 50px;
+}
+.card{
+    background-color: grey;
+    margin: 5px;
+}
+.btn{
+    border-radius: 7px;
+}
+
+#dropdownMenuButton2{
+    margin: 5px;
+    padding-top: 5px;
 }

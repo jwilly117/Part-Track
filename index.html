@@ -13,7 +13,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
-  
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase.js"></script>
 
     
     <style>
@@ -216,7 +217,7 @@
            <div class="row">
              <div class="col-md-6">
               <h3>Info Pane</h3>
-                <h6>Robot #: 3</h6>
+                <h6>Robot #: 1</h6>
                 <hr id="topish">
                 <h6>Operator: James Franco</h6>
              </div>
@@ -456,7 +457,20 @@
   <script>
     //  Here we have the javascript test for a decreasing progress bar
     // ================================
+    var firebaseConfig = {
+    apiKey: "AIzaSyCNgQru6L-VJT5C9y8Cl47GtVH2DNmo2Yk",
+    authDomain: "part-track-demo.firebaseapp.com",
+    projectId: "part-track-demo",
+    storageBucket: "part-track-demo.appspot.com",
+    messagingSenderId: "497244549101",
+    appId: "1:497244549101:web:afb5f178b7f25ff2dc81e4"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
 
+//  ===================================================================
+// Here we capture the counters
+var database = firebase.database();
   
     // set a number to count from
     var number = 100;
@@ -498,6 +512,11 @@
         if(number <= 0){
         number = 100;
         partsMadeA++;
+        // Firebase
+        database.ref("/R1").set({
+            basketA: partsMadeA,
+            basketB: partsMadeB
+        })
         sideAOrderTotal++;
         sideAOrderPercent = (sideAOrderTotal / 800)*100
         console.log(sideAOrderPercent);
@@ -525,6 +544,11 @@
         if(number <= 0){
         number = 100;
         partsMadeB++;
+        // Firebase
+        database.ref("/R1").set({
+            basketA: partsMadeA,
+            basketB: partsMadeB
+        })
         sideBOrderTotal++;
         sideBOrderPercent = (sideBOrderTotal / 250)*100
         console.log(sideBOrderPercent);
