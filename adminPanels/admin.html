@@ -190,11 +190,15 @@
                </ul>
              </div>
           </div>
-          <div class="col-md-10">
+          <div class="col-md-7">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam minima obcaecati explicabo? Necessitatibus doloribus minus sed eveniet aliquam placeat, numquam cumque nostrum aliquid et sapiente eos. Maiores ratione cum omnis!
               <br>
                
-               Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci consequatur molestiae reprehenderit nostrum, similique aspernatur aperiam odit, vero blanditiis eos magnam ex, beatae quas! Qui quam molestiae pariatur vitae iusto!
+               Lorem ipsum dolor sit amet consectetur adipir aperiam odit, vero blanditiis eos magnam ex, beatae quas! Qui quam molestiae pariatur vitae iusto!
+
+          </div>
+          <div class="col-md-2">
+            <button type="button" id="clickForCSV" class="btn btn-info">Get CSV</button>
 
           </div>
       </div>
@@ -378,6 +382,38 @@
            </div>
        </div>
    </div>
+
+   <script>
+
+const rows = [
+            ["name1", "city1", "some other info"],
+            ["name2", "city2", "more info"]
+        ];
+
+        let csvContent = "data:text/csv;charset=utf-8,";
+
+        rows.forEach(function(rowArray) {
+            let row = rowArray.join(",");
+            csvContent += row + "\r\n";
+        });
+
+        console.log(rows);
+        console.log(csvContent);
+
+        $("#clickForCSV").on("click", function(){
+        var encodedUri = encodeURI(csvContent);
+        var link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "my_data.csv");
+        document.body.appendChild(link); // Required for FF
+
+        link.click();
+        })
+
+
+
+
+   </script>
 
 <script src="adminApp.js"></script>
 

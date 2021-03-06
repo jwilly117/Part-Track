@@ -1,7 +1,7 @@
 
 
 // Database read Code
-var mysql = require("mysql");
+// var mysql = require("mysql");
 
 var connection = mysql.createConnection({
   host: "localhost",
@@ -33,3 +33,4 @@ connection.connect(function(err) {
 
 
   // Now we just need to write this stuff to a webpage
+
