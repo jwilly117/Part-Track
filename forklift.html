@@ -510,7 +510,7 @@ connectionsRef.on("value",function(snap){
     console.log("Robot 1 needs help: " + snap.val());
     if(snap.val() == true){
       console.log("Robot 1 Needs Help");
-      alert("Robot 1 Needs help");
+      // alert("Robot 1 Needs help");
       $("#row-1").css('background-color', 'red');
     }
     else {
