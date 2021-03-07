@@ -17,6 +17,9 @@
 
     
     <style>
+        #clickme{
+          color: white;
+        }
         body{
             background-color: grey;
         }
@@ -40,20 +43,26 @@
             align-items: center;
             align-content: center;
             width: 100%;
-            margin: 10px;
+            /* margin: 10px; */
             height: 60px;
             padding-top: 15px;
             background-color:rgb(20, 43, 173);
             
         }
-
+        .btn-group{
+          padding-top: 35px;
+          margin-left: 0px;
+          margin-right: 0px;
+        }
         #time,
         #totalDowntime,
         #totalRunTime{
           font-size: 20px;
           font-weight: bold;
         }
-
+        .sidebtn{
+          margin:10px;
+        }
         #control,
         #simulate,
         #resume{
@@ -118,6 +127,9 @@
         #p2{
           background-color:rgb(15, 33, 136);
         }
+        .btn2{
+          background-color: rgb(7, 46, 83);
+        }
     </style>
 
     <link rel="stylesheet" href="adminStyle.css">
@@ -145,9 +157,10 @@
             <a class="nav-link active" aria-current="page" href="#">Operator Login</a>
             <a class="nav-link" href="#">Start Day</a>
             <a class="nav-link" href="#">Settings</a>
-            <a class="nav-link" href="index.html" tabindex="-1" aria-disabled="true">End Day</a>
-            <a class="nav-link" href="tester.html">Admin</a>
-            <a class="nav-link" href="forklift.html">Material Operator</a>
+            <!-- <a class="nav-link" href="../index.html" tabindex="-1" aria-disabled="true">End Day</a> -->
+            <!-- <a class="nav-link" href="tester.html">Admin</a> -->
+            <a class="nav-link" href="../forklift.html">Material Operator</a>
+            <a class="nav-link" href="../index.html">Robot Test</a>
             <a class="nav-link" href="adminPHP.php">PHP TEST</a>
 
 
@@ -161,24 +174,30 @@
    <!-- columns -->
    <div class="row">
        <div class="col-md-2" id="sidebar">
-        <a class="btn btn-secondary" href="admin.html" role="button">View Reports</a>
-        <a class="btn btn-secondary" href="adminLiveView.html" role="button">Live View</a>
-        <a class="btn btn-secondary" href="" role="button">Part Directory</a>
-        <a class="btn btn-secondary" href="" role="button">Downtime Records</a>
-        <a class="btn btn-secondary" href="" role="button">Edit Record</a>
-        <a class="btn btn-secondary" href="" role="button">Session Directory</a>
-        <a class="btn btn-secondary" href="" role="button">C/T Directory</a>
-        <a class="btn btn-secondary" href="" role="button">Employee Directory</a>
-        <button id="clickme">Here its a test</button>
+        <a class="btn btn-secondary sidebtn" href="admin.html" role="button">View Reports</a>
+        <a class="btn btn-secondary sidebtn" href="adminLiveView.html" role="button">Live View</a>
+        <a class="btn btn-secondary sidebtn" href="" role="button">Part Directory</a>
+        <a class="btn btn-secondary sidebtn" href="" role="button">Downtime Records</a>
+        <a class="btn btn-secondary sidebtn" href="" role="button">Edit Record</a>
+        <a class="btn btn-secondary sidebtn" href="" role="button">Session Directory</a>
+        <a class="btn btn-secondary sidebtn" href="" role="button">C/T Directory</a>
+        <a class="btn btn-secondary sidebtn" href="" role="button">Employee Directory</a>
+        <!-- <button id="clickme">Here its a test</button> -->
 
 
        </div>
 
        
        <div class="col-md-10">
+
+        <!-- This will be the top bar -->
         <div class="row" id="navrow">
+
           <div class="col-md-2">
-           <div class="dropdown">
+
+            <a class="btn btn-secondary sidebtn" id="clickme" role="button">View Weeks Report</a>
+
+           <!-- <div class="dropdown">
                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                  Choose Parameter
                </button>
@@ -189,19 +208,29 @@
                  <li><hr class="dropdown-divider"></li>
                  <li><a class="dropdown-item" href="#">Separated link</a></li>
                </ul>
-             </div>
+             </div> -->
           </div>
-          <div class="col-md-7">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam minima obcaecati explicabo? Necessitatibus doloribus minus sed eveniet aliquam placeat, numquam cumque nostrum aliquid et sapiente eos. Maiores ratione cum omnis!
-              <br>
-               
-               Lorem ipsum dolor sit amet consectetur adipir aperiam odit, vero blanditiis eos magnam ex, beatae quas! Qui quam molestiae pariatur vitae iusto!
+          <div class="col-md-8" id="centerish" style="float: left;">
+              <!-- Here we will have the button groups -->
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-primary" id="r1">Robot 1</button>
+                <button type="button" class="btn btn-primary" id="r2">Robot 2</button>
+                <button type="button" class="btn btn-primary" id="r3">Robot 3</button>
+                <button type="button" class="btn btn-primary" id="r4">Robot 4</button>
+                '      '
+                <button type="button" class="btn btn-primary btn2" id="session1">Session 1</button>
+                <button type="button" class="btn btn-primary btn2" id="session2">Session 2</button>
+                <button type="button" class="btn btn-primary btn2" id="session3">Session 3</button>
+
+              </div>
 
           </div>
-          <div class="col-md-2">
-            <button type="button" id="clickForCSV" class="btn btn-info">Get CSV</button>
+          <div class="col-md-1">
+            <!-- <button type="button" id="clickForCSV" class="btn btn-info" style="margin-top: 5px;">Get CSV</button> -->
 
           </div>
+
+          <!-- This is the output box -->
       </div>
            <div class="row">
                <div class="col-md-12" id="outputBox">
@@ -218,7 +247,7 @@
                         <th scope="col">Cycle Time</th>
                         <th scope="col">Adj CT</th>
                         <th scope="col">Actual CT</th>
-                        <th scope="col">Time since last</th>
+                        <!-- <th scope="col">Time since last</th> -->
                       </tr>
                     </thead>
                     <tbody id="letsgo">
@@ -393,11 +422,354 @@
 
 // ==========================================================================
 // ==========================================================================
+// Robot 1 
+$("#r1").on("click", function(){
+  console.log("Button for robot 1");
+  var r1Table = [
+  ["2021-03-01", 1, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-01", 2, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-01", 3, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  
+  ["2021-03-02", 1, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-02", 2, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-02", 3, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-03", 1, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-03", 2, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-03", 3, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-04", 1, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-04", 2, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-04", 3, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-05", 1, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-05", 2, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-05", 3, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"]
+  ]
+
+  var cell;
+
+var renderedTable = '';
+for(var r = 0; r < r1Table.length; r++){
+  renderedTable += '<tr>';
+  // console.log(tableArr[i]);
+  for(var c = 0; c < r1Table[0].length; c++)
+  {
+    cell = r1Table[r][c];
+    // console.log(tableArr[r][c]);
+    renderedTable += '<td>' +  cell + '</td>';
+
+  }
+  renderedTable += '</tr>';
+}
+
+    var button = '<button type="button" id="clickForCSV" class="btn btn-info" style="margin-top: 5px;">Get CSV</button>';
+
+    $("#letsgo").html(renderedTable);
+
+    $("#letsgo").append('<br>');
+      $("#letsgo").append('<br>');
+
+      $("#letsgo").append('<br>');
+
+      $("#letsgo").append(button);
+
+    // ===========================================================================================
+    // ===========================================================================================
+
+
+      let csvContent = "data:text/csv;charset=utf-8,";
+
+    r1Table.forEach(function(rowArray) {
+        let row = rowArray.join(",");
+        csvContent += row + "\r\n";
+    });
+
+    console.log(rows);
+    console.log(csvContent);
+
+    $("#clickForCSV").on("click", function(){
+    var encodedUri = encodeURI(csvContent);
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "my_data.csv");
+    document.body.appendChild(link); // Required for FF
+
+    link.click();
+})
+
+
+})
+
+// ==========================================================================
+// ==========================================================================
+// Robot 2 
+$("#r2").on("click", function(){
+  console.log("Button for robot 2");
+
+  var r2Table = [
+  ["2021-03-01", 1, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-01", 2, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-01", 3, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-02", 1, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-02", 2, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-02", 3, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-03", 1, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-03", 2, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-03", 3, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-04", 1, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-04", 2, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-04", 3, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-05", 1, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-05", 2, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-05", 3, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"]
+  ]
+
+  var cell;
+
+var renderedTable = '';
+for(var r = 0; r < r2Table.length; r++){
+  renderedTable += '<tr>';
+  // console.log(tableArr[i]);
+  for(var c = 0; c < r2Table[0].length; c++)
+  {
+    cell = r2Table[r][c];
+    // console.log(tableArr[r][c]);
+    renderedTable += '<td>' +  cell + '</td>';
+
+  }
+  renderedTable += '</tr>';
+}
+
+var button = '<button type="button" id="clickForCSV" class="btn btn-info" style="margin-top: 5px;">Get CSV</button>';
+
+$("#letsgo").html(renderedTable);
+
+$("#letsgo").append('<br>');
+  $("#letsgo").append('<br>');
+
+  $("#letsgo").append('<br>');
+
+  $("#letsgo").append(button);
+
+  // ===========================================================================================
+  // ===========================================================================================
+  let csvContent = "data:text/csv;charset=utf-8,";
+
+r2Table.forEach(function(rowArray) {
+    let row = rowArray.join(",");
+    csvContent += row + "\r\n";
+});
+
+console.log(rows);
+console.log(csvContent);
+
+$("#clickForCSV").on("click", function(){
+var encodedUri = encodeURI(csvContent);
+var link = document.createElement("a");
+link.setAttribute("href", encodedUri);
+link.setAttribute("download", "my_data.csv");
+document.body.appendChild(link); // Required for FF
+
+link.click();
+})
+  
+})
+
+
+// ==========================================================================
+// ==========================================================================
+// Robot 3 
+$("#r3").on("click", function(){
+  console.log("Button for robot 3");
+
+  var r3Table = [
+  ["2021-03-01", 1, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-01", 2, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-01", 3, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-02", 1, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-02", 2, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-02", 3, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-03", 1, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-03", 2, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-03", 3, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-04", 1, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-04", 2, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-04", 3, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-05", 1, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-05", 2, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-05", 3, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"]
+  ]
+
+  var cell;
+
+var renderedTable = '';
+for(var r = 0; r < r3Table.length; r++){
+  renderedTable += '<tr>';
+  // console.log(tableArr[i]);
+  for(var c = 0; c < r3Table[0].length; c++)
+  {
+    cell = r3Table[r][c];
+    // console.log(tableArr[r][c]);
+    renderedTable += '<td>' +  cell + '</td>';
+
+  }
+  renderedTable += '</tr>';
+}
+
+var button = '<button type="button" id="clickForCSV" class="btn btn-info" style="margin-top: 5px;">Get CSV</button>';
+
+$("#letsgo").html(renderedTable);
+
+$("#letsgo").append('<br>');
+  $("#letsgo").append('<br>');
+
+  $("#letsgo").append('<br>');
+
+  $("#letsgo").append(button);
+
+  // ===========================================================================================
+  // ===========================================================================================
+  let csvContent = "data:text/csv;charset=utf-8,";
+
+r3Table.forEach(function(rowArray) {
+    let row = rowArray.join(",");
+    csvContent += row + "\r\n";
+});
+
+console.log(rows);
+console.log(csvContent);
+
+$("#clickForCSV").on("click", function(){
+var encodedUri = encodeURI(csvContent);
+var link = document.createElement("a");
+link.setAttribute("href", encodedUri);
+link.setAttribute("download", "my_data.csv");
+document.body.appendChild(link); // Required for FF
+
+link.click();
+})
+  
+})
+
+
+// ==========================================================================
+// ==========================================================================
+// Robot 4
+$("#r4").on("click", function(){
+  console.log("Button for robot 4");
+
+  var r4Table = [
+  ["2021-03-01", 1, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-01", 2, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-01", 3, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-02", 1, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-02", 2, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-02", 3, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-03", 1, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-03", 2, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-03", 3, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-04", 1, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-04", 2, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-04", 3, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-05", 1, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-05", 2, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+  ["2021-03-05", 3, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"]
+  ]
+
+  var cell;
+
+var renderedTable = '';
+for(var r = 0; r < r4Table.length; r++){
+  renderedTable += '<tr>';
+  // console.log(tableArr[i]);
+  for(var c = 0; c < r4Table[0].length; c++)
+  {
+    cell = r4Table[r][c];
+    // console.log(tableArr[r][c]);
+    renderedTable += '<td>' +  cell + '</td>';
+
+  }
+  renderedTable += '</tr>';
+}
+
+var button = '<button type="button" id="clickForCSV" class="btn btn-info" style="margin-top: 5px;">Get CSV</button>';
+
+$("#letsgo").html(renderedTable);
+
+$("#letsgo").append('<br>');
+  $("#letsgo").append('<br>');
+
+  $("#letsgo").append('<br>');
+
+  $("#letsgo").append(button);
+
+  // ===========================================================================================
+  // ===========================================================================================
+  let csvContent = "data:text/csv;charset=utf-8,";
+
+r4Table.forEach(function(rowArray) {
+    let row = rowArray.join(",");
+    csvContent += row + "\r\n";
+});
+
+console.log(rows);
+console.log(csvContent);
+
+$("#clickForCSV").on("click", function(){
+var encodedUri = encodeURI(csvContent);
+var link = document.createElement("a");
+link.setAttribute("href", encodedUri);
+link.setAttribute("download", "my_data.csv");
+document.body.appendChild(link); // Required for FF
+
+link.click();
+})
+  
+})
 
 
 
 // ==========================================================================
 // ==========================================================================
+$("#session1").on('click', function() {
+  console.log("Hello, this is a test for session1");
+
+
+});
+
+// ==========================================================================
+// ==========================================================================
+$("#session2").on('click', function() {
+  console.log("Hello, this is a test for session1");
+
+  
+});
+
+// ==========================================================================
+// ==========================================================================
+$("#session3").on('click', function() {
+  console.log("Hello, this is a test for session1");
+
+  
+});
+
+// ==========================================================================
+// ==========================================================================
+
+
     // Here I will try to make a table out of an array
 //setup our table array
 var tableArr = [
@@ -509,7 +881,7 @@ for(var r = 0; r < tableArr.length; r++){
 
 var tabs = "Hello";
 
-var button = '<button>Test Button </button>';
+var button = '<button type="button" id="clickForCSV" class="btn btn-info" style="margin-top: 5px;">Get CSV</button>';
 
 $("#clickme").on("click", function(){
   $("#letsgo").html(renderedTable);
@@ -519,6 +891,28 @@ $("#clickme").on("click", function(){
   $("#letsgo").append('<br>');
 
   $("#letsgo").append(button);
+
+
+  let csvContent = "data:text/csv;charset=utf-8,";
+
+rows.forEach(function(rowArray) {
+    let row = rowArray.join(",");
+    csvContent += row + "\r\n";
+});
+
+console.log(rows);
+console.log(csvContent);
+
+$("#clickForCSV").on("click", function(){
+var encodedUri = encodeURI(csvContent);
+var link = document.createElement("a");
+link.setAttribute("href", encodedUri);
+link.setAttribute("download", "my_data.csv");
+document.body.appendChild(link); // Required for FF
+
+link.click();
+})
+  
   
 })
 
