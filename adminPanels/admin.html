@@ -744,26 +744,322 @@ link.click();
 
 // ==========================================================================
 // ==========================================================================
+// Session 1
 $("#session1").on('click', function() {
   console.log("Hello, this is a test for session1");
 
+  var session1Table = [
+  ["2021-03-01", 1, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+["2021-03-02", 1, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+["2021-03-03", 1, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+["2021-03-04", 1, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+["2021-03-05", 1, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+// Robot 2
+
+["2021-03-01", 1, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+["2021-03-02", 1, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+["2021-03-03", 1, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+["2021-03-04", 1, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+["2021-03-05", 1, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+// Robot 3
+["2021-03-01", 1, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+["2021-03-02", 1, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+["2021-03-03", 1, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+["2021-03-04", 1, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+["2021-03-05", 1, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+
+
+// Robot 4
+["2021-03-01", 1, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+["2021-03-02", 1, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+["2021-03-03", 1, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+["2021-03-04", 1, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+["2021-03-05", 1, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"]
+
+
+  ]
+  var cell;
+
+var renderedTable = '';
+for(var r = 0; r < session1Table.length; r++){
+  renderedTable += '<tr>';
+  // console.log(tableArr[i]);
+  for(var c = 0; c < session1Table[0].length; c++)
+  {
+    cell = session1Table[r][c];
+    // console.log(tableArr[r][c]);
+    renderedTable += '<td>' +  cell + '</td>';
+
+  }
+  renderedTable += '</tr>';
+}
+
+var button = '<button type="button" id="clickForCSV" class="btn btn-info" style="margin-top: 5px;">Get CSV</button>';
+
+$("#letsgo").html(renderedTable);
+
+$("#letsgo").append('<br>');
+  $("#letsgo").append('<br>');
+
+  $("#letsgo").append('<br>');
+
+  $("#letsgo").append(button);
+
+  // ===========================================================================================
+  // ===========================================================================================
+  let csvContent = "data:text/csv;charset=utf-8,";
+
+  session1Table.forEach(function(rowArray) {
+    let row = rowArray.join(",");
+    csvContent += row + "\r\n";
+});
+
+console.log(rows);
+console.log(csvContent);
+
+$("#clickForCSV").on("click", function(){
+var encodedUri = encodeURI(csvContent);
+var link = document.createElement("a");
+link.setAttribute("href", encodedUri);
+link.setAttribute("download", "my_data.csv");
+document.body.appendChild(link); // Required for FF
+
+link.click();
+})
+
 
 });
 
 // ==========================================================================
 // ==========================================================================
+// Session 2
 $("#session2").on('click', function() {
   console.log("Hello, this is a test for session1");
 
+  var session2Table = [
+  ["2021-03-01", 2, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
   
+  ["2021-03-02", 2, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-03", 2, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-04", 2, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-05", 2, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  // Robot 2
+
+  ["2021-03-01", 2, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-02", 2, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-03", 2, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-04", 2, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-05", 2, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+
+  // Robot 3
+  ["2021-03-01", 2, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-02", 2, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-03", 2, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-04", 2, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-05", 2, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  
+  // Robot 4
+  ["2021-03-01", 2, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-02", 2, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-03", 2, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-04", 2, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-05", 2, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"]
+  ]
+  
+  var cell;
+
+var renderedTable = '';
+for(var r = 0; r < session2Table.length; r++){
+  renderedTable += '<tr>';
+  // console.log(tableArr[i]);
+  for(var c = 0; c < session2Table[0].length; c++)
+  {
+    cell = session2Table[r][c];
+    // console.log(tableArr[r][c]);
+    renderedTable += '<td>' +  cell + '</td>';
+
+  }
+  renderedTable += '</tr>';
+}
+
+var button = '<button type="button" id="clickForCSV" class="btn btn-info" style="margin-top: 5px;">Get CSV</button>';
+
+$("#letsgo").html(renderedTable);
+
+$("#letsgo").append('<br>');
+  $("#letsgo").append('<br>');
+
+  $("#letsgo").append('<br>');
+
+  $("#letsgo").append(button);
+
+  // ===========================================================================================
+  // ===========================================================================================
+  let csvContent = "data:text/csv;charset=utf-8,";
+
+session2Table.forEach(function(rowArray) {
+    let row = rowArray.join(",");
+    csvContent += row + "\r\n";
+});
+
+console.log(rows);
+console.log(csvContent);
+
+$("#clickForCSV").on("click", function(){
+var encodedUri = encodeURI(csvContent);
+var link = document.createElement("a");
+link.setAttribute("href", encodedUri);
+link.setAttribute("download", "my_data.csv");
+document.body.appendChild(link); // Required for FF
+
+link.click();
+})
+
 });
 
 // ==========================================================================
 // ==========================================================================
+// Session 3
 $("#session3").on('click', function() {
   console.log("Hello, this is a test for session1");
 
+  var session3Table = [
+  ["2021-03-01", 3, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
   
+
+  ["2021-03-02", 3, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+
+  ["2021-03-03", 3, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+
+  ["2021-03-04", 3, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+
+  ["2021-03-05", 3, "YRWM-1", "James Franco",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  // Robot 2
+
+  ["2021-03-01", 3, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+
+  ["2021-03-02", 3, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+
+  ["2021-03-03", 3, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+
+  ["2021-03-04", 3, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+
+  ["2021-03-05", 3, "YRWM-2", "Robert Downey JR",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+
+  // Robot 3
+
+  ["2021-03-01", 3, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+
+  ["2021-03-02", 3, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+
+  ["2021-03-03", 3, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+
+  ["2021-03-04", 3, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+
+  ["2021-03-05", 3, "YRWM-3", "Anne Hathaway",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  
+  // Robot 4
+
+  ["2021-03-01", 3, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+
+  ["2021-03-02", 3, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+
+  ["2021-03-03", 3, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+
+  ["2021-03-04", 3, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"],
+
+  ["2021-03-05", 3, "YRWM-4", "Michael Caine",  "K1234-24252", "00:00:00", "00:00:00", "00:00:00"]
+  ]
+
+
+    
+  var cell;
+
+var renderedTable = '';
+for(var r = 0; r < session3Table.length; r++){
+  renderedTable += '<tr>';
+  // console.log(tableArr[i]);
+  for(var c = 0; c < session3Table[0].length; c++)
+  {
+    cell = session3Table[r][c];
+    // console.log(tableArr[r][c]);
+    renderedTable += '<td>' +  cell + '</td>';
+
+  }
+  renderedTable += '</tr>';
+}
+
+var button = '<button type="button" id="clickForCSV" class="btn btn-info" style="margin-top: 5px;">Get CSV</button>';
+
+$("#letsgo").html(renderedTable);
+
+$("#letsgo").append('<br>');
+  $("#letsgo").append('<br>');
+
+  $("#letsgo").append('<br>');
+
+  $("#letsgo").append(button);
+
+  // ===========================================================================================
+  // ===========================================================================================
+  let csvContent = "data:text/csv;charset=utf-8,";
+
+session3Table.forEach(function(rowArray) {
+    let row = rowArray.join(",");
+    csvContent += row + "\r\n";
+});
+
+console.log(rows);
+console.log(csvContent);
+
+$("#clickForCSV").on("click", function(){
+var encodedUri = encodeURI(csvContent);
+var link = document.createElement("a");
+link.setAttribute("href", encodedUri);
+link.setAttribute("download", "my_data.csv");
+document.body.appendChild(link); // Required for FF
+
+link.click();
+})
+
 });
 
 // ==========================================================================
