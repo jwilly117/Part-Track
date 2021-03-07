@@ -500,14 +500,23 @@ connectionsRef.on("value",function(snap){
     $("#R4SBProgress").css("width", ((R4SB) + "%"));
   })
 
+
+
+  //  ===================================================================
+  // Help Buttons
+  //  ===================================================================
+
   database.ref("help/R1needsHelp").on("value", function(snap){
     console.log("Robot 1 needs help: " + snap.val());
     if(snap.val() == true){
       console.log("Robot 1 Needs Help");
       alert("Robot 1 Needs help");
+      $("#row-1").css('background-color', 'red');
     }
     else {
       console.log("Robot 1 Does not need help");
+      $("#row-1").css('background-color', 'rgb(161, 161, 161)');
+
     }
   })
 

@@ -635,7 +635,7 @@ connectedRef.on("value", function(snap){
     
 $("#helpButton").on("click", function(){
     console.log("A robot has requested help");
-    alert("Hello");
+    // alert("Hello");
 
     database.ref("/help").set({
         R1needsHelp: true
