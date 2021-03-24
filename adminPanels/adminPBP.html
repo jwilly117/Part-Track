@@ -432,79 +432,14 @@
 // ==========================================================================
 // Robot 1 
 $("#r1").on("click", function(){
-  console.log("Button for robot 1");
-  var r1Table = [
-  ["2021-03-01", 1, "YRWM-1", "James Franco",  "K1234-24252", 100, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-01", 2, "YRWM-1", "James Franco",  "K1234-24252", 419, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-01", 3, "YRWM-1", "James Franco",  "K1234-24252", 88,  "00:00:00", "00:00:00", "00:00:00"],
-  
-  ["2021-03-02", 1, "YRWM-1", "James Franco",  "K1234-24252", 100, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-02", 2, "YRWM-1", "James Franco",  "K1234-24252", 419, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-02", 3, "YRWM-1", "James Franco",  "K1234-24252", 105, "00:00:00", "00:00:00", "00:00:00"],
-
-  ["2021-03-03", 1, "YRWM-1", "James Franco",  "K1234-24252", 103, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-03", 2, "YRWM-1", "James Franco",  "K1234-24252", 405, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-03", 3, "YRWM-1", "James Franco",  "K1234-24252", 108, "00:00:00", "00:00:00", "00:00:00"],
-
-  ["2021-03-04", 1, "YRWM-1", "James Franco",  "K1234-24252", 118, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-04", 2, "YRWM-1", "James Franco",  "K1234-24252", 419, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-04", 3, "YRWM-1", "James Franco",  "K1234-24252", 100, "00:00:00", "00:00:00", "00:00:00"],
-
-  ["2021-03-05", 1, "YRWM-1", "James Franco",  "K1234-24252", 100, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-05", 2, "YRWM-1", "James Franco",  "K1234-24252", 393, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-05", 3, "YRWM-1", "James Franco",  "K1234-24252", 99, "00:00:00", "00:00:00", "00:00:00"]
-  ]
-
-  var cell;
-
-var renderedTable = '';
-for(var r = 0; r < r1Table.length; r++){
-  renderedTable += '<tr>';
-  // console.log(tableArr[i]);
-  for(var c = 0; c < r1Table[0].length; c++)
-  {
-    cell = r1Table[r][c];
-    // console.log(tableArr[r][c]);
-    renderedTable += '<td>' +  cell + '</td>';
-
-  }
-  renderedTable += '</tr>';
-}
-
-    var button = '<button type="button" id="clickForCSV" class="btn btn-info" style="margin-top: 5px;">Get CSV</button>';
-
-    $("#letsgo").html(renderedTable);
-
-    $("#letsgo").append('<br>');
-      $("#letsgo").append('<br>');
-
-      $("#letsgo").append('<br>');
-
-      $("#letsgo").append(button);
-
-    // ===========================================================================================
-    // ===========================================================================================
 
 
-      let csvContent = "data:text/csv;charset=utf-8,";
 
-    r1Table.forEach(function(rowArray) {
-        let row = rowArray.join(",");
-        csvContent += row + "\r\n";
-    });
+    $("#letsgo").html("");
 
-    console.log(rows);
-    console.log(csvContent);
+    var hello = "<h1> Hello test </h1>";
+    $("#letsgo").append(hello);
 
-    $("#clickForCSV").on("click", function(){
-    var encodedUri = encodeURI(csvContent);
-    var link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "my_data.csv");
-    document.body.appendChild(link); // Required for FF
-
-    link.click();
-})
 
 
 })
@@ -1240,7 +1175,7 @@ link.click();
 
    </script>
 
-<script src="adminApp.js"></script>
+<script src="linebyline.js"></script>
 
 </body>
 </html>
