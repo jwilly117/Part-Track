@@ -246,15 +246,16 @@
                 <table class="table table-dark table-striped table-hover">
                     <thead>
                       <tr>
+                        <th scope="col">#</th>
                         <th scope="col">Date</th>
-                        <th scope="col">Session Number</th>
-                        <th scope="col">Machine Number</th>
+                        <th scope="col">Machine # / Side</th>
                         <th scope="col">Operator</th>
-                        <th scope="col">Part #</th>
-                        <th scope="col">Part Count</th>
-                        <th scope="col">Total Run Time</th>
-                        <th scope="col">Part Cycle T</th>
-                        <th scope="col">Pair Cycle T</th>
+                        <th scope="col">TimeStamp</th>
+                        <th scope="col">Part Number</th>
+                        <th scope="col">Cycle Time</th>
+                        <th scope="col">Theoretic Cycle Time</th>
+                        <th scope="col">TSLP - Other Side</th>
+                        
 
                         <!-- <th scope="col">Time since last</th> -->
                       </tr>
@@ -262,14 +263,14 @@
                     <tbody id="letsgo">
                       <tr>
                         <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
+                        <td>March 24, 2021</td>
+                        <td>YRWM - 1</td>
+                        <td>Marcus Pheonix</td>
+                        <td>"TIMESTAMP"</td>
+                        <td>K3411-54133</td>
+                        <td>7 Sec</td>
+                        <td>7 Sec</td>
+                        <td>3 Sec</td>
                       </tr>
 
                       <tr>
@@ -453,12 +454,24 @@ $("#r1").on("click", function(){
     $("#letsgo").html("");
 
     var hello = "<h1> Hello test </h1>";
-    $("#letsgo").append(hello);
+    // $("#letsgo").append(hello);
 
 
     robot1Listener.on("value", function(snap){
       console.log(snap.val());
-      $("#letsgo").append(snap.val()+ "\n");
+      $("#letsgo").append(
+        "<tr>" +
+                        "<th scope='row'>1</th>" +
+                        "<td>March 24, 2021</td>" +
+                        "<td>YRWM - 1</td>" +
+                        "<td>Marcus Pheonix</td>" +
+                        "<td>TIMESTAMP</td>" +
+                        "<td>K3411-54133</td>" +
+                        "<td>7 Sec</td>" +
+                        "<td>7 Sec</td>" +
+                        "<td>" + snap.val() + "</td>" +
+                      "</tr>"
+      );
     })
 
 
