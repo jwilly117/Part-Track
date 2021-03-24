@@ -13,7 +13,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
-  
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase.js"></script>
 
     
     <style>
@@ -426,20 +427,39 @@
    <script>
 
 
+  //  Here we have the javascript test for a decreasing progress bar
+  // ================================
+  var firebaseConfig = {
+    apiKey: "AIzaSyCNgQru6L-VJT5C9y8Cl47GtVH2DNmo2Yk",
+    authDomain: "part-track-demo.firebaseapp.com",
+    projectId: "part-track-demo",
+    storageBucket: "part-track-demo.appspot.com",
+    messagingSenderId: "497244549101",
+    appId: "1:497244549101:web:afb5f178b7f25ff2dc81e4"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  // Assign database reference to a variable to use
+  var database = firebase.database();
 
+  var robot1Listener = database.ref("/test/Input")
 
 // ==========================================================================
 // ==========================================================================
 // Robot 1 
 $("#r1").on("click", function(){
 
-
-
+    
     $("#letsgo").html("");
 
     var hello = "<h1> Hello test </h1>";
     $("#letsgo").append(hello);
 
+
+    robot1Listener.on("value", function(snap){
+      console.log(snap.val());
+      $("#letsgo").append(snap.val()+ "\n");
+    })
 
 
 })
@@ -1175,7 +1195,7 @@ link.click();
 
    </script>
 
-<script src="linebyline.js"></script>
+<!-- <script src="linebyline.js"></script> -->
 
 </body>
 </html>
