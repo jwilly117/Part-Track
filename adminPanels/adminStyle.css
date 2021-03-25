@@ -1,5 +1,5 @@
 body{
-    background-color: grey;
+    background-color: rgb(63, 58, 58);
 }
 
 #sidebar{
@@ -38,4 +38,10 @@ thead{
  #clickForCSV{
      padding-top: 5px;
      background-color: teal;
+ }
+
+ #panelTitle{
+     color: white;
+     margin-top: 18px;
+     margin-left: 20px;
  }

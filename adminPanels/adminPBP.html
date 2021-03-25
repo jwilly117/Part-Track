@@ -138,6 +138,12 @@
 
     <link rel="stylesheet" href="adminStyle.css">
 
+    <style>
+      #pbp{
+        background-color: rgb(4, 32, 56);
+      }
+    </style>
+
 </head>
 
 
@@ -180,7 +186,7 @@
        <div class="col-md-2" id="sidebar">
         <a class="btn btn-secondary sidebtn" href="admin.html" role="button">Daily Reports</a>
         <a class="btn btn-secondary sidebtn" href="adminLiveView.html" role="button">Live View</a>
-        <a class="btn btn-secondary sidebtn" href="adminPBP.html" role="button">Part by Part</a>
+        <a class="btn btn-secondary sidebtn" id="pbp" href="adminPBP.html" role="button">Part by Part</a>
         <a class="btn btn-secondary sidebtn"  href="" role="button">Part Directory (Null)</a>
         <a class="btn btn-secondary sidebtn" href="" role="button">Downtime Records (Null)</a>
         <a class="btn btn-secondary sidebtn" href="" role="button">Edit Record (Null)</a>
@@ -188,56 +194,39 @@
         <a class="btn btn-secondary sidebtn" href="" role="button">Employee Directory (Null)</a>
         <a class="btn btn-secondary sidebtn" href="adminLabels.html" role="button">Label Directory</a>
 
-        <!-- <button id="clickme">Here its a test</button> -->
-
-
        </div>
 
-       
        <div class="col-md-10">
 
         <!-- This will be the top bar -->
         <div class="row" id="navrow">
 
           <div class="col-md-2">
-
-            <a class="btn btn-secondary sidebtn" id="clickme" role="button">View Weeks Report</a>
-
-           <!-- <div class="dropdown">
-               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                 Choose Parameter
-               </button>
-               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                 <li><a class="dropdown-item active" href="#">Action</a></li>
-                 <li><a class="dropdown-item" href="#">Another action</a></li>
-                 <li><a class="dropdown-item" href="#">Something else here</a></li>
-                 <li><hr class="dropdown-divider"></li>
-                 <li><a class="dropdown-item" href="#">Separated link</a></li>
-               </ul>
-             </div> -->
+            <h2 id="panelTitle">Part By Part View</h2>
           </div>
-          <div class="col-md-8" id="centerish" style="float: left;">
+
+          <div class="col-md-2">
+
+            <a class="btn btn-secondary sidebtn" style="float: left;" id="clickme" role="button">All Machines</a>
+
+          </div>
+          <div class="col-md-7" id="centerish" style="float: left;">
+
               <!-- Here we will have the button groups -->
               <div class="btn-group" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-primary" id="r1">Robot 1</button>
                 <button type="button" class="btn btn-primary" id="r2">Robot 2</button>
                 <button type="button" class="btn btn-primary" id="r3">Robot 3</button>
                 <button type="button" class="btn btn-primary" id="r4">Robot 4</button>
-                '      '
-                <button type="button" class="btn btn-primary btn2" id="session1">Session 1</button>
-                <button type="button" class="btn btn-primary btn2" id="session2">Session 2</button>
-                <button type="button" class="btn btn-primary btn2" id="session3">Session 3</button>
-
               </div>
 
           </div>
           <div class="col-md-1">
-            <!-- <button type="button" id="clickForCSV" class="btn btn-info" style="margin-top: 5px;">Get CSV</button> -->
 
           </div>
 
           <!-- This is the output box -->
-      </div>
+        </div>
            <div class="row">
                <div class="col-md-12" id="outputBox">
 
@@ -430,19 +419,31 @@
   //  Here we have the javascript test for a decreasing progress bar
   // ================================
   var firebaseConfig = {
-    apiKey: "AIzaSyCNgQru6L-VJT5C9y8Cl47GtVH2DNmo2Yk",
-    authDomain: "part-track-demo.firebaseapp.com",
-    projectId: "part-track-demo",
-    storageBucket: "part-track-demo.appspot.com",
-    messagingSenderId: "497244549101",
-    appId: "1:497244549101:web:afb5f178b7f25ff2dc81e4"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  // Assign database reference to a variable to use
-  var database = firebase.database();
+        apiKey: "AIzaSyCNgQru6L-VJT5C9y8Cl47GtVH2DNmo2Yk",
+        authDomain: "part-track-demo.firebaseapp.com",
+        projectId: "part-track-demo",
+        storageBucket: "part-track-demo.appspot.com",
+        messagingSenderId: "497244549101",
+        appId: "1:497244549101:web:afb5f178b7f25ff2dc81e4"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      // Assign database reference to a variable to use
+      var database = firebase.database();
+
+
+  // Setup The Listeners for each robot
 
   var robot1Listener = database.ref("/test/Input")
+
+  var robot2AListener = database.ref("/R2/R2basketA")
+  var robot2BListener = database.ref("/R2/R2basketB");
+
+  var robot3AListener = database.ref("/R3/R3basketA")
+  var robot3BListener = database.ref("/R3/R3basketB");
+
+  var robot4AListener = database.ref("/R4/R4basketA")
+  var robot4BListener = database.ref("/R4/R4basketB");
 
 // ==========================================================================
 // ==========================================================================
@@ -454,7 +455,6 @@ $("#r1").on("click", function(){
 
     var hello = "<h1> Hello test </h1>";
     // $("#letsgo").append(hello);
-
 
     robot1Listener.on("value", function(snap){
       console.log(snap.val());
@@ -472,8 +472,6 @@ $("#r1").on("click", function(){
                       "</tr>"
       );
     })
-
-
 })
 
 // ==========================================================================
@@ -482,156 +480,83 @@ $("#r1").on("click", function(){
 $("#r2").on("click", function(){
   console.log("Button for robot 2");
 
-  var r2Table = [
-  ["2021-03-01", 1, "YRWM-2", "Robert Downey JR",  "K1234-24252", 67, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-01", 2, "YRWM-2", "Robert Downey JR",  "K1234-24252", 253, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-01", 3, "YRWM-2", "Robert Downey JR",  "K1234-24252", 64, "00:00:00", "00:00:00", "00:00:00"],
+  $("#letsgo").html("");
 
-  ["2021-03-02", 1, "YRWM-2", "Robert Downey JR",  "K1234-24252", 67, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-02", 2, "YRWM-2", "Robert Downey JR",  "K1234-24252", 253, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-02", 3, "YRWM-2", "Robert Downey JR",  "K1234-24252", 64, "00:00:00", "00:00:00", "00:00:00"],
+  robot2AListener.on("value", function(snap){
+    console.log(snap.val());
+    $("#letsgo").append(
+        "<tr>" +
+                        "<th scope='row'>1</th>" +
+                        "<td>March 24, 2021</td>" +
+                        "<td>YRWM - 1</td>" +
+                        "<td>Marcus Pheonix</td>" +
+                        "<td>TIMESTAMP</td>" +
+                        "<td>7J282-55054</td>" +
+                        "<td>7 Sec</td>" +
+                        "<td>7 Sec</td>" +
+                        "<td>" + snap.val() + "</td>" +
+                      "</tr>"
+      );
+  })
+  robot2BListener.on("value", function(snap){
+    console.log(snap.val());
+    $("#letsgo").append(
+        "<tr>" +
+                        "<th scope='row'>1</th>" +
+                        "<td>March 24, 2021</td>" +
+                        "<td>YRWM - 1</td>" +
+                        "<td>Marcus Pheonix</td>" +
+                        "<td>TIMESTAMP</td>" +
+                        "<td>7J285-57553</td>" +
+                        "<td>10 Sec</td>" +
+                        "<td>10 Sec</td>" +
+                        "<td>" + snap.val() + "</td>" +
+                      "</tr>"
+      );
+  })
 
-  ["2021-03-03", 1, "YRWM-2", "Robert Downey JR",  "K1234-24252", 64, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-03", 2, "YRWM-2", "Robert Downey JR",  "K1234-24252", 253, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-03", 3, "YRWM-2", "Robert Downey JR",  "K1234-24252", 64, "00:00:00", "00:00:00", "00:00:00"],
 
-  ["2021-03-04", 1, "YRWM-2", "Robert Downey JR",  "K1234-24252", 67, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-04", 2, "YRWM-2", "Robert Downey JR",  "K1234-24252", 253, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-04", 3, "YRWM-2", "Robert Downey JR",  "K1234-24252", 64, "00:00:00", "00:00:00", "00:00:00"],
-
-  ["2021-03-05", 1, "YRWM-2", "Robert Downey JR",  "K1234-24252", 64, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-05", 2, "YRWM-2", "Robert Downey JR",  "K1234-24252", 253, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-05", 3, "YRWM-2", "Robert Downey JR",  "K1234-24252", 67, "00:00:00", "00:00:00", "00:00:00"]
-  ]
-
-  var cell;
-
-var renderedTable = '';
-for(var r = 0; r < r2Table.length; r++){
-  renderedTable += '<tr>';
-  // console.log(tableArr[i]);
-  for(var c = 0; c < r2Table[0].length; c++)
-  {
-    cell = r2Table[r][c];
-    // console.log(tableArr[r][c]);
-    renderedTable += '<td>' +  cell + '</td>';
-
-  }
-  renderedTable += '</tr>';
-}
-
-var button = '<button type="button" id="clickForCSV" class="btn btn-info" style="margin-top: 5px;">Get CSV</button>';
-
-$("#letsgo").html(renderedTable);
-
-$("#letsgo").append('<br>');
-  $("#letsgo").append('<br>');
-
-  $("#letsgo").append('<br>');
-
-  $("#letsgo").append(button);
-
-  // ===========================================================================================
-  // ===========================================================================================
-  let csvContent = "data:text/csv;charset=utf-8,";
-
-r2Table.forEach(function(rowArray) {
-    let row = rowArray.join(",");
-    csvContent += row + "\r\n";
-});
-
-console.log(rows);
-console.log(csvContent);
-
-$("#clickForCSV").on("click", function(){
-var encodedUri = encodeURI(csvContent);
-var link = document.createElement("a");
-link.setAttribute("href", encodedUri);
-link.setAttribute("download", "my_data.csv");
-document.body.appendChild(link); // Required for FF
-
-link.click();
 })
-  
-})
-
-
 // ==========================================================================
 // ==========================================================================
 // Robot 3 
 $("#r3").on("click", function(){
   console.log("Button for robot 3");
 
-  var r3Table = [
-  ["2021-03-01", 1, "YRWM-3", "Anne Hathaway",  "K1234-24252", 34, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-01", 2, "YRWM-3", "Anne Hathaway",  "K1234-24252", 121, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-01", 3, "YRWM-3", "Anne Hathaway",  "K1234-24252", 21,"00:00:00", "00:00:00", "00:00:00"],
+  $("#letsgo").html("");
 
-  ["2021-03-02", 1, "YRWM-3", "Anne Hathaway",  "K1234-24252", 28, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-02", 2, "YRWM-3", "Anne Hathaway",  "K1234-24252", 128, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-02", 3, "YRWM-3", "Anne Hathaway",  "K1234-24252", 34, "00:00:00", "00:00:00", "00:00:00"],
-
-  ["2021-03-03", 1, "YRWM-3", "Anne Hathaway",  "K1234-24252", 34, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-03", 2, "YRWM-3", "Anne Hathaway",  "K1234-24252", 126, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-03", 3, "YRWM-3", "Anne Hathaway",  "K1234-24252", 32,  "00:00:00", "00:00:00", "00:00:00"],
-
-  ["2021-03-04", 1, "YRWM-3", "Anne Hathaway",  "K1234-24252", 34, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-04", 2, "YRWM-3", "Anne Hathaway",  "K1234-24252", 121, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-04", 3, "YRWM-3", "Anne Hathaway",  "K1234-24252", 33, "00:00:00", "00:00:00", "00:00:00"],
-
-  ["2021-03-05", 1, "YRWM-3", "Anne Hathaway",  "K1234-24252", 33, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-05", 2, "YRWM-3", "Anne Hathaway",  "K1234-24252", 121, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-05", 3, "YRWM-3", "Anne Hathaway",  "K1234-24252", 34, "00:00:00", "00:00:00", "00:00:00"]
-  ]
-
-  var cell;
-
-var renderedTable = '';
-for(var r = 0; r < r3Table.length; r++){
-  renderedTable += '<tr>';
-  // console.log(tableArr[i]);
-  for(var c = 0; c < r3Table[0].length; c++)
-  {
-    cell = r3Table[r][c];
-    // console.log(tableArr[r][c]);
-    renderedTable += '<td>' +  cell + '</td>';
-
-  }
-  renderedTable += '</tr>';
-}
-
-var button = '<button type="button" id="clickForCSV" class="btn btn-info" style="margin-top: 5px;">Get CSV</button>';
-
-$("#letsgo").html(renderedTable);
-
-$("#letsgo").append('<br>');
-  $("#letsgo").append('<br>');
-
-  $("#letsgo").append('<br>');
-
-  $("#letsgo").append(button);
-
-  // ===========================================================================================
-  // ===========================================================================================
-  let csvContent = "data:text/csv;charset=utf-8,";
-
-r3Table.forEach(function(rowArray) {
-    let row = rowArray.join(",");
-    csvContent += row + "\r\n";
-});
-
-console.log(rows);
-console.log(csvContent);
-
-$("#clickForCSV").on("click", function(){
-var encodedUri = encodeURI(csvContent);
-var link = document.createElement("a");
-link.setAttribute("href", encodedUri);
-link.setAttribute("download", "my_data.csv");
-document.body.appendChild(link); // Required for FF
-
-link.click();
-})
+  robot3AListener.on("value", function(snap){
+    console.log(snap.val());
+    $("#letsgo").append(
+        "<tr>" +
+                        "<th scope='row'>1</th>" +
+                        "<td>March 24, 2021</td>" +
+                        "<td>YRWM - 1</td>" +
+                        "<td>Marcus Pheonix</td>" +
+                        "<td>TIMESTAMP</td>" +
+                        "<td>7J282-55054</td>" +
+                        "<td>7 Sec</td>" +
+                        "<td>7 Sec</td>" +
+                        "<td>" + snap.val() + "</td>" +
+                      "</tr>"
+      );
+  })
+  robot3BListener.on("value", function(snap){
+    console.log(snap.val());
+    $("#letsgo").append(
+        "<tr>" +
+                        "<th scope='row'>1</th>" +
+                        "<td>March 24, 2021</td>" +
+                        "<td>YRWM - 1</td>" +
+                        "<td>Marcus Pheonix</td>" +
+                        "<td>TIMESTAMP</td>" +
+                        "<td>7J285-57553</td>" +
+                        "<td>10 Sec</td>" +
+                        "<td>10 Sec</td>" +
+                        "<td>" + snap.val() + "</td>" +
+                      "</tr>"
+      );
+  })
   
 })
 
@@ -642,76 +567,40 @@ link.click();
 $("#r4").on("click", function(){
   console.log("Button for robot 4");
 
-  var r4Table = [
-  ["2021-03-01", 1, "YRWM-4", "Michael Caine",  "K1234-24252", 44, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-01", 2, "YRWM-4", "Michael Caine",  "K1234-24252", 180, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-01", 3, "YRWM-4", "Michael Caine",  "K1234-24252", 49, "00:00:00", "00:00:00", "00:00:00"],
+  $("#letsgo").html("");
 
-  ["2021-03-02", 1, "YRWM-4", "Michael Caine",  "K1234-24252", 44, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-02", 2, "YRWM-4", "Michael Caine",  "K1234-24252", 177, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-02", 3, "YRWM-4", "Michael Caine",  "K1234-24252", 53, "00:00:00", "00:00:00", "00:00:00"],
-
-  ["2021-03-03", 1, "YRWM-4", "Michael Caine",  "K1234-24252", 49, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-03", 2, "YRWM-4", "Michael Caine",  "K1234-24252", 192, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-03", 3, "YRWM-4", "Michael Caine",  "K1234-24252", 53, "00:00:00", "00:00:00", "00:00:00"],
-
-  ["2021-03-04", 1, "YRWM-4", "Michael Caine",  "K1234-24252", 49, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-04", 2, "YRWM-4", "Michael Caine",  "K1234-24252", 177, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-04", 3, "YRWM-4", "Michael Caine",  "K1234-24252", 44, "00:00:00", "00:00:00", "00:00:00"],
-
-  ["2021-03-05", 1, "YRWM-4", "Michael Caine",  "K1234-24252", 53, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-05", 2, "YRWM-4", "Michael Caine",  "K1234-24252", 186, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-05", 3, "YRWM-4", "Michael Caine",  "K1234-24252", 44, "00:00:00", "00:00:00", "00:00:00"]
-  ]
-
-  var cell;
-
-var renderedTable = '';
-for(var r = 0; r < r4Table.length; r++){
-  renderedTable += '<tr>';
-  // console.log(tableArr[i]);
-  for(var c = 0; c < r4Table[0].length; c++)
-  {
-    cell = r4Table[r][c];
-    // console.log(tableArr[r][c]);
-    renderedTable += '<td>' +  cell + '</td>';
-
-  }
-  renderedTable += '</tr>';
-}
-
-var button = '<button type="button" id="clickForCSV" class="btn btn-info" style="margin-top: 5px;">Get CSV</button>';
-
-$("#letsgo").html(renderedTable);
-
-$("#letsgo").append('<br>');
-  $("#letsgo").append('<br>');
-
-  $("#letsgo").append('<br>');
-
-  $("#letsgo").append(button);
-
-  // ===========================================================================================
-  // ===========================================================================================
-  let csvContent = "data:text/csv;charset=utf-8,";
-
-r4Table.forEach(function(rowArray) {
-    let row = rowArray.join(",");
-    csvContent += row + "\r\n";
-});
-
-console.log(rows);
-console.log(csvContent);
-
-$("#clickForCSV").on("click", function(){
-var encodedUri = encodeURI(csvContent);
-var link = document.createElement("a");
-link.setAttribute("href", encodedUri);
-link.setAttribute("download", "my_data.csv");
-document.body.appendChild(link); // Required for FF
-
-link.click();
-})
+  robot4AListener.on("value", function(snap){
+    console.log(snap.val());
+    $("#letsgo").append(
+        "<tr>" +
+                        "<th scope='row'>1</th>" +
+                        "<td>March 24, 2021</td>" +
+                        "<td>YRWM - 1</td>" +
+                        "<td>Marcus Pheonix</td>" +
+                        "<td>TIMESTAMP</td>" +
+                        "<td>7J282-55054</td>" +
+                        "<td>7 Sec</td>" +
+                        "<td>7 Sec</td>" +
+                        "<td>" + snap.val() + "</td>" +
+                      "</tr>"
+      );
+  })
+  robot4BListener.on("value", function(snap){
+    console.log(snap.val());
+    $("#letsgo").append(
+        "<tr>" +
+                        "<th scope='row'>1</th>" +
+                        "<td>March 24, 2021</td>" +
+                        "<td>YRWM - 1</td>" +
+                        "<td>Marcus Pheonix</td>" +
+                        "<td>TIMESTAMP</td>" +
+                        "<td>7J285-57553</td>" +
+                        "<td>10 Sec</td>" +
+                        "<td>10 Sec</td>" +
+                        "<td>" + snap.val() + "</td>" +
+                      "</tr>"
+      );
+  })
   
 })
 
