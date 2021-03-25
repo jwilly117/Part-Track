@@ -187,7 +187,7 @@
         <a class="btn btn-secondary sidebtn" href="admin.html" role="button">Daily Reports</a>
         <a class="btn btn-secondary sidebtn" href="adminLiveView.html" role="button">Live View</a>
         <a class="btn btn-secondary sidebtn" id="pbp" href="adminPBP.html" role="button">Part by Part</a>
-        <a class="btn btn-secondary sidebtn"  href="" role="button">Part Directory (Null)</a>
+        <a class="btn btn-secondary sidebtn" href="partdirectory.html" role="button">Part Directory</a>
         <a class="btn btn-secondary sidebtn" href="" role="button">Downtime Records (Null)</a>
         <a class="btn btn-secondary sidebtn" href="" role="button">Edit Record (Null)</a>
         <a class="btn btn-secondary sidebtn" href="" role="button">C/T Directory (Null)</a>
@@ -446,6 +446,7 @@
   var robot4BListener = database.ref("/R4/R4basketB");
 
   var identifier = "none";
+  var rowNumber = 1;
 
   function displayTime() {
     var str = "";
@@ -486,7 +487,9 @@ $("#r1").on("click", function(){
       console.log(snap.val());
       $("#letsgo").append(
         "<tr>" +
-                        "<th scope='row'>1</th>" +
+                        "<th scope='row'>" +
+                          rowNumber +
+                          "</th>" +
                         "<td>March 24, 2021</td>" +
                         "<td>YRWM - 1 - A</td>" +
                         "<td>Marcus Pheonix</td>" +
@@ -517,7 +520,9 @@ $("#r2").on("click", function(){
     console.log(snap.val());
     $("#letsgo").append(
         "<tr>" +
-                        "<th scope='row'>1</th>" +
+                        "<th scope='row'>" +
+                          rowNumber +
+                          "</th>" +
                         "<td>March 24, 2021</td>" +
                         "<td>YRWM - 2 - A</td>" +
                         "<td>Dom Santiago</td>" +
@@ -530,12 +535,15 @@ $("#r2").on("click", function(){
                         "<td>" + snap.val() + "</td>" +
                       "</tr>"
       );
+      rowNumber++;
   })
   robot2BListener.on("value", function(snap){
     console.log(snap.val());
     $("#letsgo").append(
         "<tr>" +
-                        "<th scope='row'>1</th>" +
+                        "<th scope='row'>" +
+                          rowNumber +
+                          "</th>" +
                         "<td>March 24, 2021</td>" +
                         "<td>YRWM - 2 - B</td>" +
                         "<td>Dom Santiago</td>" +
@@ -548,6 +556,8 @@ $("#r2").on("click", function(){
                         "<td>" + snap.val() + "</td>" +
                       "</tr>"
       );
+      rowNumber++;
+
   })
   }
 
@@ -569,7 +579,9 @@ $("#r3").on("click", function(){
     console.log(snap.val());
     $("#letsgo").append(
         "<tr>" +
-                        "<th scope='row'>1</th>" +
+                        "<th scope='row'>" +
+                          rowNumber +
+                          "</th>" +
                         "<td>March 24, 2021</td>" +
                         "<td>YRWM - 3 - A</td>" +
                         "<td>Christian Bowman</td>" +
@@ -582,12 +594,15 @@ $("#r3").on("click", function(){
                         "<td>" + snap.val() + "</td>" +
                       "</tr>"
       );
+      rowNumber++;
   })
   robot3BListener.on("value", function(snap){
     console.log(snap.val());
     $("#letsgo").append(
         "<tr>" +
-                        "<th scope='row'>1</th>" +
+                        "<th scope='row'>" +
+                          rowNumber +
+                          "</th>" +
                         "<td>March 24, 2021</td>" +
                         "<td>YRWM - 3 - B</td>" +
                         "<td>Christian Bowman</td>" +
@@ -600,6 +615,7 @@ $("#r3").on("click", function(){
                         "<td>" + snap.val() + "</td>" +
                       "</tr>"
       );
+      rowNumber++;
   })
   
 })
@@ -615,7 +631,9 @@ $("#r4").on("click", function(){
     console.log(snap.val());
     $("#letsgo").append(
         "<tr>" +
-                        "<th scope='row'>1</th>" +
+                        "<th scope='row'>" +
+                          rowNumber +
+                          "</th>" +
                         "<td>March 24, 2021</td>" +
                         "<td>YRWM - 4 - A</td>" +
                         "<td>John Smith</td>" +
@@ -628,12 +646,15 @@ $("#r4").on("click", function(){
                         "<td>" + snap.val() + "</td>" +
                       "</tr>"
       );
+      rowNumber++;
   })
   robot4BListener.on("value", function(snap){
     console.log(snap.val());
     $("#letsgo").append(
         "<tr>" +
-                        "<th scope='row'>1</th>" +
+                        "<th scope='row'>" +
+                          rowNumber +
+                          "</th>" +
                         "<td>March 24, 2021</td>" +
                         "<td>YRWM - 4 - B</td>" +
                         "<td>John Smith</td>" +
@@ -646,6 +667,7 @@ $("#r4").on("click", function(){
                         "<td>" + snap.val() + "</td>" +
                       "</tr>"
       );
+      rowNumber++;
   })
   
 })
@@ -675,7 +697,9 @@ $("#allMachines").on("click", function(){
     console.log(snap.val());
     $("#letsgo").append(
         "<tr>" +
-                        "<th scope='row'>1</th>" +
+                        "<th scope='row'>" +
+                          rowNumber +
+                          "</th>" +
                         "<td>March 24, 2021</td>" +
                         "<td>YRWM - 2 - A</td>" +
                         "<td>Dom Santiago</td>" +
@@ -688,12 +712,15 @@ $("#allMachines").on("click", function(){
                         "<td>" + snap.val() + "</td>" +
                       "</tr>"
       );
+      rowNumber++;
   })
   robot2BListener.on("value", function(snap){
     console.log(snap.val());
     $("#letsgo").append(
         "<tr>" +
-                        "<th scope='row'>1</th>" +
+                        "<th scope='row'>" +
+                          rowNumber +
+                          "</th>" +
                         "<td>March 24, 2021</td>" +
                         "<td>YRWM - 2 - B</td>" +
                         "<td>Dom Santiago</td>" +
@@ -706,13 +733,16 @@ $("#allMachines").on("click", function(){
                         "<td>" + snap.val() + "</td>" +
                       "</tr>"
       );
+      rowNumber++;
   })
 
   robot3AListener.on("value", function(snap){
     console.log(snap.val());
     $("#letsgo").append(
         "<tr>" +
-                        "<th scope='row'>1</th>" +
+                        "<th scope='row'>" +
+                          rowNumber +
+                          "</th>" +
                         "<td>March 24, 2021</td>" +
                         "<td>YRWM - 3 - A</td>" +
                         "<td>Christian Bowman</td>" +
@@ -725,12 +755,15 @@ $("#allMachines").on("click", function(){
                         "<td>" + snap.val() + "</td>" +
                       "</tr>"
       );
+      rowNumber++;
   })
   robot3BListener.on("value", function(snap){
     console.log(snap.val());
     $("#letsgo").append(
         "<tr>" +
-                        "<th scope='row'>1</th>" +
+                        "<th scope='row'>" +
+                          rowNumber +
+                          "</th>" +
                         "<td>March 24, 2021</td>" +
                         "<td>YRWM - 3 - B</td>" +
                         "<td>Christian Bowman</td>" +
@@ -743,13 +776,16 @@ $("#allMachines").on("click", function(){
                         "<td>" + snap.val() + "</td>" +
                       "</tr>"
       );
+      rowNumber++;
   })
 
   robot4AListener.on("value", function(snap){
     console.log(snap.val());
     $("#letsgo").append(
         "<tr>" +
-                        "<th scope='row'>1</th>" +
+                        "<th scope='row'>" +
+                          rowNumber +
+                          "</th>" +
                         "<td>March 24, 2021</td>" +
                         "<td>YRWM - 4 - A</td>" +
                         "<td>John Smith</td>" +
@@ -762,12 +798,15 @@ $("#allMachines").on("click", function(){
                         "<td>" + snap.val() + "</td>" +
                       "</tr>"
       );
+      rowNumber++;
   })
   robot4BListener.on("value", function(snap){
     console.log(snap.val());
     $("#letsgo").append(
         "<tr>" +
-                        "<th scope='row'>1</th>" +
+                        "<th scope='row'>" +
+                          rowNumber +
+                          "</th>" +
                         "<td>March 24, 2021</td>" +
                         "<td>YRWM - 4 - B</td>" +
                         "<td>John Smith</td>" +
@@ -780,40 +819,11 @@ $("#allMachines").on("click", function(){
                         "<td>" + snap.val() + "</td>" +
                       "</tr>"
       );
+      rowNumber++;
   })
   
 })
 
-
-// const rows = [
-// ["2021-03-03", "YRWM-1", "James Franco", 1, "K1234-24252", 488, "K3434-20061", "A-2", "00:00:00", "00:00:00", "00:00:00"],
-// ["2021-03-03", "YRWM-1", "James DRANKO", 1, "K1234-24252", 488, "K3434-20061", "A-10", "00:00:00", "00:00:00", "00:00:00"],
-// ["2021-03-03", "YRWM-1", "Jake Williams", 1, "K1234-24252", 488, "K3434-20061", "A-2", "00:00:00", "00:00:00", "00:00:00"],
-// ["2021-03-03", "YRWM-1", "James DRANKO", 1, "K1234-24252", 488, "K3434-20061", "A-10", "00:00:00", "00:00:00", "00:00:00"],
-// ["2021-03-03", "YRWM-1", "Jake Williams", 1, "K1234-24252", 488, "K3434-20061", "A-10", "00:00:00", "00:00:00", "00:00:00"],
-// ["2021-03-03", "YRWM-1", "Christian Bowman", 1, "K1234-24252", 488, "K3434-20061", "A-2", "00:00:00", "00:00:00", "00:00:00"],
-// ["2021-03-03", "YRWM-1", "Christian Bowman", 1, "K1234-24252", 488, "K3434-20061", "A-10", "00:00:00", "00:00:00", "00:00:00"]
-//         ];
-
-        // let csvContent = "data:text/csv;charset=utf-8,";
-
-        // rows.forEach(function(rowArray) {
-        //     let row = rowArray.join(",");
-        //     csvContent += row + "\r\n";
-        // });
-
-        // console.log(rows);
-        // console.log(csvContent);
-
-        // $("#clickForCSV").on("click", function(){
-        // var encodedUri = encodeURI(csvContent);
-        // var link = document.createElement("a");
-        // link.setAttribute("href", encodedUri);
-        // link.setAttribute("download", "my_data.csv");
-        // document.body.appendChild(link); // Required for FF
-
-        // link.click();
-        // })
 
 
 

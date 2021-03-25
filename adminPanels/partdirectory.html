@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part-Directory</title>
+
+    <!-- Jquery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase.js"></script>
+
+    
+    <style>
+        #allMachines{
+          color: white;
+        }
+        body{
+            background-color: grey;
+        }
+        .container{
+            background-color: rgb(169, 176, 187);
+        }
+        .card{
+            /* margin:5px; */
+            border-width: 3px;
+        }
+        .navbar{
+            /* width: 110%; */
+        }
+        .btn-group{
+            align-items: center;
+            align-content: center;
+            width: 100%;
+            height: 40px;
+        }
+        .btn{
+            align-items: center;
+            align-content: center;
+            width: 100%;
+            /* margin: 10px; */
+            height: 60px;
+            padding-top: 15px;
+            background-color:rgb(20, 43, 173);
+            
+        }
+        .btn-group{
+          padding-top: 35px;
+          margin-left: 0px;
+          margin-right: 0px;
+        }
+        #time,
+        #totalDowntime,
+        #totalRunTime{
+          font-size: 20px;
+          font-weight: bold;
+        }
+        .sidebtn{
+          margin:10px;
+        }
+        #control,
+        #simulate,
+        #resume{
+            height:60px;
+        }
+        #changeoverButton{
+            margin-bottom:8px;
+        }
+        #partPic{
+            height: 245px;
+            /* width: 95%; */
+            border-radius: 8px;
+        }
+        #dtreasons{
+            margin-top: 10px;
+            height: 50px;
+        }
+        .downTime{
+            width:110%;
+        }
+        #helpButton{
+            background-color: red;
+            height: 70px;
+            font-weight: bold;
+        }
+        #endpart{
+            background-color: red;
+        }
+        #dropdownMenuButton1{
+            background-color: grey;
+        }
+        .card{
+          border-radius: 10px;
+        }
+        #cardA{
+          background-color: lightgreen;
+        }
+        #cardB{
+          background-color: salmon;
+        }
+        #card-name{
+          padding-top: 5px;
+          padding-left: 5px;
+        }
+        hr{
+          margin: 6px 0px;
+        }
+        #help{
+          background-color: red;
+          height: 60px;
+          font-size: larger;
+          font-weight: 500;
+          color:white;
+        }
+        #p11{
+          height: 300px;
+        }
+        #topish{
+          margin-bottom: 15px;
+        }
+        #p1,
+        #p2{
+          background-color:rgb(15, 33, 136);
+        }
+        .btn2{
+          background-color: rgb(7, 46, 83);
+        }
+        #clickForCSV{
+          margin: 15px;
+        }
+    </style>
+
+    <link rel="stylesheet" href="adminStyle.css">
+
+    <style>
+      #pbp{
+        background-color: rgb(4, 32, 56);
+      }
+    </style>
+
+</head>
+
+
+<body>
+    
+    <!--Nav -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+         <a class="navbar-brand" href="#">
+      <img src="../images/bluegear.png" alt="" width="35" height="29" class="d-inline-block align-top">
+      
+      Part Track -- 
+      <img src="../images/Yahata.png" alt="Yahata - USA" height="35">
+      
+       </a>
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="../index.html">Operator Login</a>
+            <!-- <a class="nav-link" href="#">Start Day</a> -->
+            <a class="nav-link" href="#">Settings</a>
+            <!-- <a class="nav-link" href="../index.html" tabindex="-1" aria-disabled="true">End Day</a> -->
+            <!-- <a class="nav-link" href="tester.html">Admin</a> -->
+            <a class="nav-link" href="../forklift.html">Material Operator</a>
+            <a class="nav-link" href="../index.html">Robot Test</a>
+            <a class="nav-link" href="adminPHP.php">PHP TEST</a>
+
+
+
+
+          </div>
+        </div>
+      </div>
+   </nav>
+
+   <!-- columns -->
+   <div class="row">
+       <div class="col-md-2" id="sidebar">
+        <a class="btn btn-secondary sidebtn" href="admin.html" role="button">Daily Reports</a>
+        <a class="btn btn-secondary sidebtn" href="adminLiveView.html" role="button">Live View</a>
+        <a class="btn btn-secondary sidebtn" href="adminPBP.html" role="button">Part by Part</a>
+        <a class="btn btn-secondary sidebtn" id="active" href="partdirectory.html" role="button">Part Directory</a>
+        <a class="btn btn-secondary sidebtn" href="" role="button">Downtime Records (Null)</a>
+        <a class="btn btn-secondary sidebtn" href="" role="button">Edit Record (Null)</a>
+        <a class="btn btn-secondary sidebtn" href="" role="button">C/T Directory (Null)</a>
+        <a class="btn btn-secondary sidebtn" href="" role="button">Employee Directory (Null)</a>
+        <a class="btn btn-secondary sidebtn" href="adminLabels.html" role="button">Label Directory</a>
+
+       </div>
+
+       <div class="col-md-10">
+
+        <!-- This will be the top bar -->
+        <div class="row" id="navrow">
+
+          <div class="col-md-2">
+            <h2 id="panelTitle">Part Directory</h2>
+          </div>
+
+          <div class="col-md-2">
+
+            <a class="btn btn-secondary sidebtn" style="float: left;" id="allMachines" role="button">All Parts</a>
+
+          </div>
+          <div class="col-md-7" id="centerish" style="float: left;">
+
+              <!-- Here we will have the button groups -->
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-primary" id="r1">Welding</button>
+                <button type="button" class="btn btn-primary" id="r2">Hand Weld</button>
+                <button type="button" class="btn btn-primary" id="r3">Press</button>
+                <button type="button" class="btn btn-primary" id="r4">Other</button>
+              </div>
+
+          </div>
+          <div class="col-md-1">
+
+          </div>
+
+          <!-- This is the output box -->
+        </div>
+           <div class="row">
+               <div class="col-md-12" id="outputBox" style="padding: 15px;">
+
+                    <!-- Row -->
+                   <div class="row">
+                       <!-- Card -->
+                        <div class="col-md-2 partcard">
+                            <div class="card" style="width: 18rem;">
+                                <img src="../images/Parts/7J282-55054.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Card title</h5>
+                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                              </div>
+                        </div>
+
+                       <!-- Card -->
+                       <div class="col-md-2 partcard">
+                        <div class="card" style="width: 18rem;">
+                            <img src="../images/Parts/7J285-57553.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title">Card title</h5>
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                          </div>
+                    </div>
+
+                    <!-- Card -->
+                    <div class="col-md-2 partcard">
+                        <div class="card" style="width: 18rem;">
+                            <img src="../images/Parts/7J823-55073.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title">Card title</h5>
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                          </div>
+                    </div>
+
+                    <!-- Card -->
+                    <div class="col-md-2 partcard">
+                        <div class="card" style="width: 18rem;">
+                            <img src="../images/Parts/K3071-02162.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title">Card title</h5>
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                          </div>
+                    </div>
+
+                    <!-- Card -->
+                    <div class="col-md-2 partcard">
+                        <div class="card" style="width: 18rem;">
+                            <img src="../images/Parts/K3071-21661.PNG" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title">Card title</h5>
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                          </div>
+                    </div>
+
+                   </div>
+
+                   <!-- ROW 2 -->
+                   <div class="row partrow">
+
+                    <!-- Card -->
+                    <div class="col-md-2 partcard">
+                        <div class="card" style="width: 18rem;">
+                            <img src="../images/Parts/K3411-53202.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title">Card title</h5>
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                          </div>
+                    </div>
+
+                   <!-- Card -->
+                   <div class="col-md-2 partcard">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../images/Parts/K3411-54133.PNG" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                      </div>
+                </div>
+
+                <!-- Card -->
+                <div class="col-md-2 partcard">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../images/Parts/K3411-81563.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                      </div>
+                </div>
+
+                <!-- Card -->
+                <div class="col-md-2 partcard">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../images/Parts/K3421-54133.PNG" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                      </div>
+                </div>
+
+                <!-- Card -->
+                <div class="col-md-2 partcard">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../images/Parts/K3811-44111.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                      </div>
+                </div>
+
+                   </div>
+
+
+                  <!-- End of table -->
+               </div>
+           </div>
+       </div>
+   </div>
+
+   <script>
+
+
+  //  Here we have the javascript test for a decreasing progress bar
+  // ================================
+  var firebaseConfig = {
+        apiKey: "AIzaSyCNgQru6L-VJT5C9y8Cl47GtVH2DNmo2Yk",
+        authDomain: "part-track-demo.firebaseapp.com",
+        projectId: "part-track-demo",
+        storageBucket: "part-track-demo.appspot.com",
+        messagingSenderId: "497244549101",
+        appId: "1:497244549101:web:afb5f178b7f25ff2dc81e4"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      // Assign database reference to a variable to use
+      var database = firebase.database();
+
+
+  // Setup The Listeners for each robot
+
+  var robot1Listener = database.ref("/test/Input")
+
+
+</script>
+
+</body>
+</html>
