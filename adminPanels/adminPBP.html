@@ -201,7 +201,7 @@
         <!-- This will be the top bar -->
         <div class="row" id="navrow">
 
-          <div class="col-md-3">
+          <div class="col-md-2">
             <h2 id="panelTitle">Part Cycles</h2>
           </div>
 
@@ -210,7 +210,7 @@
             <a class="btn btn-secondary sidebtn" style="float: left;" id="clickme" role="button">All Machines</a>
 
           </div>
-          <div class="col-md-6" id="centerish" style="float: left;">
+          <div class="col-md-7" id="centerish" style="float: left;">
 
               <!-- Here we will have the button groups -->
               <div class="btn-group" role="group" aria-label="Basic example">
@@ -445,11 +445,34 @@
   var robot4AListener = database.ref("/R4/R4basketA")
   var robot4BListener = database.ref("/R4/R4basketB");
 
+  function displayTime() {
+    var str = "";
+
+    var currentTime = new Date()
+    var hours = currentTime.getHours()
+    var minutes = currentTime.getMinutes()
+    var seconds = currentTime.getSeconds()
+
+    if (minutes < 10) {
+        minutes = "0" + minutes
+    }
+    if (seconds < 10) {
+        seconds = "0" + seconds
+    }
+    str += hours + ":" + minutes + ":" + seconds + " ";
+    if(hours > 11){
+        str += "PM"
+    } else {
+        str += "AM"
+    }
+    return str;
+}
 // ==========================================================================
 // ==========================================================================
 // Robot 1 
 $("#r1").on("click", function(){
 
+  console.log(displayTime());
     
     $("#letsgo").html("");
 
@@ -464,7 +487,9 @@ $("#r1").on("click", function(){
                         "<td>March 24, 2021</td>" +
                         "<td>YRWM - 1</td>" +
                         "<td>Marcus Pheonix</td>" +
-                        "<td>TIMESTAMP</td>" +
+                        "<td>"
+                          + displayTime() +
+                          "</td>" +
                         "<td>K3411-54133</td>" +
                         "<td>7 Sec</td>" +
                         "<td>7 Sec</td>" +
@@ -490,7 +515,9 @@ $("#r2").on("click", function(){
                         "<td>March 24, 2021</td>" +
                         "<td>YRWM - 1</td>" +
                         "<td>Marcus Pheonix</td>" +
-                        "<td>TIMESTAMP</td>" +
+                        "<td>"
+                          + displayTime() +
+                          "</td>" +
                         "<td>7J282-55054</td>" +
                         "<td>7 Sec</td>" +
                         "<td>7 Sec</td>" +
@@ -506,7 +533,9 @@ $("#r2").on("click", function(){
                         "<td>March 24, 2021</td>" +
                         "<td>YRWM - 1</td>" +
                         "<td>Marcus Pheonix</td>" +
-                        "<td>TIMESTAMP</td>" +
+                        "<td>"
+                          + displayTime() +
+                          "</td>" +
                         "<td>7J285-57553</td>" +
                         "<td>10 Sec</td>" +
                         "<td>10 Sec</td>" +
@@ -533,7 +562,9 @@ $("#r3").on("click", function(){
                         "<td>March 24, 2021</td>" +
                         "<td>YRWM - 1</td>" +
                         "<td>Marcus Pheonix</td>" +
-                        "<td>TIMESTAMP</td>" +
+                        "<td>"
+                          + displayTime() +
+                          "</td>" +
                         "<td>7J282-55054</td>" +
                         "<td>7 Sec</td>" +
                         "<td>7 Sec</td>" +
@@ -549,7 +580,9 @@ $("#r3").on("click", function(){
                         "<td>March 24, 2021</td>" +
                         "<td>YRWM - 1</td>" +
                         "<td>Marcus Pheonix</td>" +
-                        "<td>TIMESTAMP</td>" +
+                        "<td>"
+                          + displayTime() +
+                          "</td>" +
                         "<td>7J285-57553</td>" +
                         "<td>10 Sec</td>" +
                         "<td>10 Sec</td>" +
@@ -577,7 +610,9 @@ $("#r4").on("click", function(){
                         "<td>March 24, 2021</td>" +
                         "<td>YRWM - 1</td>" +
                         "<td>Marcus Pheonix</td>" +
-                        "<td>TIMESTAMP</td>" +
+                        "<td>"
+                          + displayTime() +
+                          "</td>" +
                         "<td>7J282-55054</td>" +
                         "<td>7 Sec</td>" +
                         "<td>7 Sec</td>" +
@@ -593,7 +628,9 @@ $("#r4").on("click", function(){
                         "<td>March 24, 2021</td>" +
                         "<td>YRWM - 1</td>" +
                         "<td>Marcus Pheonix</td>" +
-                        "<td>TIMESTAMP</td>" +
+                        "<td>"
+                          + displayTime() +
+                          "</td>" +
                         "<td>7J285-57553</td>" +
                         "<td>10 Sec</td>" +
                         "<td>10 Sec</td>" +
