@@ -246,7 +246,64 @@
           <!-- This is the output box -->
         </div>
            <div class="row">
-               <div class="col-md-12" id="outputBox" style="padding: 15px;">
+               <div class="col-md-12" id="outputBox" style="padding: 20px;">
+
+                  <!-- Input new part Row -->
+
+                  <div class="row">
+                    <div class="col-md-9 partinput">
+                      <h2>Input new Part Information</h2>
+
+                      <div class="mb-3">
+                        <label for="formGroupExampleInput" class="form-label">Part Number / Customer</label>
+                        <div class="row">
+                          <div class="col">
+                            <input type="text" class="form-control" placeholder="Part Num" aria-label="First name">
+                          </div>
+                          
+                          <div class="col">
+                            <input type="text" class="form-control" placeholder="Customer" aria-label="Last name">
+                          </div>
+                          
+                        </div>                      </div>
+                      <div class="mb-3">
+                        <label for="formGroupExampleInput2" class="form-label">Part Description</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Please Input a part description">
+                      </div>
+
+                     
+
+                    </div>
+
+                    <div class="col-md-2 partinput">
+                       <!-- Radios -->
+                       <fieldset class="row mb-3">
+                        <legend class="col-form-label col-sm-2 pt-0">Choose Production Type</legend>
+                        <div class="col-sm-10">
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                            <label class="form-check-label" for="gridRadios1">
+                              Robot Weld
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                            <label class="form-check-label" for="gridRadios2">
+                              Hand Weld
+                            </label>
+                          </div>
+                          <div class="form-check disabled">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" >
+                            <label class="form-check-label" for="gridRadios3">
+                              Press / Other
+                            </label>
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+
+
+                  </div>
 
                     <!-- Row -->
                    <div class="row">
