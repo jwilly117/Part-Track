@@ -205,11 +205,11 @@
         <a class="btn btn-secondary sidebtn" href="admin.html" role="button">Daily Reports</a>
         <a class="btn btn-secondary sidebtn" href="adminLiveView.html" role="button">Live View</a>
         <a class="btn btn-secondary sidebtn" href="adminPBP.html" role="button">Part by Part</a>
-        <a class="btn btn-secondary sidebtn" id="active" href="partdirectory.html" role="button">Part Directory</a>
+        <a class="btn btn-secondary sidebtn" href="partdirectory.html" role="button">Part Directory</a>
         <a class="btn btn-secondary sidebtn" href="" role="button">Downtime Records (Null)</a>
         <a class="btn btn-secondary sidebtn" href="" role="button">Edit Record (Null)</a>
         <a class="btn btn-secondary sidebtn" href="" role="button">C/T Directory (Null)</a>
-        <a class="btn btn-secondary sidebtn" href="employeeDirectory.html" role="button">Employee Directory</a>
+        <a class="btn btn-secondary sidebtn" id="active" href="employeeDirectory.html" role="button">Employee Directory</a>
         <a class="btn btn-secondary sidebtn" href="adminLabels.html" role="button">Label Directory</a>
 
        </div>
@@ -220,22 +220,22 @@
         <div class="row" id="navrow">
 
           <div class="col-md-2">
-            <h2 id="panelTitle">Part Directory</h2>
+            <h2 id="panelTitle">Employee Directory</h2>
           </div>
 
           <div class="col-md-2">
 
-            <a class="btn btn-secondary sidebtn" style="float: left;" id="allMachines" role="button">All Parts</a>
+            <a class="btn btn-secondary sidebtn" style="float: left;" id="allMachines" role="button">All</a>
 
           </div>
           <div class="col-md-7" id="centerish" style="float: left;">
 
               <!-- Here we will have the button groups -->
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-primary" id="r1">Welding</button>
-                <button type="button" class="btn btn-primary" id="r2">Hand Weld</button>
-                <button type="button" class="btn btn-primary" id="r3">Press</button>
-                <button type="button" class="btn btn-primary" id="r4">Other</button>
+                <button type="button" class="btn btn-primary" id="r1">Robots</button>
+                <button type="button" class="btn btn-primary" id="r2">Supervisors</button>
+                <button type="button" class="btn btn-primary" id="r3">CNC / Press</button>
+                <button type="button" class="btn btn-primary" id="r4">Office</button>
               </div>
 
           </div>
@@ -252,22 +252,22 @@
 
                   <div class="row">
                     <div class="col-md-9 partinput">
-                      <h2>Input new Part Information</h2>
+                      <h2>Add Employee</h2>
 
                       <div class="mb-3">
-                        <label for="formGroupExampleInput" class="form-label">Part Number / Customer</label>
+                        <label for="formGroupExampleInput" class="form-label">Name</label>
                         <div class="row">
                           <div class="col">
-                            <input type="text" class="form-control" placeholder="Part Num" aria-label="First name">
+                            <input type="text" class="form-control" placeholder="First Name" aria-label="First name">
                           </div>
                           
                           <div class="col">
-                            <input type="text" class="form-control" placeholder="Customer" aria-label="Last name">
+                            <input type="text" class="form-control" placeholder="Last Name" aria-label="Last name">
                           </div>
                           
                         </div>                      </div>
                       <div class="mb-3">
-                        <label for="formGroupExampleInput2" class="form-label">Part Description</label>
+                        <label for="formGroupExampleInput2" class="form-label">Notes / Temp Agency</label>
                         <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Please Input a part description">
                       </div>
 
@@ -278,12 +278,12 @@
                     <div class="col-md-2 partinput">
                        <!-- Radios -->
                        <fieldset class="row mb-3">
-                        <legend class="col-form-label col-sm-2 pt-0">Choose Type</legend>
+                        <legend class="col-form-label col-sm-2 pt-0">Department</legend>
                         <div class="col-sm-10">
                           <div class="form-check">
                             <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
                             <label class="form-check-label" for="gridRadios1">
-                              Robot Weld
+                              Robots
                             </label>
                           </div>
                           <div class="form-check">
