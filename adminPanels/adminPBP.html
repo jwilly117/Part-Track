@@ -18,7 +18,7 @@
 
     
     <style>
-        #clickme{
+        #allMachines{
           color: white;
         }
         body{
@@ -207,7 +207,7 @@
 
           <div class="col-md-2">
 
-            <a class="btn btn-secondary sidebtn" style="float: left;" id="clickme" role="button">All Machines</a>
+            <a class="btn btn-secondary sidebtn" style="float: left;" id="allMachines" role="button">All Machines</a>
 
           </div>
           <div class="col-md-7" id="centerish" style="float: left;">
@@ -445,6 +445,8 @@
   var robot4AListener = database.ref("/R4/R4basketA")
   var robot4BListener = database.ref("/R4/R4basketB");
 
+  var identifier = "none";
+
   function displayTime() {
     var str = "";
 
@@ -472,6 +474,7 @@
 // Robot 1 
 $("#r1").on("click", function(){
 
+  
   console.log(displayTime());
     
     $("#letsgo").html("");
@@ -485,14 +488,14 @@ $("#r1").on("click", function(){
         "<tr>" +
                         "<th scope='row'>1</th>" +
                         "<td>March 24, 2021</td>" +
-                        "<td>YRWM - 1</td>" +
+                        "<td>YRWM - 1 - A</td>" +
                         "<td>Marcus Pheonix</td>" +
                         "<td>"
                           + displayTime() +
                           "</td>" +
                         "<td>K3411-54133</td>" +
                         "<td>7 Sec</td>" +
-                        "<td>7 Sec</td>" +
+                        "<td>10 Sec</td>" +
                         "<td>" + snap.val() + "</td>" +
                       "</tr>"
       );
@@ -507,14 +510,17 @@ $("#r2").on("click", function(){
 
   $("#letsgo").html("");
 
-  robot2AListener.on("value", function(snap){
+  identifier = "r2";
+
+  if(identifier == "r2"){
+    robot2AListener.on("value", function(snap){
     console.log(snap.val());
     $("#letsgo").append(
         "<tr>" +
                         "<th scope='row'>1</th>" +
                         "<td>March 24, 2021</td>" +
-                        "<td>YRWM - 1</td>" +
-                        "<td>Marcus Pheonix</td>" +
+                        "<td>YRWM - 2 - A</td>" +
+                        "<td>Dom Santiago</td>" +
                         "<td>"
                           + displayTime() +
                           "</td>" +
@@ -531,8 +537,8 @@ $("#r2").on("click", function(){
         "<tr>" +
                         "<th scope='row'>1</th>" +
                         "<td>March 24, 2021</td>" +
-                        "<td>YRWM - 1</td>" +
-                        "<td>Marcus Pheonix</td>" +
+                        "<td>YRWM - 2 - B</td>" +
+                        "<td>Dom Santiago</td>" +
                         "<td>"
                           + displayTime() +
                           "</td>" +
@@ -543,6 +549,9 @@ $("#r2").on("click", function(){
                       "</tr>"
       );
   })
+  }
+
+
 
 
 })
@@ -554,14 +563,16 @@ $("#r3").on("click", function(){
 
   $("#letsgo").html("");
 
+  identifier = "r3";
+
   robot3AListener.on("value", function(snap){
     console.log(snap.val());
     $("#letsgo").append(
         "<tr>" +
                         "<th scope='row'>1</th>" +
                         "<td>March 24, 2021</td>" +
-                        "<td>YRWM - 1</td>" +
-                        "<td>Marcus Pheonix</td>" +
+                        "<td>YRWM - 3 - A</td>" +
+                        "<td>Christian Bowman</td>" +
                         "<td>"
                           + displayTime() +
                           "</td>" +
@@ -578,8 +589,8 @@ $("#r3").on("click", function(){
         "<tr>" +
                         "<th scope='row'>1</th>" +
                         "<td>March 24, 2021</td>" +
-                        "<td>YRWM - 1</td>" +
-                        "<td>Marcus Pheonix</td>" +
+                        "<td>YRWM - 3 - B</td>" +
+                        "<td>Christian Bowman</td>" +
                         "<td>"
                           + displayTime() +
                           "</td>" +
@@ -592,8 +603,6 @@ $("#r3").on("click", function(){
   })
   
 })
-
-
 // ==========================================================================
 // ==========================================================================
 // Robot 4
@@ -608,8 +617,8 @@ $("#r4").on("click", function(){
         "<tr>" +
                         "<th scope='row'>1</th>" +
                         "<td>March 24, 2021</td>" +
-                        "<td>YRWM - 1</td>" +
-                        "<td>Marcus Pheonix</td>" +
+                        "<td>YRWM - 4 - A</td>" +
+                        "<td>John Smith</td>" +
                         "<td>"
                           + displayTime() +
                           "</td>" +
@@ -626,8 +635,8 @@ $("#r4").on("click", function(){
         "<tr>" +
                         "<th scope='row'>1</th>" +
                         "<td>March 24, 2021</td>" +
-                        "<td>YRWM - 1</td>" +
-                        "<td>Marcus Pheonix</td>" +
+                        "<td>YRWM - 4 - B</td>" +
+                        "<td>John Smith</td>" +
                         "<td>"
                           + displayTime() +
                           "</td>" +
@@ -641,459 +650,137 @@ $("#r4").on("click", function(){
   
 })
 
-
-
-// ==========================================================================
-// ==========================================================================
-// Session 1
-$("#session1").on('click', function() {
-  console.log("Hello, this is a test for session1");
-
-  var session1Table = [
-  ["2021-03-01", 1, "YRWM-1", "James Franco",  "K1234-24252", 120, "00:00:00", "00:00:00", "00:00:00"],
-["2021-03-02", 1, "YRWM-1", "James Franco",  "K1234-24252", 118, "00:00:00", "00:00:00", "00:00:00"],
-["2021-03-03", 1, "YRWM-1", "James Franco",  "K1234-24252", 120, "00:00:00", "00:00:00", "00:00:00"],
-["2021-03-04", 1, "YRWM-1", "James Franco",  "K1234-24252", 120, "00:00:00", "00:00:00", "00:00:00"],
-["2021-03-05", 1, "YRWM-1", "James Franco",  "K1234-24252", 108, "00:00:00", "00:00:00", "00:00:00"],
-
-// Robot 2
-
-["2021-03-01", 1, "YRWM-2", "Robert Downey JR",  "K1234-24252", 116, "00:00:00", "00:00:00", "00:00:00"],
-["2021-03-02", 1, "YRWM-2", "Robert Downey JR",  "K1234-24252", 120, "00:00:00", "00:00:00", "00:00:00"],
-["2021-03-03", 1, "YRWM-2", "Robert Downey JR",  "K1234-24252", 113, "00:00:00", "00:00:00", "00:00:00"],
-["2021-03-04", 1, "YRWM-2", "Robert Downey JR",  "K1234-24252", 107, "00:00:00", "00:00:00", "00:00:00"],
-["2021-03-05", 1, "YRWM-2", "Robert Downey JR",  "K1234-24252", 120, "00:00:00", "00:00:00", "00:00:00"],
-
-// Robot 3
-["2021-03-01", 1, "YRWM-3", "Anne Hathaway",  "K1234-24252", 105, "00:00:00", "00:00:00", "00:00:00"],
-["2021-03-02", 1, "YRWM-3", "Anne Hathaway",  "K1234-24252", 120, "00:00:00", "00:00:00", "00:00:00"],
-["2021-03-03", 1, "YRWM-3", "Anne Hathaway",  "K1234-24252", 122, "00:00:00", "00:00:00", "00:00:00"],
-["2021-03-04", 1, "YRWM-3", "Anne Hathaway",  "K1234-24252", 118, "00:00:00", "00:00:00", "00:00:00"],
-["2021-03-05", 1, "YRWM-3", "Anne Hathaway",  "K1234-24252", 125, "00:00:00", "00:00:00", "00:00:00"],
-
-
-
-// Robot 4
-["2021-03-01", 1, "YRWM-4", "Michael Caine",  "K1234-24252", 110, "00:00:00", "00:00:00", "00:00:00"],
-["2021-03-02", 1, "YRWM-4", "Michael Caine",  "K1234-24252", 120, "00:00:00", "00:00:00", "00:00:00"],
-["2021-03-03", 1, "YRWM-4", "Michael Caine",  "K1234-24252", 114, "00:00:00", "00:00:00", "00:00:00"],
-["2021-03-04", 1, "YRWM-4", "Michael Caine",  "K1234-24252", 119, "00:00:00", "00:00:00", "00:00:00"],
-["2021-03-05", 1, "YRWM-4", "Michael Caine",  "K1234-24252", 112, "00:00:00", "00:00:00", "00:00:00"]
-
-
-  ]
-  var cell;
-
-var renderedTable = '';
-for(var r = 0; r < session1Table.length; r++){
-  renderedTable += '<tr>';
-  // console.log(tableArr[i]);
-  for(var c = 0; c < session1Table[0].length; c++)
-  {
-    cell = session1Table[r][c];
-    // console.log(tableArr[r][c]);
-    renderedTable += '<td>' +  cell + '</td>';
-
-  }
-  renderedTable += '</tr>';
-}
-
-var button = '<button type="button" id="clickForCSV" class="btn btn-info" style="margin-top: 5px;">Get CSV</button>';
-
-$("#letsgo").html(renderedTable);
-
-$("#letsgo").append('<br>');
-  $("#letsgo").append('<br>');
-
-  $("#letsgo").append('<br>');
-
-  $("#letsgo").append(button);
-
-  // ===========================================================================================
-  // ===========================================================================================
-  let csvContent = "data:text/csv;charset=utf-8,";
-
-  session1Table.forEach(function(rowArray) {
-    let row = rowArray.join(",");
-    csvContent += row + "\r\n";
-});
-
-console.log(rows);
-console.log(csvContent);
-
-$("#clickForCSV").on("click", function(){
-var encodedUri = encodeURI(csvContent);
-var link = document.createElement("a");
-link.setAttribute("href", encodedUri);
-link.setAttribute("download", "my_data.csv");
-document.body.appendChild(link); // Required for FF
-
-link.click();
-})
-
-
-});
-
-// ==========================================================================
-// ==========================================================================
-// Session 2
-$("#session2").on('click', function() {
-  console.log("Hello, this is a test for session1");
-
-  var session2Table = [
-  ["2021-03-01", 2, "YRWM-1", "James Franco",  "K1234-24252", 488, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-02", 2, "YRWM-1", "James Franco",  "K1234-24252", 478, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-03", 2, "YRWM-1", "James Franco",  "K1234-24252", 488, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-04", 2, "YRWM-1", "James Franco",  "K1234-24252", 478, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-05", 2, "YRWM-1", "James Franco",  "K1234-24252", 469, "00:00:00", "00:00:00", "00:00:00"],
-
-  // Robot 2
-
-  ["2021-03-01", 2, "YRWM-2", "Robert Downey JR",  "K1234-24252", 478, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-02", 2, "YRWM-2", "Robert Downey JR",  "K1234-24252", 488, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-03", 2, "YRWM-2", "Robert Downey JR",  "K1234-24252", 484, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-04", 2, "YRWM-2", "Robert Downey JR",  "K1234-24252", 475, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-05", 2, "YRWM-2", "Robert Downey JR",  "K1234-24252", 453, "00:00:00", "00:00:00", "00:00:00"],
-
-
-  // Robot 3
-  ["2021-03-01", 2, "YRWM-3", "Anne Hathaway",  "K1234-24252", 467, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-02", 2, "YRWM-3", "Anne Hathaway",  "K1234-24252", 465, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-03", 2, "YRWM-3", "Anne Hathaway",  "K1234-24252", 476, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-04", 2, "YRWM-3", "Anne Hathaway",  "K1234-24252", 475, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-05", 2, "YRWM-3", "Anne Hathaway",  "K1234-24252", 488, "00:00:00", "00:00:00", "00:00:00"],
-
-  
-  // Robot 4
-  ["2021-03-01", 2, "YRWM-4", "Michael Caine",  "K1234-24252", 485, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-02", 2, "YRWM-4", "Michael Caine",  "K1234-24252", 497, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-03", 2, "YRWM-4", "Michael Caine",  "K1234-24252", 486, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-04", 2, "YRWM-4", "Michael Caine",  "K1234-24252", 488, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-05", 2, "YRWM-4", "Michael Caine",  "K1234-24252", 488, "00:00:00", "00:00:00", "00:00:00"]
-  ]
-  
-  var cell;
-
-var renderedTable = '';
-for(var r = 0; r < session2Table.length; r++){
-  renderedTable += '<tr>';
-  // console.log(tableArr[i]);
-  for(var c = 0; c < session2Table[0].length; c++)
-  {
-    cell = session2Table[r][c];
-    // console.log(tableArr[r][c]);
-    renderedTable += '<td>' +  cell + '</td>';
-
-  }
-  renderedTable += '</tr>';
-}
-
-var button = '<button type="button" id="clickForCSV" class="btn btn-info" style="margin-top: 5px;">Get CSV</button>';
-
-$("#letsgo").html(renderedTable);
-
-$("#letsgo").append('<br>');
-  $("#letsgo").append('<br>');
-
-  $("#letsgo").append('<br>');
-
-  $("#letsgo").append(button);
-
-  // ===========================================================================================
-  // ===========================================================================================
-  let csvContent = "data:text/csv;charset=utf-8,";
-
-session2Table.forEach(function(rowArray) {
-    let row = rowArray.join(",");
-    csvContent += row + "\r\n";
-});
-
-console.log(rows);
-console.log(csvContent);
-
-$("#clickForCSV").on("click", function(){
-var encodedUri = encodeURI(csvContent);
-var link = document.createElement("a");
-link.setAttribute("href", encodedUri);
-link.setAttribute("download", "my_data.csv");
-document.body.appendChild(link); // Required for FF
-
-link.click();
-})
-
-});
-
-// ==========================================================================
-// ==========================================================================
-// Session 3
-$("#session3").on('click', function() {
-  console.log("Hello, this is a test for session1");
-
-  var session3Table = [
-  ["2021-03-01", 3, "YRWM-1", "James Franco",  "K1234-24252", 488, "00:00:00", "00:00:00", "00:00:00"],
-  
-
-  ["2021-03-02", 3, "YRWM-1", "James Franco",  "K1234-24252", 488, "00:00:00", "00:00:00", "00:00:00"],
-
-
-  ["2021-03-03", 3, "YRWM-1", "James Franco",  "K1234-24252", 488, "00:00:00", "00:00:00", "00:00:00"],
-
-
-  ["2021-03-04", 3, "YRWM-1", "James Franco",  "K1234-24252", 488, "00:00:00", "00:00:00", "00:00:00"],
-
-
-  ["2021-03-05", 3, "YRWM-1", "James Franco",  "K1234-24252", 488, "00:00:00", "00:00:00", "00:00:00"],
-
-  // Robot 2
-
-  ["2021-03-01", 3, "YRWM-2", "Robert Downey JR",  "K1234-24252", 488, "00:00:00", "00:00:00", "00:00:00"],
-
-
-  ["2021-03-02", 3, "YRWM-2", "Robert Downey JR",  "K1234-24252", 488, "00:00:00", "00:00:00", "00:00:00"],
-
-
-  ["2021-03-03", 3, "YRWM-2", "Robert Downey JR",  "K1234-24252", 488, "00:00:00", "00:00:00", "00:00:00"],
-
-
-  ["2021-03-04", 3, "YRWM-2", "Robert Downey JR",  "K1234-24252", 488, "00:00:00", "00:00:00", "00:00:00"],
-
-
-  ["2021-03-05", 3, "YRWM-2", "Robert Downey JR",  "K1234-24252", 488, "00:00:00", "00:00:00", "00:00:00"],
-
-
-  // Robot 3
-
-  ["2021-03-01", 3, "YRWM-3", "Anne Hathaway",  "K1234-24252", 488, "00:00:00", "00:00:00", "00:00:00"],
-
-
-  ["2021-03-02", 3, "YRWM-3", "Anne Hathaway",  "K1234-24252", 488, "00:00:00", "00:00:00", "00:00:00"],
-
-
-  ["2021-03-03", 3, "YRWM-3", "Anne Hathaway",  "K1234-24252", 488, "00:00:00", "00:00:00", "00:00:00"],
-
-
-  ["2021-03-04", 3, "YRWM-3", "Anne Hathaway",  "K1234-24252", 488, "00:00:00", "00:00:00", "00:00:00"],
-
-
-  ["2021-03-05", 3, "YRWM-3", "Anne Hathaway",  "K1234-24252", 488, "00:00:00", "00:00:00", "00:00:00"],
-
-  
-  // Robot 4
-
-  ["2021-03-01", 3, "YRWM-4", "Michael Caine",  "K1234-24252", 488, "00:00:00", "00:00:00", "00:00:00"],
-
-
-  ["2021-03-02", 3, "YRWM-4", "Michael Caine",  "K1234-24252", 488, "00:00:00", "00:00:00", "00:00:00"],
-
-
-  ["2021-03-03", 3, "YRWM-4", "Michael Caine",  "K1234-24252", 488, "00:00:00", "00:00:00", "00:00:00"],
-
-
-  ["2021-03-04", 3, "YRWM-4", "Michael Caine",  "K1234-24252", 488, "00:00:00", "00:00:00", "00:00:00"],
-
-  ["2021-03-05", 3, "YRWM-4", "Michael Caine",  "K1234-24252", 488, "00:00:00", "00:00:00", "00:00:00"]
-  ]
-
-
-    
-  var cell;
-
-var renderedTable = '';
-for(var r = 0; r < session3Table.length; r++){
-  renderedTable += '<tr>';
-  // console.log(tableArr[i]);
-  for(var c = 0; c < session3Table[0].length; c++)
-  {
-    cell = session3Table[r][c];
-    // console.log(tableArr[r][c]);
-    renderedTable += '<td>' +  cell + '</td>';
-
-  }
-  renderedTable += '</tr>';
-}
-
-var button = '<button type="button" id="clickForCSV" class="btn btn-info" style="margin-top: 5px;">Get CSV</button>';
-
-$("#letsgo").html(renderedTable);
-
-$("#letsgo").append('<br>');
-  $("#letsgo").append('<br>');
-
-  $("#letsgo").append('<br>');
-
-  $("#letsgo").append(button);
-
-  // ===========================================================================================
-  // ===========================================================================================
-  let csvContent = "data:text/csv;charset=utf-8,";
-
-session3Table.forEach(function(rowArray) {
-    let row = rowArray.join(",");
-    csvContent += row + "\r\n";
-});
-
-console.log(rows);
-console.log(csvContent);
-
-$("#clickForCSV").on("click", function(){
-var encodedUri = encodeURI(csvContent);
-var link = document.createElement("a");
-link.setAttribute("href", encodedUri);
-link.setAttribute("download", "my_data.csv");
-document.body.appendChild(link); // Required for FF
-
-link.click();
-})
-
-});
-
 // ==========================================================================
 // ==========================================================================
 
 
-    // Here I will try to make a table out of an array
-//setup our table array
-var tableArr = [
 
-  ["2021-03-01", 1, "YRWM-1", "James Franco",  "K1234-24252", 100, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-01", 2, "YRWM-1", "James Franco",  "K1234-24252", 419, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-01", 3, "YRWM-1", "James Franco",  "K1234-24252", 88,  "00:00:00", "00:00:00", "00:00:00"],
-  
-  ["2021-03-02", 1, "YRWM-1", "James Franco",  "K1234-24252", 100, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-02", 2, "YRWM-1", "James Franco",  "K1234-24252", 419, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-02", 3, "YRWM-1", "James Franco",  "K1234-24252", 105, "00:00:00", "00:00:00", "00:00:00"],
-
-  ["2021-03-03", 1, "YRWM-1", "James Franco",  "K1234-24252", 103, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-03", 2, "YRWM-1", "James Franco",  "K1234-24252", 405, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-03", 3, "YRWM-1", "James Franco",  "K1234-24252", 108, "00:00:00", "00:00:00", "00:00:00"],
-
-  ["2021-03-04", 1, "YRWM-1", "James Franco",  "K1234-24252", 118, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-04", 2, "YRWM-1", "James Franco",  "K1234-24252", 419, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-04", 3, "YRWM-1", "James Franco",  "K1234-24252", 100, "00:00:00", "00:00:00", "00:00:00"],
-
-  ["2021-03-05", 1, "YRWM-1", "James Franco",  "K1234-24252", 100, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-05", 2, "YRWM-1", "James Franco",  "K1234-24252", 393, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-05", 3, "YRWM-1", "James Franco",  "K1234-24252", 99, "00:00:00", "00:00:00", "00:00:00"],
-
-  // Robot 2
-
-  ["2021-03-01", 1, "YRWM-2", "Robert Downey JR",  "K1234-24252", 67, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-01", 2, "YRWM-2", "Robert Downey JR",  "K1234-24252", 253, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-01", 3, "YRWM-2", "Robert Downey JR",  "K1234-24252", 64, "00:00:00", "00:00:00", "00:00:00"],
-
-  ["2021-03-02", 1, "YRWM-2", "Robert Downey JR",  "K1234-24252", 67, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-02", 2, "YRWM-2", "Robert Downey JR",  "K1234-24252", 253, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-02", 3, "YRWM-2", "Robert Downey JR",  "K1234-24252", 64, "00:00:00", "00:00:00", "00:00:00"],
-
-  ["2021-03-03", 1, "YRWM-2", "Robert Downey JR",  "K1234-24252", 64, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-03", 2, "YRWM-2", "Robert Downey JR",  "K1234-24252", 253, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-03", 3, "YRWM-2", "Robert Downey JR",  "K1234-24252", 64, "00:00:00", "00:00:00", "00:00:00"],
-
-  ["2021-03-04", 1, "YRWM-2", "Robert Downey JR",  "K1234-24252", 67, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-04", 2, "YRWM-2", "Robert Downey JR",  "K1234-24252", 253, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-04", 3, "YRWM-2", "Robert Downey JR",  "K1234-24252", 64, "00:00:00", "00:00:00", "00:00:00"],
-
-  ["2021-03-05", 1, "YRWM-2", "Robert Downey JR",  "K1234-24252", 64, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-05", 2, "YRWM-2", "Robert Downey JR",  "K1234-24252", 253, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-05", 3, "YRWM-2", "Robert Downey JR",  "K1234-24252", 67, "00:00:00", "00:00:00", "00:00:00"],
-
-
-  // // Robot 3
-  ["2021-03-01", 1, "YRWM-3", "Anne Hathaway",  "K1234-24252", 34, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-01", 2, "YRWM-3", "Anne Hathaway",  "K1234-24252", 121, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-01", 3, "YRWM-3", "Anne Hathaway",  "K1234-24252", 21,"00:00:00", "00:00:00", "00:00:00"],
-
-  ["2021-03-02", 1, "YRWM-3", "Anne Hathaway",  "K1234-24252", 28, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-02", 2, "YRWM-3", "Anne Hathaway",  "K1234-24252", 128, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-02", 3, "YRWM-3", "Anne Hathaway",  "K1234-24252", 34, "00:00:00", "00:00:00", "00:00:00"],
-
-  ["2021-03-03", 1, "YRWM-3", "Anne Hathaway",  "K1234-24252", 34, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-03", 2, "YRWM-3", "Anne Hathaway",  "K1234-24252", 126, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-03", 3, "YRWM-3", "Anne Hathaway",  "K1234-24252", 32,  "00:00:00", "00:00:00", "00:00:00"],
-
-  ["2021-03-04", 1, "YRWM-3", "Anne Hathaway",  "K1234-24252", 34, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-04", 2, "YRWM-3", "Anne Hathaway",  "K1234-24252", 121, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-04", 3, "YRWM-3", "Anne Hathaway",  "K1234-24252", 33, "00:00:00", "00:00:00", "00:00:00"],
-
-  ["2021-03-05", 1, "YRWM-3", "Anne Hathaway",  "K1234-24252", 33, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-05", 2, "YRWM-3", "Anne Hathaway",  "K1234-24252", 121, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-05", 3, "YRWM-3", "Anne Hathaway",  "K1234-24252", 34, "00:00:00", "00:00:00", "00:00:00"],
-
-  
-  // // Robot 4
-  ["2021-03-01", 1, "YRWM-4", "Michael Caine",  "K1234-24252", 44, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-01", 2, "YRWM-4", "Michael Caine",  "K1234-24252", 180, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-01", 3, "YRWM-4", "Michael Caine",  "K1234-24252", 49, "00:00:00", "00:00:00", "00:00:00"],
-
-  ["2021-03-02", 1, "YRWM-4", "Michael Caine",  "K1234-24252", 44, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-02", 2, "YRWM-4", "Michael Caine",  "K1234-24252", 177, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-02", 3, "YRWM-4", "Michael Caine",  "K1234-24252", 53, "00:00:00", "00:00:00", "00:00:00"],
-
-  ["2021-03-03", 1, "YRWM-4", "Michael Caine",  "K1234-24252", 49, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-03", 2, "YRWM-4", "Michael Caine",  "K1234-24252", 192, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-03", 3, "YRWM-4", "Michael Caine",  "K1234-24252", 53, "00:00:00", "00:00:00", "00:00:00"],
-
-  ["2021-03-04", 1, "YRWM-4", "Michael Caine",  "K1234-24252", 49, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-04", 2, "YRWM-4", "Michael Caine",  "K1234-24252", 177, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-04", 3, "YRWM-4", "Michael Caine",  "K1234-24252", 44, "00:00:00", "00:00:00", "00:00:00"],
-
-  ["2021-03-05", 1, "YRWM-4", "Michael Caine",  "K1234-24252", 53, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-05", 2, "YRWM-4", "Michael Caine",  "K1234-24252", 186, "00:00:00", "00:00:00", "00:00:00"],
-  ["2021-03-05", 3, "YRWM-4", "Michael Caine",  "K1234-24252", 44, "00:00:00", "00:00:00", "00:00:00"]
-]
-var cell;
-
-var renderedTable = '';
-for(var r = 0; r < tableArr.length; r++){
-  renderedTable += '<tr>';
-  // console.log(tableArr[i]);
-  for(var c = 0; c < tableArr[0].length; c++)
-  {
-    cell = tableArr[r][c];
-    // console.log(tableArr[r][c]);
-    renderedTable += '<td>' +  cell + '</td>';
-
-  }
-  renderedTable += '</tr>';
-}
-
-// ==========================================================================
-// ==========================================================================
 
 var tabs = "Hello";
 
 var button = '<button type="button" id="clickForCSV" class="btn btn-info" style="margin-top: 5px;">Get CSV</button>';
 
-$("#clickme").on("click", function(){
-  $("#letsgo").html(renderedTable);
-  $("#letsgo").append('<br>');
-  $("#letsgo").append('<br>');
 
-  $("#letsgo").append('<br>');
+// ==========================================================================
+// ==========================================================================
+// Robot 4
+$("#allMachines").on("click", function(){
 
-  $("#letsgo").append(button);
+  console.log("Button for All machines");
+
+  $("#letsgo").html("");
 
 
-  let csvContent = "data:text/csv;charset=utf-8,";
+  robot2AListener.on("value", function(snap){
+    console.log(snap.val());
+    $("#letsgo").append(
+        "<tr>" +
+                        "<th scope='row'>1</th>" +
+                        "<td>March 24, 2021</td>" +
+                        "<td>YRWM - 2 - A</td>" +
+                        "<td>Dom Santiago</td>" +
+                        "<td>"
+                          + displayTime() +
+                          "</td>" +
+                        "<td>7J282-55054</td>" +
+                        "<td>7 Sec</td>" +
+                        "<td>7 Sec</td>" +
+                        "<td>" + snap.val() + "</td>" +
+                      "</tr>"
+      );
+  })
+  robot2BListener.on("value", function(snap){
+    console.log(snap.val());
+    $("#letsgo").append(
+        "<tr>" +
+                        "<th scope='row'>1</th>" +
+                        "<td>March 24, 2021</td>" +
+                        "<td>YRWM - 2 - B</td>" +
+                        "<td>Dom Santiago</td>" +
+                        "<td>"
+                          + displayTime() +
+                          "</td>" +
+                        "<td>7J285-57553</td>" +
+                        "<td>10 Sec</td>" +
+                        "<td>10 Sec</td>" +
+                        "<td>" + snap.val() + "</td>" +
+                      "</tr>"
+      );
+  })
 
-rows.forEach(function(rowArray) {
-    let row = rowArray.join(",");
-    csvContent += row + "\r\n";
-});
+  robot3AListener.on("value", function(snap){
+    console.log(snap.val());
+    $("#letsgo").append(
+        "<tr>" +
+                        "<th scope='row'>1</th>" +
+                        "<td>March 24, 2021</td>" +
+                        "<td>YRWM - 3 - A</td>" +
+                        "<td>Christian Bowman</td>" +
+                        "<td>"
+                          + displayTime() +
+                          "</td>" +
+                        "<td>7J282-55054</td>" +
+                        "<td>7 Sec</td>" +
+                        "<td>7 Sec</td>" +
+                        "<td>" + snap.val() + "</td>" +
+                      "</tr>"
+      );
+  })
+  robot3BListener.on("value", function(snap){
+    console.log(snap.val());
+    $("#letsgo").append(
+        "<tr>" +
+                        "<th scope='row'>1</th>" +
+                        "<td>March 24, 2021</td>" +
+                        "<td>YRWM - 3 - B</td>" +
+                        "<td>Christian Bowman</td>" +
+                        "<td>"
+                          + displayTime() +
+                          "</td>" +
+                        "<td>7J285-57553</td>" +
+                        "<td>10 Sec</td>" +
+                        "<td>10 Sec</td>" +
+                        "<td>" + snap.val() + "</td>" +
+                      "</tr>"
+      );
+  })
 
-console.log(rows);
-console.log(csvContent);
-
-$("#clickForCSV").on("click", function(){
-var encodedUri = encodeURI(csvContent);
-var link = document.createElement("a");
-link.setAttribute("href", encodedUri);
-link.setAttribute("download", "my_data.csv");
-document.body.appendChild(link); // Required for FF
-
-link.click();
-})
-  
+  robot4AListener.on("value", function(snap){
+    console.log(snap.val());
+    $("#letsgo").append(
+        "<tr>" +
+                        "<th scope='row'>1</th>" +
+                        "<td>March 24, 2021</td>" +
+                        "<td>YRWM - 4 - A</td>" +
+                        "<td>John Smith</td>" +
+                        "<td>"
+                          + displayTime() +
+                          "</td>" +
+                        "<td>7J282-55054</td>" +
+                        "<td>7 Sec</td>" +
+                        "<td>7 Sec</td>" +
+                        "<td>" + snap.val() + "</td>" +
+                      "</tr>"
+      );
+  })
+  robot4BListener.on("value", function(snap){
+    console.log(snap.val());
+    $("#letsgo").append(
+        "<tr>" +
+                        "<th scope='row'>1</th>" +
+                        "<td>March 24, 2021</td>" +
+                        "<td>YRWM - 4 - B</td>" +
+                        "<td>John Smith</td>" +
+                        "<td>"
+                          + displayTime() +
+                          "</td>" +
+                        "<td>7J285-57553</td>" +
+                        "<td>10 Sec</td>" +
+                        "<td>10 Sec</td>" +
+                        "<td>" + snap.val() + "</td>" +
+                      "</tr>"
+      );
+  })
   
 })
 
