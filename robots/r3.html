@@ -264,14 +264,14 @@
               <!-- <button type="button" class="btn btn-primary" id="control" data-bs-toggle="modal" data-bs-target="#downTime">DownTime</button> -->
                 <button type="button" class="btn btn-primary" id="resume"> Resume</button>
                 <button type="button" class="btn btn-primary" id="simulate"> Simulate Machine Stop</button>
-                <button type="button" class="btn btn-primary" id="control" data-bs-toggle="modal" data-bs-target="#hselp">Help</button>
-                <button type="button" class="btn btn-primary" id="control" data-bs-toggle="modal" data-bs-target="#downTime">DownTime</button>
+                <!-- <button type="button" class="btn btn-primary" id="control" data-bs-toggle="modal" data-bs-target="#hselp">Help</button> -->
+                <!-- <button type="button" class="btn btn-primary" id="control" data-bs-toggle="modal" data-bs-target="#downTime">DownTime</button> -->
 
               </div>
               <br>
               <br>
 
-              <button type="button" id="help" class="btn btn-warning">Request Assistance / Parts</button>
+              <button type="button" id="help" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#hselp">Request Assistance / Parts</button>
 
               
          </div>
@@ -397,16 +397,21 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Request Supervisor Help</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
         </div>
         <div class="modal-body">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus officiis quasi eaque adipisci voluptatem distinctio, itaque veniam, deleniti minus impedit maiores aut eveniet? Quia, perspiciatis accusantium. Illum earum tempora suscipit.
+          Please press below to request assistance from a supervisor, If you are able to continue working while waiting for help, please do so and click outside this box.
+          <br>
+          <br>
+           Once your issue has been resolved, please dismiss the help request
+          <br>
+          <br>
           <hr>
           <button type="button" class="btn btn-primary" id="helpButton">Request Help</button>
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary"  id="helpCancel" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-secondary"  id="helpCancel" data-bs-dismiss="modal" style="height: 60px; background-color: rgb(21, 148, 21);">Cancel / Dismiss</button>
           <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
         </div>
       </div>
@@ -638,7 +643,7 @@ $("#helpButton").on("click", function(){
     // alert("Hello");
 
     database.ref("/help").set({
-        R1needsHelp: true
+        R3needsHelp: true
     })
 })
 
@@ -647,7 +652,7 @@ $("#helpCancel").on("click", function(){
     // alert("Hello");
 
     database.ref("/help").set({
-        R1needsHelp: false
+        R3needsHelp: false
     })
 }
 
