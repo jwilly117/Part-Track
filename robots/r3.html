@@ -642,7 +642,7 @@ $("#helpButton").on("click", function(){
     console.log("A robot has requested help");
     // alert("Hello");
 
-    database.ref("/help").set({
+    database.ref("/help/R3").set({
         R3needsHelp: true
     })
 })
@@ -651,7 +651,7 @@ $("#helpCancel").on("click", function(){
     console.log("A robot has cancelled help");
     // alert("Hello");
 
-    database.ref("/help").set({
+    database.ref("/help/R3").set({
         R3needsHelp: false
     })
 }
