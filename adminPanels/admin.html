@@ -13,6 +13,9 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
+  <!-- Datepicker -->
+  <link rel="stylesheet" href="/dist/mc-calendar.min.css" />
+<script src="/dist/mc-calendar.min.js"></script>
   
 
     
@@ -211,8 +214,22 @@
           </div>
 
           <div class="col-md-1">
+            <img src="../images/388-3886103_calendar-icon-calendar-symbol-clipart.png" alt="" id="calendar" style="height: 50px; width: 50px; margin-top: 16px; margin-left: 20px;">
 
-            <a class="btn btn-secondary sidebtn" id="clickme" role="button">All</a>
+          </div>
+          <script>
+            $("#calendar").on("click", function(){
+              console.log("You have clicked the calendar");
+            })
+          </script>
+
+          <div class="col-md-1">
+
+            <!-- Datepicker -->
+            
+
+            <a class="btn btn-secondary sidebtn" id="clickme" role="button" style="float: left;">All</a>
+            
 
            <!-- <div class="dropdown">
                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
@@ -227,7 +244,7 @@
                </ul>
              </div> -->
           </div>
-          <div class="col-md-8" id="centerish" style="float: left;">
+          <div class="col-md-7" id="centerish" style="float: left;">
               <!-- Here we will have the button groups -->
               <div class="btn-group" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-primary" id="r1">Robot 1</button>

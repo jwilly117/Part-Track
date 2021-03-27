@@ -546,6 +546,36 @@ connectionsRef.on("value",function(snap){
     }
   })
 
+  database.ref("help/R2/R2needsHelp").on("value", function(snap){
+    console.log("Robot 2 needs help: " + snap.val());
+    if(snap.val() == true){
+      console.log("Robot 2 Needs Help");
+      // alert("Robot 1 Needs help");
+      $("#row-2").css('background-color', 'red');
+    }
+    else {
+      console.log("Robot 2 Does not need help");
+      $("#row-2").css('background-color', 'rgb(161, 161, 161)');
+
+    }
+  })
+
+  database.ref("help/R4/R4needsHelp").on("value", function(snap){
+    console.log("Robot 4 needs help: " + snap.val());
+    if(snap.val() == true){
+      console.log("Robot 4 Needs Help");
+      // alert("Robot 1 Needs help");
+      $("#row-4").css('background-color', 'red');
+    }
+    else {
+      console.log("Robot 4 Does not need help");
+      $("#row-4").css('background-color', 'rgb(161, 161, 161)');
+
+    }
+  })
+
+
+
 
 
   // Robot 5 ===============================================
