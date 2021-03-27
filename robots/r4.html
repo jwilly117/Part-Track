@@ -617,6 +617,29 @@ connectedRef.on("value", function(snap){
 
  <!-- Firebase Stuff for downtime -->
  <script>
+
+      function displayTime() {
+                var str = "";
+
+                var currentTime = new Date()
+                var hours = currentTime.getHours()
+                var minutes = currentTime.getMinutes()
+                var seconds = currentTime.getSeconds()
+
+                if (minutes < 10) {
+                    minutes = "0" + minutes
+                }
+                if (seconds < 10) {
+                    seconds = "0" + seconds
+                }
+                str += hours + ":" + minutes + ":" + seconds + " ";
+                if(hours > 11){
+                    str += "PM"
+                } else {
+                    str += "AM"
+                }
+                return str;
+            }
   
       $(".dt").on("click", function(){
         let reason = this.value;
@@ -628,7 +651,7 @@ connectedRef.on("value", function(snap){
           Reason: reason,
           Part: "7J282-55054",
           Employee: "Anne Hathaway",
-          Start: "TIMESTAMP",
+          Start: displayTime(),
           Total: "45 Seconds"
         }
 
