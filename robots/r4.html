@@ -347,7 +347,7 @@
 
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores, id quod veniam eius sunt nisi impedit magnam fuga cupiditate recusandae ut mollitia similique ipsam obcaecati neque veritatis! Adipisci, officia dolor!
           <button type="button" class="btn btn-primary dt" id="dtreasons">Robot Crash / Current</button>
-          <button type="button" class="btn btn-primary dt" id="dtreasons">Change Tip</button>
+          <button type="button" class="btn btn-primary dt" value="Tip Change" id="dtreasons">Change Tip</button>
           <button type="button" class="btn btn-primary dt" id="dtreasons">Waiting For Parts</button>
           <button type="button" class="btn btn-primary dt" id="dtreasons">Operator Error</button>
           <button type="button" class="btn btn-primary dt" id="dtreasons">Reprogram / Fix Weld</button>
@@ -619,14 +619,16 @@ connectedRef.on("value", function(snap){
  <script>
   
       $(".dt").on("click", function(){
+        let reason = this.value;
+
         let tempDowntime = {
           Date: "March 29, 2010",
           Session: "Session 2",
-          Robot: "YRWM-4",
-          Part: "K5639-41411",
-          Employee: "Anne Hathaway",
+          Robot: "YRWM-2",
+          Reason: reason,
+          Part: "7J282-55054",
+          Employee: "Christian Bowman",
           Start: "TIMESTAMP",
-          End: "TIMESTAMP",
           Total: "45 Seconds"
         }
 
