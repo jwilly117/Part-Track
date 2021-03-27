@@ -561,7 +561,16 @@
 //       // Step 6 Make a reference to the firebase such that we can assign them to variables
       database.ref("/downtime").on("child_added", function(snap){
       console.log(snap.val());
-      let downtimeTest = snap.val()
+
+      // Make a reference to everything inside the object
+      let snapDate = snap.val().Date;
+      let snapSession = snap.val().Session;
+      let snapRobot = snap.val().Robot;
+      let snapPart = snap.val().Part;
+      let snapEmployee = snap.val().Employee;
+      let snapStart = snap.val().Start;
+      let snapEnd = snap.val().End;
+      let snapTotal = snap.val().Total;
 
 
       
@@ -569,7 +578,14 @@
 
       $("#letsgo").append(`
       <tr>
-        <td>${downtimeTest}</td>
+        <td>${snapDate}</td>
+        <td>${snapSession}</td>
+        <td>${snapRobot}</td>
+        <td>${snapPart}</td>
+        <td>${snapEmployee}</td>
+        <td>${snapStart}</td>
+        <td>${snapEnd}</td>
+        <td>${snapTotal}</td>
         
       </tr>
       `)

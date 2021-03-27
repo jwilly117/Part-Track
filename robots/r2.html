@@ -622,7 +622,18 @@ connectedRef.on("value", function(snap){
     <!-- Firebase Stuff for downtime -->
     <script>
       $(".dt").on("click", function(){
-        database.ref("/downtime").push("Tip Change");
+        let tempDowntime = {
+          Date: "March 29, 2010",
+          Session: "Session 2",
+          Robot: "YRWM-2",
+          Part: "7J282-55054",
+          Employee: "Christian Bowman",
+          Start: "TIMESTAMP",
+          End: "TIMESTAMP",
+          Total: "45 Seconds"
+        }
+        
+        database.ref("/downtime").push(tempDowntime);
       });
     </script>
 

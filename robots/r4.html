@@ -613,5 +613,13 @@ connectedRef.on("value", function(snap){
 
     </script>
 <script src="../logic.js"></script>
+
+
+ <!-- Firebase Stuff for downtime -->
+ <script>
+  $(".dt").on("click", function(){
+    database.ref("/downtime").push("Tip Change");
+  });
+</script>
 </body>
 </html>

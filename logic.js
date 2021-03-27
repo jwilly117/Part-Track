@@ -32,7 +32,6 @@ $(".dt").on("click", function(){
     // minutes = incidents / 60;
     console.log(difference + " " + seconds);
     $("#time").text(difference + " M " + seconds + " S");
-    database.ref("/downtime").push("Tip Change");
 
 })
 
