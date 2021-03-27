@@ -119,6 +119,9 @@
         #remaining{
           margin-left: 5px;
         }
+        .altRow{
+          background-color: rgb(24, 131, 131);
+        }
         
     </style>
 
@@ -174,6 +177,8 @@
      <h5>Robots Online: <span id="robotsOnline"></span></h5> -->
      <hr>
 
+
+
      <!-- Separate into Rows and Columns -->
      <!-- ROW 1 -->
 
@@ -183,20 +188,20 @@
          <div class="col-md-6">
             <div class="card" style="width: 9.5rem;">
                 <h5 id="robotNumber">RW-1  Side 1</h5>
-                <img id="partPic" id="rw" src="images/Parts/7J285-57553.jpg" class="card-img-top" alt="...">
+                <img id="partPic" id="rw" src="images/Parts/K3411-54133.png" class="card-img-top" alt="...">
 
                 <br>
               </div>
               <div class="card" style="width: 9.5rem;">
                 <h5 id="robotNumber">RW-1  Side 2</h5>
-                <img id="partPic" src="images/Parts/K3071-02162.jpg" class="card-img-top" alt="...">
+                <img id="partPic" src="images/Parts/K3411-81563.jpg" class="card-img-top" alt="...">
 
                 <br>
               </div>
          </div>
          <!-- Second Column -->
          <div class="col-md-6">
-          <strong>Operator: Christian Bowman</strong>
+          <strong>Operator: James Franco</strong>
           - - - Lorem ipsum dolor, sit amet conseione odio  <br>
             <hr>
             <strong>SIDE A - K3411-54133</strong>
@@ -224,21 +229,21 @@
         <div class="col-md-6">
            <div class="card" style="width: 9.5rem;">
                <h5 id="robotNumber">RW-2 Side A</h5>
-               <img id="partPic" src="images/Parts/K3071-21661.PNG" class="card-img-top" alt="...">
+               <img id="partPic" src="images/Parts/7J282-55054.jpg" class="card-img-top" alt="...">
 
                <br>
              </div>
              <div class="card" style="width: 9.5rem;">
                <h5 id="robotNumber">RW-2 Side B</h5>
-               <img id="partPic" src="images/Parts/K3411-53202.jpg" class="card-img-top" alt="...">
+               <img id="partPic" src="images/Parts/7J285-57553.jpg" class="card-img-top" alt="...">
 
                <br>
              </div>
         </div>
         <!-- Second Column -->
         <div class="col-md-6">
-            <strong>Operator: Jake Williams</strong>
-            - - - Lorem ipsum dolor, sit amet conseione odio culpa
+            <strong>Operator: Christian Bowman</strong>
+            - - - Lorem ipsum dolor, sit amet conseio
             <br>
             <hr>
             <!-- Side A -->
@@ -265,21 +270,21 @@
         <div class="col-md-6">
            <div class="card" style="width: 9.5rem;">
                <h5 id="robotNumber">RW-3 Side A</h5>
-               <img id="partPic" src="images/Parts/K3411-54133.PNG" class="card-img-top" alt="...">
+               <img id="partPic" src="images/Parts/K3071-02162.jpg" class="card-img-top" alt="...">
 
                <br>
              </div>
              <div class="card" style="width: 9.5rem;">
                <h5 id="robotNumber">RW-3 Side B</h5>
-               <img id="partPic" src="images/Parts/K3411-81563.jpg" class="card-img-top" alt="...">
+               <img id="partPic" src="images/Parts/7J823-55073.jpg" class="card-img-top" alt="...">
 
                <br>
              </div>
         </div>
         <!-- Second Column -->
         <div class="col-md-6">
-          <strong>Operator: Paige Bowman</strong>
-          - - - Lorem ipsum dolor, sit amet conseione odio culpa  <br>
+          <strong>Operator: Robert Sullivan</strong>
+          - - - Lorem ipsum dolor, sit amet conone oulpa  <br>
             <hr>
             <strong>SIDE A - K3071-02162</strong>
             <div class="progress">
@@ -302,13 +307,13 @@
         <div class="col-md-6">
            <div class="card" style="width: 9.5rem;">
                <h5 id="robotNumber">RW-4 Side A</h5>
-               <img id="partPic" src="images/Parts/K3421-54133.PNG" class="card-img-top" alt="...">
+               <img id="partPic" src="images/Parts/K5639-41411.PNG" class="card-img-top" alt="...">
 
                <br>
              </div>
              <div class="card" style="width: 9.5rem;">
                <h5 id="robotNumber">RW-4 Side B</h5>
-               <img id="partPic" src="images/Parts/K3811-44111.jpg" class="card-img-top" alt="...">
+               <img id="partPic" src="images/Parts/K3071-21661.PNG" class="card-img-top" alt="...">
 
                <br>
              </div>
@@ -316,7 +321,7 @@
         <!-- Second Column -->
         <div class="col-md-6">
           <strong>Operator: Anne Hathoway</strong>
-          - - - Lorem ipsum dolor, sit amet conseione odio culpa   <br>
+          - - - Lorem ipsum dolor, sit amet  odio culpa   <br>
             <hr>
             <strong>SIDE A - K5639-41411</strong>
             <div class="progress">
@@ -353,7 +358,7 @@
         </div>
         <!-- Second Column -->
         <div class="col-md-6">
-          <strong>Operator: John Doe</strong>
+          <strong>Operator: Shogo</strong>
           - -Placeholder area for a future Robot, not yet available for reference<br>
             <hr>
             <strong>SIDE A</strong>
@@ -555,7 +560,7 @@ connectionsRef.on("value",function(snap){
     }
     else {
       console.log("Robot 2 Does not need help");
-      $("#row-2").css('background-color', 'rgb(161, 161, 161)');
+      $("#row-2").css('background-color', 'rgb(131, 176, 236)');
 
     }
   })
@@ -569,7 +574,7 @@ connectionsRef.on("value",function(snap){
     }
     else {
       console.log("Robot 4 Does not need help");
-      $("#row-4").css('background-color', 'rgb(161, 161, 161)');
+      $("#row-4").css('background-color', 'rgb(131, 176, 236)');
 
     }
   })
