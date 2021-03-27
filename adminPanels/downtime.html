@@ -280,10 +280,10 @@
                           <th scope="col">Date</th>
                           <th scope="col">Session #</th>
                           <th scope="col">Robot</th>
+                          <th scope="col">Reason</th>
                           <th scope="col">Part</th>
                           <th scope="col">Employee</th>
                           <th scope="col">Start Time</th>
-                          <th scope="col">End Time</th>
                           <th scope="col">Time Down</th>
                           
   
@@ -566,10 +566,10 @@
       let snapDate = snap.val().Date;
       let snapSession = snap.val().Session;
       let snapRobot = snap.val().Robot;
+      let snapReason = snap.val().Reason;
       let snapPart = snap.val().Part;
       let snapEmployee = snap.val().Employee;
       let snapStart = snap.val().Start;
-      let snapEnd = snap.val().End;
       let snapTotal = snap.val().Total;
 
 
@@ -581,10 +581,11 @@
         <td>${snapDate}</td>
         <td>${snapSession}</td>
         <td>${snapRobot}</td>
+        <td>${snapReason}</td>
         <td>${snapPart}</td>
         <td>${snapEmployee}</td>
         <td>${snapStart}</td>
-        <td>${snapEnd}</td>
+        
         <td>${snapTotal}</td>
         
       </tr>
