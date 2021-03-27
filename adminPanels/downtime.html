@@ -212,8 +212,8 @@
         <a class="btn btn-secondary sidebtn" href="admin.html" role="button">Daily Reports</a>
         <a class="btn btn-secondary sidebtn" href="adminLiveView.html" role="button">Live View</a>
         <a class="btn btn-secondary sidebtn" href="adminPBP.html" role="button">Part by Part</a>
-        <a class="btn btn-secondary sidebtn" id="active" href="partdirectory.html" role="button">Part Directory</a>
-        <a class="btn btn-secondary sidebtn" href="downtime.html" role="button">Downtime Records</a>
+        <a class="btn btn-secondary sidebtn" href="partdirectory.html" role="button">Part Directory</a>
+        <a class="btn btn-secondary sidebtn" id="active" href="downtime.html" role="button">Downtime Records</a>
         <a class="btn btn-secondary sidebtn" href="" role="button">Edit Record (Null)</a>
         <a class="btn btn-secondary sidebtn" href="" role="button">C/T Directory (Null)</a>
         <a class="btn btn-secondary sidebtn" href="employeeDirectory.html" role="button">Employee Directory</a>
@@ -227,22 +227,22 @@
         <div class="row" id="navrow">
 
           <div class="col-md-2">
-            <h2 id="panelTitle">Part Directory</h2>
+            <h2 id="panelTitle">Downtime Records</h2>
           </div>
 
           <div class="col-md-2">
 
-            <a class="btn btn-secondary sidebtn" style="float: left;" id="allMachines" role="button">All Parts</a>
+            <a class="btn btn-secondary sidebtn" style="float: left;" id="allMachines" role="button">All Machines</a>
 
           </div>
           <div class="col-md-7" id="centerish" style="float: left;">
 
               <!-- Here we will have the button groups -->
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-primary" id="r1">Welding</button>
-                <button type="button" class="btn btn-primary" id="r2">Hand Weld</button>
-                <button type="button" class="btn btn-primary" id="r3">Press</button>
-                <button type="button" class="btn btn-primary" id="r4">Other</button>
+                <button type="button" class="btn btn-primary" id="r1">YRWM-1</button>
+                <button type="button" class="btn btn-primary" id="r2">YRWM-2</button>
+                <button type="button" class="btn btn-primary" id="r3">YRWM-3</button>
+                <button type="button" class="btn btn-primary" id="r4">YRWM-4</button>
               </div>
 
           </div>
@@ -261,105 +261,12 @@
                   <!-- Form for inputing new part information into the firebase database -->
 
                   <div class="row">
-                    <div class="col-md-9 partinput">
-                      <h2>Input new Part Information</h2>
-
-                      <div class="mb-3">
-
-                        <label for="formGroupExampleInput" class="form-label">Part Number / Name</label>
-
-                        <!-- Row 1 -->
-                        <div class="row">
-                          <div class="col">
-                            <input type="text" id="partNumber" class="form-control" placeholder="Finished Part Number" aria-label="First name">
-                          </div>
-                          
-                          <div class="col">
-                            <input type="text" id="partName" class="form-control" placeholder="Part Name" aria-label="Last name">
-                          </div>
-
-                        </div> 
-
-                        <!-- Row 2 -->
-
-                      </div>
-                      <label for="formGroupExampleInput" class="form-label">Other Part Information / Cycle Times</label>
-
-
-                      <div class="row">
-                        
-                        <div class="col">
-                          <input type="text" id="SNP" class="form-control" placeholder="SNP" aria-label="First name">
-                        </div>
-                        <div class="col">
-                          <input type="text" id="container" class="form-control" placeholder="Container / SMP" aria-label="First name">
-                        </div>
-                        <div class="col">
-                          <input type="text" id="cycleTime" class="form-control" placeholder="Cycle Time Total" aria-label="First name">
-                        </div>
-                      </div>
-
-                      <!-- <label for="formGroupExampleInput" class="form-label">Other Part Information / Cycle Times</label> -->
-                      <br>
-
-                      <div class="row">
-                        
-                        <div class="col">
-                          <input type="text" id="quantityPerCycle" class="form-control" placeholder="Quantity Per Cycle" aria-label="First name">
-                        </div>
-                        <div class="col">
-                          <input type="text" id="machineTime" class="form-control" placeholder="Machine / Weld Time" aria-label="First name">
-                        </div>
-                        <div class="col">
-                          <input type="text" id="loadTime" class="form-control" placeholder="Load + Unload Time" aria-label="First name">
-                        </div>
-                      </div>
-                      <br>
-
-                      
-
-                     
-
-                    </div>
+                    
 
 
                     <!-- Radio buttons for choosing type of Part, such as hand weld, robotic weld, press, other -->
 
-                    <div class="col-md-2 partinput">
-                       <!-- Radios -->
-                       <fieldset class="row mb-3">
-                        <legend class="col-form-label col-sm-2 pt-0">Choose Type</legend>
-                        <div class="col-sm-10">
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                            <label class="form-check-label" for="gridRadios1">
-                              Robot Weld
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                            <label class="form-check-label" for="gridRadios2">
-                              Hand Weld
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" >
-                            <label class="form-check-label" for="gridRadios3">
-                              Press
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                            <label class="form-check-label" for="gridRadios2">
-                              CNC / Other
-                            </label>
-                          </div>
-                          <hr>
-                          <br>
-                          <button type="button" class="btn btn-primary" style="height: 40px; padding-top: 5px;" id="addPartButton">Add Part</button>               
-                        </div>
-                      </fieldset>
-                    </div>
+                    
 
 
                   </div>
@@ -370,14 +277,14 @@
                       <thead>
                         <tr>
                           <!-- <th scope="col">#</th> -->
-                          <th scope="col">Part Number</th>
-                          <th scope="col">Part Name</th>
-                          <th scope="col">SNP</th>
-                          <th scope="col">Container / SMP</th>
-                          <th scope="col">Yeild Per Cycle</th>
-                          <th scope="col">Cycle Time</th>
-                          <th scope="col">Machine Timee</th>
-                          <th scope="col">Load Time</th>
+                          <th scope="col">Date</th>
+                          <th scope="col">Session #</th>
+                          <th scope="col">Robot</th>
+                          <th scope="col">Part</th>
+                          <th scope="col">Employee</th>
+                          <th scope="col">Start Time</th>
+                          <th scope="col">End Time</th>
+                          <th scope="col">Time Down</th>
                           
   
                           <!-- <th scope="col">Time since last</th> -->
@@ -385,14 +292,15 @@
                       </thead>
                       <tbody id="letsgo">
                         <tr>
-                          <td>7J299-57551</td>
-                          <td>Stand</td>
-                          <td>150</td>
-                          <td>MB</td>
-                          <td>71</td>
-                          <td>1</td>
-                          <td>33</td>
-                          <td>38</td>
+                          <td>March 29, 2021</td>
+                          <td>Session 2</td>
+                          <td>YRWM-2</td>
+                          <td>K34562-73551</td>
+                          <td>James Franco</td>
+                          <td>Time</td>
+                          <td>Time</td>
+                          <td>Time</td>
+                          
                         </tr>
 
                         <!-- <tr>
@@ -527,52 +435,16 @@
                    <div class="row partrow">
 
                     <!-- Card -->
-                    <div class="col-md-3 partcard">
-                        <div class="card" style="width: 17rem;">
-                            <img src="../images/Parts/K3411-53202.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <h5 class="card-title">K3411-53202</h5>
-                              <p class="card-text">Mask (Front)</p>
-                              <a href="#" class="btn btn-primary">Part Details / Edit</a>
-                            </div>
-                          </div>
-                    </div>
+                    
 
                    <!-- Card -->
-                   <div class="col-md-3 partcard">
-                    <div class="card" style="width: 17rem;">
-                        <img src="../images/Parts/K3411-54133.PNG" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">K3411-54133</h5>
-                          <p class="card-text">Grill (Bonnet) (Revision 2)</p>
-                          <a href="#" class="btn btn-primary">Part Details / Edit</a>
-                        </div>
-                      </div>
-                </div>
+                  
 
                 <!-- Card -->
-                <div class="col-md-3 partcard">
-                    <div class="card" style="width: 17rem;">
-                        <img src="../images/Parts/K3411-81563.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">K3411-81563</h5>
-                          <p class="card-text">Net (Screen)</p>
-                          <a href="#" class="btn btn-primary">Part Details / Edit</a>
-                        </div>
-                      </div>
-                </div>
+                
 
                 <!-- Card -->
-                <div class="col-md-3 partcard">
-                    <div class="card" style="width: 17rem;">
-                        <img src="../images/Parts/K3421-54133.PNG" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">K3421-54133</h5>
-                          <p class="card-text">Grill (Bonnet)</p>
-                          <a href="#" class="btn btn-primary">Part Details / Edit</a>
-                        </div>
-                      </div>
-                </div>
+                
 
                 <!-- Card -->
                 <!-- <div class="col-md-2 partcard">
@@ -620,97 +492,85 @@
 
 
   // Capture the on click event from submit
-  $("#addPartButton").on("click", function(){
-    console.log("This works");
-    // $("#letsgo").html("");
+//   $("#addPartButton").on("click", function(){
+//     console.log("This works");
+//     // $("#letsgo").html("");
 
 
-    // Step one, trim and capture the values from the fields
-    let partNumber = $("#partNumber").val().trim();
-    let partName = $("#partName").val().trim();
-    let SNP = $("#SNP").val().trim();
-    let container = $("#container").val().trim();
-    let cycleTime = $("#cycleTime").val().trim();
-    let quantityPerCycle = $("#quantityPerCycle").val().trim();
-    let machineTime = $("#machineTime").val().trim();
-    let loadTime = $("#loadTime").val().trim();
+//     // Step one, trim and capture the values from the fields
+//     let partNumber = $("#partNumber").val().trim();
+//     let partName = $("#partName").val().trim();
+//     let SNP = $("#SNP").val().trim();
+//     let container = $("#container").val().trim();
+//     let cycleTime = $("#cycleTime").val().trim();
+//     let quantityPerCycle = $("#quantityPerCycle").val().trim();
+//     let machineTime = $("#machineTime").val().trim();
+//     let loadTime = $("#loadTime").val().trim();
 
-    console.log(partNumber);
+//     console.log(partNumber);
 
-    // $("#letsgo").append(`
-    //   <tr>
-    //     <td>${partNumber}</td>
-    //     <td>${partName}</td>
-    //     <td>${SNP}</td>
-    //     <td>${container}</td>
-    //     <td>${cycleTime}</td>
-    //     <td>${quantityPerCycle}</td>
-    //     <td>${machineTime}</td>
-    //     <td>${loadTime}</td>
-    //   </tr>
-    //   `)
+//     // $("#letsgo").append(`
+//     //   <tr>
+//     //     <td>${partNumber}</td>
+//     //     <td>${partName}</td>
+//     //     <td>${SNP}</td>
+//     //     <td>${container}</td>
+//     //     <td>${cycleTime}</td>
+//     //     <td>${quantityPerCycle}</td>
+//     //     <td>${machineTime}</td>
+//     //     <td>${loadTime}</td>
+//     //   </tr>
+//     //   `)
 
 
-    // Step 2 make a local, temporary object for holding part data (see train scheduler)
-    let tempPart = {
-      partnumber: partNumber,
-      partname: partName,
-      snp: SNP,
-      containersize: container,
-      cycletime: cycleTime,
-      quantity: quantityPerCycle,
-      machinetime: machineTime,
-      loadtime: loadTime
-    }
+//     // Step 2 make a local, temporary object for holding part data (see train scheduler)
+//     let tempPart = {
+//       partnumber: partNumber,
+//       partname: partName,
+//       snp: SNP,
+//       containersize: container,
+//       cycletime: cycleTime,
+//       quantity: quantityPerCycle,
+//       machinetime: machineTime,
+//       loadtime: loadTime
+//     }
 
-    // Step 3, upload the temp object (see train scheduler) to the database
-    database.ref("/parts").push(tempPart);
+//     // Step 3, upload the temp object (see train scheduler) to the database
+//     database.ref("/parts").push(tempPart);
 
-    // Step 4, Alert test that a part has been added?
-    // Step 5, reset all field data to blank
-    $("#partNumber").val("");
-    $("#partName").val("");
-    $("#SNP").val("");
-    $("#container").val("");
-    $("#cycleTime").val("");
-    $("#quantityPerCycle").val("");
-    $("#machineTime").val("");
-    $("#loadTime").val("");
+//     // Step 4, Alert test that a part has been added?
+//     // Step 5, reset all field data to blank
+//     $("#partNumber").val("");
+//     $("#partName").val("");
+//     $("#SNP").val("");
+//     $("#container").val("");
+//     $("#cycleTime").val("");
+//     $("#quantityPerCycle").val("");
+//     $("#machineTime").val("");
+//     $("#loadTime").val("");
 
     
 
 
 
-    // Step 7, append them all to the table
+//     // Step 7, append them all to the table
 
-  })
+//   })
 
 
-      // Step 6 Make a reference to the firebase such that we can assign them to variables
-      database.ref("/parts").on("child_added", function(snap){
+//       // Step 6 Make a reference to the firebase such that we can assign them to variables
+      database.ref("/downtime").on("child_added", function(snap){
       console.log(snap.val());
+      let downtimeTest = snap.val()
 
-      let snapPartNum = snap.val().partnumber;
-      let snapPartName = snap.val().partname;
-      let snapSnp = snap.val().snp;
-      let snapContainer = snap.val().containersize;
-      let snapCycleTime = snap.val().cycletime;
-      let snapQuantity = snap.val().quantity;
-      let snapMachineTime = snap.val().machinetime;
-      let snapLoadTime = snap.val().loadtime;
+
       
 
 
       $("#letsgo").append(`
       <tr>
-        <td>${snapPartNum}</td>
-        <td>${snapPartName}</td>
-        <td>${snapSnp}</td>
-        <td>${snapContainer}</td>
-        <td>${snapCycleTime}</td>
-        <td>${snapQuantity}</td>
-        <td>${snapMachineTime}</td>
-        <td>${snapLoadTime}</td>
+        <td>${downtimeTest}</td>
+        
       </tr>
       `)
 
