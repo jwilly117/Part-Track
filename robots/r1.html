@@ -473,8 +473,11 @@
 var database = firebase.database();
   
     // set a number to count from
-    var number = 100;
+    var numberA = 100;
+    var numberB = 100;
     var interval;
+    var interval1;
+    var interval2;
     var side = "A";
     var running = true;
 
@@ -485,6 +488,9 @@ var database = firebase.database();
     var sideAOrderPercent = 0;
     var sideBOrderTotal = 180;
     var sideBOrderPercent = 0;
+
+    sideAComplete = false;
+    sideBComplete = false;
     
     $("#simulate").on("click", function(){
       console.log("This button works");
@@ -503,16 +509,21 @@ var database = firebase.database();
       interval = setInterval(countdown, 1000);
     }
 
+    function startA() {
+      interval1 = setInterval(intervalA, 1000);
+    }
 
-    function countdown(){
+    function startB() {
+      interval2 = setInterval(intervalB, 1000);
+    }
 
-      // Create a statement to pick an active side
-
-      if(side == "A"){
-        if(number <= 0){
-        number = 100;
+    function intervalA() {
+      
+      if(numberA <= 0){
+        numberA = 100;
         partsMadeA++;
         // Firebase
+        
         database.ref("/R1").set({
             basketA: partsMadeA,
             basketB: partsMadeB
@@ -527,22 +538,25 @@ var database = firebase.database();
         }
         $("#partsMadeA").text(partsMadeA);
         $("#basketACount").text(partsMadeA)
-        $("#p1").css("width", (number + "%"));
+        $("#p1").css("width", (numberA + "%"));
         $("#basketABar").css("width", (partsMadeA + "%"));
         side = "B";
         $("#cardB").css("background-color", "lightgreen");
         $("#cardA").css("background-color", "salmon");
-
+        stopA();
         console.log("Side Change");
       }
       else{
-        number = number - 15;
-        $("#p1").css("width", (number + "%"));
+        numberA = numberA - 15;
+        $("#p1").css("width", (numberA + "%"));
       }
-      // Now set the side to B
-      }else if(side == "B"){
-        if(number <= 0){
-        number = 100;
+    }
+
+
+    function intervalB() {
+      
+      if(numberB <= 0){
+        numberB = 100;
         partsMadeB++;
         // Firebase
         database.ref("/R1").set({
@@ -559,17 +573,123 @@ var database = firebase.database();
         }
         $("#partsMadeB").text(partsMadeB);
         $("#basketBCount").text(partsMadeB)
-        $("#p2").css("width", (number + "%"));
+        $("#p2").css("width", (numberB + "%"));
         $("#basketBBar").css("width", (partsMadeB * 2 + "%"));
         side = "A";
         $("#cardA").css("background-color", "lightgreen");
         $("#cardB").css("background-color", "salmon");
+        stopB();
         console.log("Side Change");
       }
       else{
-        number = number - 10;
-        $("#p2").css("width", (number + "%"));
+        numberB = numberB - 10;
+        $("#p2").css("width", (numberB + "%"));
       }
+    }
+
+    function stopA() {
+      clearInterval(interval1);
+    }
+
+    function stopB() {
+      clearInterval(interval2);
+    }
+
+    // 
+    database.ref("/test/Input").on("value", function(snap){
+      let actualSide = snap.val();
+      console.log("Actual Side " + actualSide);
+
+
+      if(actualSide == "SideBDone\r"){
+        // Below is the Code for Side A
+        // ----------------------------------------------------
+        stopB();
+        startA();
+        
+
+
+      }else if(actualSide == "SideADone\r"){
+        // Below is the Code for Side B
+        // ---------------=======================---------------
+        stopA();
+        startB();
+        
+
+      }
+
+    })
+
+
+    function countdown(){
+
+      // Create a statement to pick an active side
+      
+      if(side == "A"){
+      //   if(number <= 0){
+      //   number = 100;
+      //   partsMadeA++;
+      //   // Firebase
+        
+      //   database.ref("/R1").set({
+      //       basketA: partsMadeA,
+      //       basketB: partsMadeB
+      //   })
+      //   sideAOrderTotal++;
+      //   sideAOrderPercent = (sideAOrderTotal / 800)*100
+      //   console.log(sideAOrderPercent);
+      //   $("#sideAOrderTotal").text(sideAOrderTotal);
+      //   $("#pA").css("width", (sideAOrderPercent + "%"));
+      //   if(partsMadeA > 100){
+      //     partsMadeA = 0;
+      //   }
+      //   $("#partsMadeA").text(partsMadeA);
+      //   $("#basketACount").text(partsMadeA)
+      //   $("#p1").css("width", (number + "%"));
+      //   $("#basketABar").css("width", (partsMadeA + "%"));
+      //   side = "B";
+      //   $("#cardB").css("background-color", "lightgreen");
+      //   $("#cardA").css("background-color", "salmon");
+
+      //   console.log("Side Change");
+      // }
+      // else{
+      //   number = number - 15;
+      //   $("#p1").css("width", (number + "%"));
+      // }
+
+      
+      // Now set the side to B
+      }else if(side == "B"){
+      //   if(number <= 0){
+      //   number = 100;
+      //   partsMadeB++;
+      //   // Firebase
+      //   database.ref("/R1").set({
+      //       basketA: partsMadeA,
+      //       basketB: partsMadeB
+      //   })
+      //   sideBOrderTotal++;
+      //   sideBOrderPercent = (sideBOrderTotal / 250)*100
+      //   console.log(sideBOrderPercent);
+      //   $("#sideBOrderTotal").text(sideBOrderTotal);
+      //   $("#pB").css("width", (sideBOrderPercent + "%"));
+      //   if(partsMadeB > 50){
+      //     partsMadeB = 0;
+      //   }
+      //   $("#partsMadeB").text(partsMadeB);
+      //   $("#basketBCount").text(partsMadeB)
+      //   $("#p2").css("width", (number + "%"));
+      //   $("#basketBBar").css("width", (partsMadeB * 2 + "%"));
+      //   side = "A";
+      //   $("#cardA").css("background-color", "lightgreen");
+      //   $("#cardB").css("background-color", "salmon");
+      //   console.log("Side Change");
+      // }
+      // else{
+      //   number = number - 10;
+      //   $("#p2").css("width", (number + "%"));
+      // }
       }
   
     }
