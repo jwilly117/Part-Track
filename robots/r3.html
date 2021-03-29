@@ -187,7 +187,7 @@
                   <!-- This is the area of information to the ooperator -->
                   <h5>Parts Made: <span id="partsMadeA">0</span></h5>
                   
-                  <div class="card-text">Cycle Time: 7 Seconds</div>
+                  <div class="card-text">Cycle Time: 27 Seconds</div>
                   <div class="progress">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" id="p1" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
@@ -254,9 +254,9 @@
                     <div class="progress-bar progress-bar-striped progress-bar-animated" id="pA" role="progressbar" style="width: 37%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                   <br>
-                  <div class="card-text">Side B Order Total <span id="sideBOrderTotal">180</span> / <span id="sideBOrderGoal">250</span></div>
+                  <div class="card-text">Side B Order Total <span id="sideBOrderTotal">120</span> / <span id="sideBOrderGoal">250</span></div>
                   <div class="progress" style="height: 25px;">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="pB" role="progressbar" style="width: 72%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="pB" role="progressbar" style="width: 48%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
              <hr>
              <br>
@@ -509,7 +509,7 @@
 var database = firebase.database();
   
     // set a number to count from
-    var number = 100;
+    var number = 270;
     var interval;
     var side = "A";
     var running = true;
@@ -519,7 +519,7 @@ var database = firebase.database();
 
     var sideAOrderTotal = 300;
     var sideAOrderPercent = 0;
-    var sideBOrderTotal = 180;
+    var sideBOrderTotal = 120;
     var sideBOrderPercent = 0;
     
     $("#simulate").on("click", function(){
@@ -572,13 +572,15 @@ var database = firebase.database();
         console.log("Side Change");
       }
       else{
-        number = number - 15;
-        $("#p1").css("width", (number + "%"));
+        number = number - 10;
+        var numberPercent = (number / 270) *100
+
+        $("#p1").css("width", (numberPercent + "%"));
       }
       // Now set the side to B
       }else if(side == "B"){
         if(number <= 0){
-        number = 100;
+        number = 270;
         partsMadeB++;
         // Maybe firebase?
         database.ref('/R3').set({

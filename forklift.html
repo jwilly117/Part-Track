@@ -506,7 +506,7 @@ connectionsRef.on("value",function(snap){
     R4SA = snap.val();
     console.log("The side A Basket Count is " + R4SA);
 
-    $("#R4SAProgress").css("width", ((R4SA * 3) + "%"));
+    $("#R4SAProgress").css("width", ((R4SA * 1.5) + "%"));
   })
 
   database.ref("R4/R4basketB").on("value", function(snap){
