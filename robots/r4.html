@@ -187,7 +187,7 @@
                   <!-- This is the area of information to the ooperator -->
                   <h5>Parts Made: <span id="partsMadeA">0</span></h5>
                   
-                  <div class="card-text">Cycle Time: 7 Seconds</div>
+                  <div class="card-text">Cycle Time: 24 Seconds</div>
                   <div class="progress">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" id="p1" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
@@ -484,7 +484,7 @@
 var database = firebase.database();
   
     // set a number to count from
-    var number = 100;
+    var number = 240;
     var interval;
     var side = "A";
     var running = true;
@@ -547,13 +547,15 @@ var database = firebase.database();
         console.log("Side Change");
       }
       else{
-        number = number - 15;
-        $("#p1").css("width", (number + "%"));
+        number = number - 10;
+        var numberPercent = (number / 240) *100
+
+        $("#p1").css("width", (numberPercent + "%"));
       }
       // Now set the side to B
       }else if(side == "B"){
         if(number <= 0){
-        number = 100;
+        number = 240;
         partsMadeB++;
         // Maybe firebase?
         database.ref('/R4').set({
