@@ -127,9 +127,56 @@
         }
     </style>
 
+    <!-- Splash style -->
+    <style>
+      .splash{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgb(83, 83, 83);
+        z-index: 200;
+        color: white;
+        text-align: center;
+        line-height: 20vh;
+      }
+
+      .splash.display-none{
+        position: fixed;
+        opacity: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: black;
+        z-index: -10;
+        color: white;
+        text-align: center;
+        line-height: 10vh;
+        transition: all 0.2s;
+      }
+
+      @keyframes fadeIn{
+        to{
+          opacity: 1;
+        }
+      }
+
+      .fade-in{
+        opacity: 0;
+        animation: fadeIn 1s ease-in forwards;
+      }
+    </style>
+
 </head>
 <body>
-    
+    <div class="splash">
+      <br>
+      
+      
+      <img src="/Part-Track/images/logoSample.PNG" alt="" class="fade-in">
+    </div>
     <!-- Create a simple header, and a counter with a pause button -->
 
     <!-- Think about calling this accupart -->
@@ -424,6 +471,19 @@ var database = firebase.database();
    </script>
     
     <script src="logic.js">
+
+    </script>
+
+    <script>
+      const splash = document.querySelector('.splash');
+
+      document.addEventListener('DOMContentLoaded', (e) => {
+        setTimeout(()=>{
+          splash.classList.add('display-none');
+        }, 2000);
+      })
+
+
 
     </script>
 
