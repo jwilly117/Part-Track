@@ -16,4 +16,4 @@ A repository dedicated to the development and demonstration of a part production
 * 
 
 ## GUI Example
-![image](https://imgur.com/6llbDg7)
+![image](https://i.imgur.com/6llbDg7.png)
