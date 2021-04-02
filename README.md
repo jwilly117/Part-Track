@@ -14,3 +14,6 @@ A repository dedicated to the development and demonstration of a part production
 * Look into AWS, Apache, React, and Heroku Database servers (most cost effeective) (probably heroku for something this small)
 * Have Live feeds in the admin panel for each robot
 * 
+
+## GUI Example
+![image](https://imgur.com/6llbDg7)
